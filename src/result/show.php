@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <title>Wirecard Payment Page Integration Demo</title>
+</head>
+<body>
+
+<div class="container" style="margin-top: 2%">
+    <?php
+    session_start();
+    ?>
+
+    <h1>Wirecard Payment Page Integration Demo</h1>
+
+    <div class="row">
+        <div class="col-12">
+            <h3 style="text-align: center"><strong>
+                    <?php echo $_SESSION['msg']; ?>
+                </strong></h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h4><strong>responseSignatureBase64:</strong></h4>
+            <pre><code><?php echo $_SESSION['response']['response-signature-base64']; ?></code></pre>
+            <h4><strong>responseSignatureAlgorithm:</strong></h4>
+            <pre><code><?php echo $_SESSION['response']['response-signature-algorithm']; ?></code></pre>
+            <h4><strong>responseBase64:</strong></h4>
+            <pre><code><?php echo $_SESSION['response']['response-base64']; ?></code></pre>
+            <h4><strong>decodedResponseBase64:</strong></h4>
+            <pre><code><?php echo base64_decode($_SESSION['response']['response-base64']); ?></code></pre>
+
+            <?php
+            require_once('functions.php');
+
+            $responseBase64 = trim($_SESSION['response']['response-base64']);
+            $signatureBase64 = trim($_SESSION['response']['response-signature-base64']);
+            $secretKey = 'a8c3fce6-8df7-4fd6-a1fd-62fa229c5e55';
+            $signatureVerification = (isValidSignature($responseBase64, $signatureBase64, $secretKey));
+            ?>
+
+            <h4><strong>validSignature:</strong></h4>
+            <pre><code><?php echo $signatureVerification ? 'True' : 'False'; ?></code></pre>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

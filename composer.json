@@ -1,0 +1,19 @@
+{
+  "name": "wpp-integration-demo-php",
+  "description": "A demo application showing how to integrate the Wirecard Payment Page.",
+  "type": "project",
+  "keywords": ["payment", "credit card"],
+  "readme": "README.md",
+  "license": "GPL-3.0-only",
+  "require" : {
+    "php" : ">=5.6",
+    "ext-curl": "*"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.7"
+  },
+  "scripts": {
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf"
+  }
+}
