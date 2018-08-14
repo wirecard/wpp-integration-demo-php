@@ -1,5 +1,7 @@
 <?php
 
+require '../util/globals.php';
+
 /**
  * Functions which are used for registering a payment by all 3 types of integration.
  */
@@ -10,9 +12,17 @@
  *
  * @return array An array containing all the required parameters of the POST body.
  */
-function createPayload()
+function createPayload($paymentMethod)
 {
-    $payloadText = file_get_contents("../../example-request/payment.json");
+    if ($paymentMethod === $GLOBALS['ccard']) {
+        $payloadText = file_get_contents("../../example-requests/creditcard_payment.json");
+    } elseif ($paymentMethod === $GLOBALS['paypal']) {
+        $payloadText = file_get_contents("../../example-requests/paypal_payment.json");
+    } elseif ($paymentMethod === $GLOBALS['ideal']) {
+        $payloadText = file_get_contents("../../example-requests/ideal_payment.json");
+    } elseif ($paymentMethod === $GLOBALS['sepa-dd']) {
+        $payloadText = file_get_contents("../../example-requests/sepa_dd_payment.json");
+    }
     $payload = json_decode($payloadText, $assoc = true);
     $uuid = uniqid('payment_request_', true);
     $payload["payment"]["request-id"] = $uuid;
@@ -27,7 +37,7 @@ function createPayload()
  * @return array|mixed The response from WPP as an array if the request was successful.
  *      An array with the number and the description of the curl error if the request was not successful.
  */
-function postRegisterRequest($payload)
+function postRegisterRequest($payload, $paymentMethod)
 {
     $ch = curl_init("https://wpp-test.wirecard.com/api/payment/register");
 
@@ -36,7 +46,10 @@ function postRegisterRequest($payload)
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
 
-    $credentials = "70000-APIDEMO-CARD:ohysS0-dvfMx";
+    if ($paymentMethod === $GLOBALS['ccard']) {
+        $credentials = "70000-APIDEMO-CARD:ohysS0-dvfMx";
+    }
+
     $headers = array(
         "Content-type: application/json",
         "Authorization: Basic " . base64_encode($credentials)
@@ -50,8 +63,8 @@ function postRegisterRequest($payload)
         $result = [
             "errors" => [
                 [
-                    "code" => curl_errno(),
-                    "description" => curl_error(),
+                    "code" => curl_errno($ch),
+                    "description" => curl_error($ch),
 
                 ]
             ]
@@ -71,9 +84,9 @@ function postRegisterRequest($payload)
  * @param $payload
  * @return bool TRUE if the request was successful and the response contained a redirect URL. FALSE otherwise.
  */
-function retrievePaymentRedirectUrl($payload)
+function retrievePaymentRedirectUrl($payload, $paymentMethod)
 {
-    $responseContent = postRegisterRequest($payload);
+    $responseContent = postRegisterRequest($payload, $paymentMethod);
 
     // An error response looks like this:
     // { "errors" : [
@@ -91,7 +104,7 @@ function retrievePaymentRedirectUrl($payload)
         foreach ($responseContent["errors"] as $error) {
             echo "code: " . $error["code"] . " description: " . $error["description"] . "<br>";
         }
-        
+
         return false;
     }
 

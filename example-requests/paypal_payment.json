@@ -1,0 +1,24 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "2a0e9351-24ed-4110-9a1b-fd0fee6bec26"
+    },
+    "request-id": "{{$guid}}",
+    "requested-amount": {
+      "value": "1.01",
+      "currency": "EUR"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
+    "transaction-type": "auto-sale",
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "paypal"
+        }
+      ]
+    }
+  }
+}
