@@ -51,7 +51,7 @@ function postRegisterRequest($payload, $paymentMethod)
     } elseif ($paymentMethod === $GLOBALS['paypal']) {
         $credentials = "70000-APITEST-AP:qD2wzQ_hrc!8";
     } elseif ($paymentMethod === $GLOBALS['ideal']) {
-        // credentials for ideal
+        $credentials = "16390-testing:3!3013=D3fD8X7";
     } elseif ($paymentMethod === $GLOBALS['sepa-dd']) {
         $credentials = "16390-testing:3!3013=D3fD8X7";
     }
