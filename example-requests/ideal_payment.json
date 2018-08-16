@@ -8,7 +8,6 @@
       "value": "10.99",
       "currency": "EUR"
     },
-    "transaction-type": "get-url",
     "order-number": "15684356856",
     "descriptor": "customer-statement",
     "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",

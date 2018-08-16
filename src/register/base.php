@@ -22,7 +22,10 @@ function createPayload($paymentMethod)
         $payloadText = file_get_contents("../../example-requests/ideal_payment.json");
     } elseif ($paymentMethod === $GLOBALS['sepa-dd']) {
         $payloadText = file_get_contents("../../example-requests/sepa_dd_payment.json");
+    } elseif ($paymentMethod === $GLOBALS['sofort']){
+        $payloadText = file_get_contents("../../example-requests/sofortbanking_payment.json");
     }
+
     $payload = json_decode($payloadText, $assoc = true);
     $uuid = uniqid('payment_request_', true);
     $payload["payment"]["request-id"] = $uuid;
@@ -53,6 +56,8 @@ function postRegisterRequest($payload, $paymentMethod)
     } elseif ($paymentMethod === $GLOBALS['ideal']) {
         $credentials = "16390-testing:3!3013=D3fD8X7";
     } elseif ($paymentMethod === $GLOBALS['sepa-dd']) {
+        $credentials = "16390-testing:3!3013=D3fD8X7";
+    } elseif ($paymentMethod === $GLOBALS['sofort']){
         $credentials = "16390-testing:3!3013=D3fD8X7";
     }
 
