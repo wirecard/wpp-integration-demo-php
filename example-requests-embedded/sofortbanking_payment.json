@@ -1,7 +1,7 @@
 {
   "payment": {
     "merchant-account-id": {
-      "value": "2a0e9351-24ed-4110-9a1b-fd0fee6bec26"
+      "value": "6c0e7efd-ee58-40f7-9bbd-5e7337a052cd"
     },
     "request-id": "{{$guid}}",
     "requested-amount": {
@@ -12,16 +12,12 @@
       "first-name": "John",
       "last-name": "Dao"
     },
-    "transaction-type": "auto-sale",
-    "payment-methods": {
-      "payment-method": [
-        {
-          "name": "paypal"
-        }
-      ]
-    },
+    "transaction-type": "get-url",
+    "descriptor": "FANZEE XRZ-1282",
     "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
-    "fail-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
   }
 }

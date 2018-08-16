@@ -12,18 +12,26 @@ require '../util/globals.php';
  *
  * @return array An array containing all the required parameters of the POST body.
  */
-function createPayload($paymentMethod)
+function createPayload($paymentMethod, $isEmbedded)
 {
     if ($paymentMethod === $GLOBALS['ccard']) {
-        $payloadText = file_get_contents("../../example-requests/creditcard_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['paypal']) {
-        $payloadText = file_get_contents("../../example-requests/paypal_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['ideal']) {
-        $payloadText = file_get_contents("../../example-requests/ideal_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['sepa-dd']) {
-        $payloadText = file_get_contents("../../example-requests/sepa_dd_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['sofort']){
-        $payloadText = file_get_contents("../../example-requests/sofortbanking_payment.json");
+        $payloadText = file_get_contents("../../example-requests-standalone/creditcard_payment.json");
+    } elseif ($paymentMethod === $GLOBALS['paypal'] && !$isEmbedded) {
+        $payloadText = file_get_contents("../../example-requests-standalone/paypal_payment.json");
+    } elseif ($paymentMethod === $GLOBALS['ideal'] && !$isEmbedded) {
+        $payloadText = file_get_contents("../../example-requests-standalone/ideal_payment.json");
+    } elseif ($paymentMethod === $GLOBALS['sepa_dd'] && !$isEmbedded) {
+        $payloadText = file_get_contents("../../example-requests-standalone/sepa_dd_payment.json");
+    } elseif ($paymentMethod === $GLOBALS['sofort'] && !$isEmbedded) {
+        $payloadText = file_get_contents("../../example-requests-standalone/sofortbanking_payment.json");
+    } else if ($paymentMethod === $GLOBALS['paypal'] && $isEmbedded) {
+        $payloadText = file_get_contents("../../example-requests-embedded/paypal_payment.json");
+    } else if ($paymentMethod === $GLOBALS['ideal'] && $isEmbedded) {
+        $payloadText = file_get_contents("../../example-requests-embedded/ideal_payment.json");
+    } else if ($paymentMethod === $GLOBALS['sepa_dd'] && $isEmbedded) {
+        $payloadText = file_get_contents("../../example-requests-embedded/sepa_dd_payment.json");
+    } else if ($paymentMethod === $GLOBALS['sofort'] && $isEmbedded) {
+        $payloadText = file_get_contents("../../example-requests-embedded/sofortbanking_payment.json");
     }
 
     $payload = json_decode($payloadText, $assoc = true);
@@ -55,9 +63,9 @@ function postRegisterRequest($payload, $paymentMethod)
         $credentials = "70000-APITEST-AP:qD2wzQ_hrc!8";
     } elseif ($paymentMethod === $GLOBALS['ideal']) {
         $credentials = "16390-testing:3!3013=D3fD8X7";
-    } elseif ($paymentMethod === $GLOBALS['sepa-dd']) {
+    } elseif ($paymentMethod === $GLOBALS['sepa_dd']) {
         $credentials = "16390-testing:3!3013=D3fD8X7";
-    } elseif ($paymentMethod === $GLOBALS['sofort']){
+    } elseif ($paymentMethod === $GLOBALS['sofort']) {
         $credentials = "16390-testing:3!3013=D3fD8X7";
     }
 

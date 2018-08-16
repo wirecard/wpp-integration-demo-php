@@ -16,11 +16,11 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center">Wirecard Payment Page Integration Demo - Standalone Creditcard and Alternative Payment
+    <h1 class="text-center">Wirecard Payment Page Integration Demo - Embedded Creditcard and Alternative Payment
         Methods</h1>
     <div class="panel panel-default" style="margin-top: 1.5em;">
         <div class="panel-heading">
-            Choose standalone creditcard or one of the currently supported alternative payment methods
+            Choose embedded creditcard or one of the currently supported alternative payment methods
         </div>
 
         <div class="panel-body">
@@ -40,7 +40,7 @@
                         </div>
                         <div style="padding: 1em 3em;">
                             <a class="btn btn-primary center-block text-center" role="button"
-                               style="display: inline; padding: 0.55em;" href="../register/standalone.php?method=ccard">Register
+                               style="display: inline; padding: 0.55em;" href="../register/embedded.php?method=ccard">Register
                                 payment</a>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                         <div style="padding: 1em 3em;">
                             <a class="btn btn-primary center-block text-center" role="button"
                                style="display: inline; padding: 0.55em;"
-                               href="../register/standalone.php?method=paypal">Register
+                               href="../register/embedded.php?method=paypal">Register
                                 payment</a>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         </div>
                         <div style="padding: 1em 3em;">
                             <a class="btn btn-primary center-block text-center" role="button"
-                               style="display: inline; padding: 0.55em;" href="../register/standalone.php?method=ideal">Register
+                               style="display: inline; padding: 0.55em;" href="../register/embedded.php?method=ideal">Register
                                 payment</a>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                         <div style="padding: 1em 3em;">
                             <a class="btn btn-primary center-block text-center" role="button"
                                style="display: inline; padding: 0.55em;"
-                               href="../register/standalone.php?method=sofort">Register
+                               href="../register/embedded.php?method=sofort">Register
                                 payment</a>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                         <div style="padding: 1em 3em;">
                             <a class="btn btn-primary center-block text-center" role="button"
                                style="display: inline; padding: 0.55em;"
-                               href="../register/standalone.php?method=sepa_dd">Register
+                               href="../register/embedded.php?method=sepa_dd">Register
                                 payment</a>
                         </div>
                     </div>

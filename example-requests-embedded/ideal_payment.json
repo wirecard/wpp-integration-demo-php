@@ -10,17 +10,12 @@
     },
     "order-number": "15684356856",
     "descriptor": "customer-statement",
+    "transaction-type": "get-url",
     "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
-    "fail-redirect-url": "http://localhost:8180/shop/error.jsp",
-    "transaction-type": "debit",
-    "payment-methods": {
-      "payment-method": [
-        {
-          "name": "ideal"
-        }]
-    },
-    "bank-account": {
-      "bic": "INGBNL2A"
-    }
+    "fail-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
   }
 }

@@ -4,7 +4,8 @@ require_once('../util/general-functions.php');
 
 $paymentMethod = $_GET['method'];
 $creditcard = $GLOBALS[$paymentMethod];
-$payload = createPayload($creditcard);
+ $isEmbedded = 0;
+$payload = createPayload($creditcard, $isEmbedded);
 if (retrievePaymentRedirectUrl($payload, $creditcard)) {
     redirect('../payment/standalone.php');
 }
