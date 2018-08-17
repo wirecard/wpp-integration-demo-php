@@ -9,6 +9,10 @@
       "value": 10,
       "currency": "EUR"
     },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
     "payment-methods": {
       "payment-method": [
         {

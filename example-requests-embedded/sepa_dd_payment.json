@@ -13,14 +13,14 @@
       "last-name": "Doe"
     },
     "transaction-type": "debit",
-    "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
-    "fail-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/fail.php",
-    "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php",
     "mandate": {
       "mandate-id": "12345678",
       "signed-date": "2018-08-14"
     },
-    "creditor-id": "DE98ZZZ09999999999"
+    "creditor-id": "DE98ZZZ09999999999",
+    "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php"
   },
   "options": {
     "frame-ancestor": ""

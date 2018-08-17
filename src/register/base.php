@@ -7,30 +7,53 @@ require '../util/globals.php';
  */
 
 /**
- * Creates a payload based on the example request JSON file,
+ * Creates a payload for standalone payment page based on the example request JSON file,
  * which can be used as the body of a register payment POST request.
  *
  * @return array An array containing all the required parameters of the POST body.
  */
-function createPayload($paymentMethod, $isEmbedded)
+function createPayloadStandalone($paymentMethod)
 {
     if ($paymentMethod === $GLOBALS['ccard']) {
         $payloadText = file_get_contents("../../example-requests-standalone/creditcard_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['paypal'] && !$isEmbedded) {
+    } elseif ($paymentMethod === $GLOBALS['paypal']) {
         $payloadText = file_get_contents("../../example-requests-standalone/paypal_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['ideal'] && !$isEmbedded) {
+    } elseif ($paymentMethod === $GLOBALS['ideal']) {
         $payloadText = file_get_contents("../../example-requests-standalone/ideal_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['sepa_dd'] && !$isEmbedded) {
+    } elseif ($paymentMethod === $GLOBALS['sepa_dd']) {
         $payloadText = file_get_contents("../../example-requests-standalone/sepa_dd_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['sofort'] && !$isEmbedded) {
+    } elseif ($paymentMethod === $GLOBALS['sofort']) {
         $payloadText = file_get_contents("../../example-requests-standalone/sofortbanking_payment.json");
-    } else if ($paymentMethod === $GLOBALS['paypal'] && $isEmbedded) {
+    }
+
+    $payload = json_decode($payloadText, $assoc = true);
+    $uuid = uniqid('payment_request_', true);
+    $payload["payment"]["request-id"] = $uuid;
+
+    return $payload;
+}
+
+/**
+ * Functions which are used for registering a payment by all 3 types of integration.
+ */
+
+/**
+ * Creates a payload for embedded payment page based on the example request JSON file,
+ * which can be used as the body of a register payment POST request.
+ *
+ * @return array An array containing all the required parameters of the POST body.
+ */
+function createPayloadEmbedded($paymentMethod)
+{
+    if ($paymentMethod === $GLOBALS['ccard']) {
+        $payloadText = file_get_contents("../../example-requests-standalone/creditcard_payment.json");
+    } else if ($paymentMethod === $GLOBALS['paypal']) {
         $payloadText = file_get_contents("../../example-requests-embedded/paypal_payment.json");
-    } else if ($paymentMethod === $GLOBALS['ideal'] && $isEmbedded) {
+    } else if ($paymentMethod === $GLOBALS['ideal']) {
         $payloadText = file_get_contents("../../example-requests-embedded/ideal_payment.json");
-    } else if ($paymentMethod === $GLOBALS['sepa_dd'] && $isEmbedded) {
+    } else if ($paymentMethod === $GLOBALS['sepa_dd']) {
         $payloadText = file_get_contents("../../example-requests-embedded/sepa_dd_payment.json");
-    } else if ($paymentMethod === $GLOBALS['sofort'] && $isEmbedded) {
+    } else if ($paymentMethod === $GLOBALS['sofort']) {
         $payloadText = file_get_contents("../../example-requests-embedded/sofortbanking_payment.json");
     }
 

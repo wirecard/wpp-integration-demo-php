@@ -28,7 +28,9 @@ If your application is located in a different directory make sure that you adapt
   * the option frame-ancestor
 
 ### Successful payment
-This application only provides an example for a payment with credit card. In order to execute a successful payment you can use the following test card:
+This application provides examples for several payment types like Credit Card. 
+Click on this [link](#payment-types) to see a list of all supported payment types. 
+For instance in order to execute a successful credit card payment you can use the following test card:
 
 ````
 First & last name: arbitrary
@@ -93,8 +95,9 @@ At this point the process gets different for the seamless integration and for th
 7. Displaying a feedback to the consumer about the payment status. (On the checkout page directly or on another page.)
 
 ### Gathering the request data
-You can see an example for request data in the file `example-request/payment.json`  
-In `src/register/base.php` a UUID is generated and added to this request data.
+You can see examples for request data (standalone, embedded and seamless integration) in the folders `example-requests-standalone` and 
+`example-requests-embedded`. Have a look at the json requests examples to get a better idea of how request data must be structured to be accepted by our servers.
+In the folder `src/register/base.php` a UUID is generated and added to the chosen request data.
 
 #### Request parameters which will be probably the same for all your requests:
 * merchant-account-id
@@ -107,6 +110,8 @@ In `src/register/base.php` a UUID is generated and added to this request data.
 * request-id
 * transaction-type
 * requested-amount
+* payment-method(s)
+* transaction-type
 
 ##### Request ID
 This must be a unique identifier.
@@ -227,13 +232,15 @@ You can display a message to your consumer on the checkout page or you can redir
 
 ## Payment types
 
-This example shows only payments with credit card.
+The following payment types are currently supported:
 
-### Further payment types supported by the WPP
+* Credit Card
 * PayPal
 * SEPA Direct Debit
 * iDEAL
 * Sofort (Klarna Group)
+
+You will find examples for each payment type in this wpp-integration demo project.
 
 ### Credit card brands
 

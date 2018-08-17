@@ -15,14 +15,15 @@
       "payment-method": [
         {
           "name": "ideal"
-        }]
+        }
+      ]
+    },
+    "bank-account": {
+      "bic": "INGBNL2A"
     },
     "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "http://localhost:8180/shop/error.jsp",
-    "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php",
-    "bank-account": {
-      "bic": "INGBNL2A"
-    }
+    "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php"
   },
   "options": {
     "frame-ancestor": ""

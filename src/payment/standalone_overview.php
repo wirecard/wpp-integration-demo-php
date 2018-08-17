@@ -16,11 +16,11 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center">Wirecard Payment Page Integration Demo - Standalone Creditcard and Alternative Payment
+    <h1 class="text-center">Wirecard Payment Page Integration Demo - <br> Standalone Credit Card and Alternative Payment
         Methods</h1>
     <div class="panel panel-default" style="margin-top: 1.5em;">
         <div class="panel-heading">
-            Choose standalone creditcard or one of the currently supported alternative payment methods
+            Choose standalone credit card or one of the currently supported alternative payment methods
         </div>
 
         <div class="panel-body">
@@ -28,7 +28,7 @@
 
                 <div class="col-md-4 col-xs-12">
                     <div style="padding: 0.5em 2.5em;" class="text-center">
-                        <h2>Creditcard</h2>
+                        <h2>Credit Card</h2>
                         <img src="../../images/ccard.png"/>
                         <p style="margin: 1em 0;">
                             A standalone payment page hosted independently of your checkout page.
@@ -68,7 +68,7 @@
 
                 <div class="col-md-4 col-xs-12">
                     <div style="padding: 0.5em 2.5em;" class="text-center">
-                        <h2>Ideal</h2>
+                        <h2>iDEAL</h2>
                         <img src="../../images/ideal.png" alt="payment method Ideal" class="center-block"/>
                         <p style="margin: 1em 0;">
                             Online payment service Ideal hosted independently of your checkout page.
@@ -109,7 +109,7 @@
 
                 <div class="col-md-4 col-xs-12">
                     <div style="padding: 0.5em 2.5em;" class="text-center">
-                        <h3>Sepa Direct Debit</h3>
+                        <h2>SEPA</h2>
                         <img src="../../images/sepa.png" alt="payment method Sepa-DD" class="center-block"/>
                         <p style="margin: 1em 0;">
                             Sepa Direct Debit hosted independently of your checkout page.
