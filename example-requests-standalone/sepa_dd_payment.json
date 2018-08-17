@@ -3,7 +3,7 @@
     "merchant-account-id": {
       "value": "933ad170-88f0-4c3d-a862-cff315ecfbc0"
     },
-    "request-id": "{{$guid}}",
+    "request-id": "",
     "requested-amount": {
       "value": "1.01",
       "currency": "EUR"

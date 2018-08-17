@@ -1,7 +1,7 @@
 <?php
-$GLOBALS['ccard'] = 'ccard';
-$GLOBALS['paypal'] = 'paypal';
-$GLOBALS['ideal'] = 'ideal';
-$GLOBALS['sepa_dd'] = 'sepa_dd';
-$GLOBALS['sofort'] = 'sofort';
+const CCARD = 'ccard';
+const PAYPAL = 'paypal';
+const IDEAL = 'ideal';
+const SEPA = 'sepa_dd';
+const SOFORT = 'sofort';
 

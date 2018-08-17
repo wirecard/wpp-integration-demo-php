@@ -14,15 +14,16 @@ require '../util/globals.php';
  */
 function createPayloadStandalone($paymentMethod)
 {
-    if ($paymentMethod === $GLOBALS['ccard']) {
+    $payloadText = "";
+    if ($paymentMethod === CCARD) {
         $payloadText = file_get_contents("../../example-requests-standalone/creditcard_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['paypal']) {
+    } elseif ($paymentMethod === PAYPAL) {
         $payloadText = file_get_contents("../../example-requests-standalone/paypal_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['ideal']) {
+    } elseif ($paymentMethod === IDEAL) {
         $payloadText = file_get_contents("../../example-requests-standalone/ideal_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['sepa_dd']) {
+    } elseif ($paymentMethod === SEPA) {
         $payloadText = file_get_contents("../../example-requests-standalone/sepa_dd_payment.json");
-    } elseif ($paymentMethod === $GLOBALS['sofort']) {
+    } elseif ($paymentMethod === SOFORT) {
         $payloadText = file_get_contents("../../example-requests-standalone/sofortbanking_payment.json");
     }
 
@@ -45,15 +46,15 @@ function createPayloadStandalone($paymentMethod)
  */
 function createPayloadEmbedded($paymentMethod)
 {
-    if ($paymentMethod === $GLOBALS['ccard']) {
+    if ($paymentMethod === CCARD) {
         $payloadText = file_get_contents("../../example-requests-standalone/creditcard_payment.json");
-    } else if ($paymentMethod === $GLOBALS['paypal']) {
+    } else if ($paymentMethod === PAYPAL) {
         $payloadText = file_get_contents("../../example-requests-embedded/paypal_payment.json");
-    } else if ($paymentMethod === $GLOBALS['ideal']) {
+    } else if ($paymentMethod === IDEAL) {
         $payloadText = file_get_contents("../../example-requests-embedded/ideal_payment.json");
-    } else if ($paymentMethod === $GLOBALS['sepa_dd']) {
+    } else if ($paymentMethod === SEPA) {
         $payloadText = file_get_contents("../../example-requests-embedded/sepa_dd_payment.json");
-    } else if ($paymentMethod === $GLOBALS['sofort']) {
+    } else if ($paymentMethod === SOFORT) {
         $payloadText = file_get_contents("../../example-requests-embedded/sofortbanking_payment.json");
     }
 
@@ -80,18 +81,27 @@ function postRegisterRequest($payload, $paymentMethod)
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
 
-    if ($paymentMethod === $GLOBALS['ccard']) {
-        $credentials = "70000-APIDEMO-CARD:ohysS0-dvfMx";
-    } elseif ($paymentMethod === $GLOBALS['paypal']) {
-        $credentials = "70000-APITEST-AP:qD2wzQ_hrc!8";
-    } elseif ($paymentMethod === $GLOBALS['ideal']) {
-        $credentials = "16390-testing:3!3013=D3fD8X7";
-    } elseif ($paymentMethod === $GLOBALS['sepa_dd']) {
-        $credentials = "16390-testing:3!3013=D3fD8X7";
-    } elseif ($paymentMethod === $GLOBALS['sofort']) {
-        $credentials = "16390-testing:3!3013=D3fD8X7";
+    $username = "";
+    $password = "";
+
+    if ($paymentMethod === CCARD) {
+        $username = "70000-APIDEMO-CARD";
+        $password = "ohysS0-dvfMx";
+    } elseif ($paymentMethod === PAYPAL) {
+        $username = "70000-APITEST-AP";
+        $password = "qD2wzQ_hrc!8";
+    } elseif ($paymentMethod === IDEAL) {
+        $username = "70000-APITEST-AP";
+        $password = "qD2wzQ_hrc!8";
+    } elseif ($paymentMethod === SEPA) {
+        $username = "16390-testing";
+        $password = "3!3013=D3fD8X7";
+    } elseif ($paymentMethod === SOFORT) {
+        $username = "16390-testing";
+        $password = "3!3013=D3fD8X7";
     }
 
+    $credentials = $username.":".$password;
     $headers = array(
         "Content-type: application/json",
         "Authorization: Basic " . base64_encode($credentials)
