@@ -1,5 +1,6 @@
 <?php
 
+require '../../vendor/autoload.php';
 require '../util/globals.php';
 
 /**
@@ -74,16 +75,6 @@ function createPayloadEmbedded($paymentMethod)
  */
 function postRegisterRequest($payload, $paymentMethod)
 {
-    $ch = curl_init("https://wpp-test.wirecard.com/api/payment/register");
-
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-
-    $username = "";
-    $password = "";
-
     if ($paymentMethod === CCARD) {
         $username = "70000-APIDEMO-CARD";
         $password = "ohysS0-dvfMx";
@@ -101,33 +92,24 @@ function postRegisterRequest($payload, $paymentMethod)
         $password = "3!3013=D3fD8X7";
     }
 
-    $credentials = $username.":".$password;
-    $headers = array(
-        "Content-type: application/json",
-        "Authorization: Basic " . base64_encode($credentials)
-    );
+    $client = new GuzzleHttp\Client();
+    $headers = [
+        'Content-type' => 'application/json; charset=utf-8',
+        'Accept' => 'application/json',
+        'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
+    ];
 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-    $response = curl_exec($ch);
-
-    if ($response === false) {
-        $result = [
-            "errors" => [
-                [
-                    "code" => curl_errno($ch),
-                    "description" => curl_error($ch),
-
-                ]
-            ]
-        ];
-        curl_close($ch);
-        return $result;
+    try {
+        $response = $client->request('POST', 'https://wpp-test.wirecard.com/api/payment/register', [
+            'headers' => $headers,
+            'body' => json_encode($payload),
+        ]);
+    } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
+        return $exception->getResponse()->getBody(true);
     }
 
-    curl_close($ch);
-
-    return json_decode($response, $assoc = true);
+    $contents = $response->getBody()->getContents();
+    return json_decode($contents, $assoc = true);
 }
 
 /**
@@ -139,7 +121,7 @@ function postRegisterRequest($payload, $paymentMethod)
 function retrievePaymentRedirectUrl($payload, $paymentMethod)
 {
     $responseContent = postRegisterRequest($payload, $paymentMethod);
-
+echo "123";
     // An error response looks like this:
     // { "errors" : [
     //      {
