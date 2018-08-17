@@ -12,7 +12,7 @@
       "first-name": "John",
       "last-name": "Dao"
     },
-    "transaction-type": "get-url",
+    "transaction-type": "debit",
     "payment-methods": {
       "payment-method": [
         {

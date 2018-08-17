@@ -10,7 +10,7 @@
     },
     "order-number": "15684356856",
     "descriptor": "customer-statement",
-    "transaction-type": "get-url",
+    "transaction-type": "debit",
     "payment-methods": {
       "payment-method": [
         {

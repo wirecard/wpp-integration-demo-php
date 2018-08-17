@@ -3,14 +3,14 @@
     "merchant-account-id": {
       "value": "4aeccf39-0d47-47f6-a399-c05c1f2fc819"
     },
-    "request-id": "{{$guid}}",
+    "request-id": "",
     "requested-amount": {
       "value": "10.99",
       "currency": "EUR"
     },
     "order-number": "15684356856",
     "descriptor": "customer-statement",
-    "transaction-type": "get-url",
+    "transaction-type": "debit",
     "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php"

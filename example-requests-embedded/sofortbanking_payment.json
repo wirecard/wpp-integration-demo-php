@@ -3,7 +3,7 @@
     "merchant-account-id": {
       "value": "6c0e7efd-ee58-40f7-9bbd-5e7337a052cd"
     },
-    "request-id": "{{$guid}}",
+    "request-id": "",
     "requested-amount": {
       "value": "1.01",
       "currency": "EUR"
@@ -12,7 +12,7 @@
       "first-name": "John",
       "last-name": "Dao"
     },
-    "transaction-type": "get-url",
+    "transaction-type": "debit",
     "descriptor": "FANZEE XRZ-1282",
     "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
     "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php"
