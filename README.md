@@ -28,9 +28,12 @@ If your application is located in a different directory make sure that you adapt
   * the option frame-ancestor
 
 ### Successful payment
-This application provides examples for several payment types like Credit Card. 
+This application provides examples for several payment types. 
 Click on this [link](#payment-types) to see a list of all supported payment types. 
-For instance in order to execute a successful credit card payment you can use the following test card:
+For testing purpose you can use the following demo data to be able to do an successful request.
+
+#### Credit Card
+In order to execute a successful credit card payment you can use the following test card:
 
 ````
 First & last name: arbitrary
@@ -38,6 +41,31 @@ Credit card number (PAN): 4200000000000018
 CVV: 018
 Expiry date: arbitrary month / year in the future
 ````
+
+#### SEPA Direct Debit Silent Pay
+You can use the following IBAN code to do an silent pay request. Append the bank-account field
+to your request body
+
+```
+"bank-account": {
+      "iban": "DE42512308000000060004"
+ }
+```
+
+Note: You can also use the IBAN code in the SEPA input mask for testing purpose.
+
+#### Sofort 
+```
+Country: whatever you lik   
+Bank Name: Demo Bank
+Reference Number: any alphanumeric combination with more than 3 characters
+Password: any alphanumeric combination with more than 3 characters
+Tan Code: 12345
+```
+
+#### PayPal
+Access data for test accound can be found [here](https://document-center.wirecard.com/display/PTD/PayPal).
+
 
 ### Failed payment
 #### Standalone and embedded mode
@@ -263,3 +291,4 @@ The following elements are mandatory for a request:
 ### Credit card brands
 
 The test merchant used in these examples has only some very popular credit card brands configured. For a list of all supported credit card brands see our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
+
