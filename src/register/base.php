@@ -17,7 +17,7 @@ require '../config.php';
  */
 function createPayload($paymentMethod, $isStandalone)
 {
-    if ($isStandalone === 1) {
+    if ($isStandalone === true) {
         $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
     } else {
         $payloadText = file_get_contents(PATHS_EMBEDDED[$paymentMethod]);

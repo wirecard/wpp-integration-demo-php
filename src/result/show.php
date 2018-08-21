@@ -15,7 +15,7 @@
     <title>Wirecard Payment Page Integration Demo</title>
 </head>
 <body>
-
+<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
 <div class="container" style="margin-top: 2%">
     <?php
     require '../util/helperFunctions.php';
@@ -67,6 +67,5 @@
         </div>
     </div>
 </div>
-<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
 </body>
 </html>
