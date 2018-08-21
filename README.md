@@ -11,6 +11,30 @@ This application demonstrates how to use the Wirecard Payment Page in PHP code.
 * PHP
 * curl extension
 
+## Installation 
+First install composer from [getcomposer.org](https://getcomposer.org/). Have a look and see how composer works. 
+
+Next download or clone the wpp-integration demo to any directory you like. If you have downloaded the zip file, extract it.
+Rename the extracted directory to any name you would prefer. You have to rename it because otherwise you would probably
+get a runtime error during installation via composer. 
+
+### Installing via composer
+Open a command shell and navigate to the root path where you can find the composer.json and composer.lock files. 
+These files are required to install the dependencies by composer. 
+You can install these dependencies by entering the following command on your command line:
+
+```composer install```
+
+Next you may want to update all dependencies:
+
+```composer update```
+
+## Troubleshooting
+```Failed to clone https://github.com/squizlabs/PHP_CodeSniffer.git via https, ssh protocols, aborting.```
+
+If you get a RuntimeException during the installation process this means that your directory path is too long. Please
+rename your directories and choose shorter names.
+
 ## Run
 Copy this directory into a location where your webserver can serve it.  
 In the example we assume that
