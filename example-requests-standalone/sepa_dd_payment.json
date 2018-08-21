@@ -25,9 +25,9 @@
       "signed-date": "2018-08-14"
     },
     "creditor-id": "DE98ZZZ09999999999",
-    "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
-    "fail-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/fail.php",
-    "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php"
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
   },
   "options": {
     "frame-ancestor": ""

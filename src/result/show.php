@@ -35,13 +35,13 @@
     <div class="row">
         <div class="col-12">
             <h4><strong>responseSignatureBase64:</strong></h4>
-            <pre><code><?php echo showResponseData($_SESSION['response']['response-signature-base64']); ?></code></pre>
+            <pre><code><?php echo showResponseData('response-signature-base64'); ?></code></pre>
             <h4><strong>responseSignatureAlgorithm:</strong></h4>
-            <pre><code><?php echo showResponseData($_SESSION['response']['response-signature-algorithm']); ?></code></pre>
+            <pre><code><?php echo showResponseData('response-signature-algorithm'); ?></code></pre>
             <h4><strong>responseBase64:</strong></h4>
-            <pre><code><?php echo showResponseData($_SESSION['response']['response-base64']); ?></code></pre>
+            <pre><code><?php echo showResponseData('response-base64'); ?></code></pre>
             <h4><strong>decodedResponseBase64:</strong></h4>
-            <pre><code><?php echo showResponseData(base64_decode($_SESSION['response']['response-base64'])); ?></code></pre>
+            <pre><code><?php echo showResponseData('response-base64'); ?></code></pre>
             <?php
             require_once('functions.php');
 

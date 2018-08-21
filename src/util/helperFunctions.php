@@ -33,8 +33,8 @@ function getBaseUrl()
     return $baseUrl;
 }
 
-function showResponseData($var){
-    return isset($var) ? $var : DEFAULT_RES_MSG;
+function showResponseData($attr){
+    return isset($_SESSION['response'][$attr]) ? $_SESSION['response'][$attr] : DEFAULT_RES_MSG;
 }
 
 
