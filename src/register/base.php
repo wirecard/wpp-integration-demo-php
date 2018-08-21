@@ -14,66 +14,24 @@ require '../util/general-functions.php';
  *
  * @return array An array containing all the required parameters of the POST body.
  */
-function createPayloadStandalone($paymentMethod)
+function createPayload($paymentMethod, $isStandalone)
 {
-    $payloadText = "";
-    if ($paymentMethod === CCARD) {
-        $payloadText = file_get_contents("../../example-requests-standalone/creditcard_payment.json");
-    } elseif ($paymentMethod === PAYPAL) {
-        $payloadText = file_get_contents("../../example-requests-standalone/paypal_payment.json");
-    } elseif ($paymentMethod === IDEAL) {
-        $payloadText = file_get_contents("../../example-requests-standalone/ideal_payment.json");
-    } elseif ($paymentMethod === SEPA) {
-        $payloadText = file_get_contents("../../example-requests-standalone/sepa_dd_payment.json");
-    } elseif ($paymentMethod === SOFORT) {
-        $payloadText = file_get_contents("../../example-requests-standalone/sofortbanking_payment.json");
+    if ($isStandalone === 1) {
+        $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
+    } else {
+        $payloadText = file_get_contents(PATHS_EMBEDDED[$paymentMethod]);
     }
-
-    $payload = json_decode($payloadText, $assoc = true);
-    $uuid = uniqid('payment_request_', true);
-    $payload["payment"]["request-id"] = $uuid;
-    $payload["payment"]["success-redirect-url"] = getBaseUrl() . $payload["payment"]["success-redirect-url"];
-    $payload["payment"]["fail-redirect-url"] = getBaseUrl() . $payload["payment"]["fail-redirect-url"];
-    $payload["payment"]["cancel-redirect-url"] = getBaseUrl() . $payload["payment"]["cancel-redirect-url"];
-
-    echo $payload["payment"]["success-redirect-url"] . "<br>";
-    echo $payload["payment"]["fail-redirect-url"] . "<br>";
-    echo $payload["payment"]["cancel-redirect-url"] . "<br>";
-
-    return $payload;
+    return modifyPayload($payloadText);
 }
 
-/**
- * Functions which are used for registering a payment by all 3 types of integration.
- */
-
-/**
- * Creates a payload for embedded payment page based on the example request JSON file,
- * which can be used as the body of a register payment POST request.
- *
- * @return array An array containing all the required parameters of the POST body.
- */
-function createPayloadEmbedded($paymentMethod)
+function modifyPayload($payloadText)
 {
-    if ($paymentMethod === CCARD) {
-        $payloadText = file_get_contents("../../example-requests-standalone/creditcard_payment.json");
-    } else if ($paymentMethod === PAYPAL) {
-        $payloadText = file_get_contents("../../example-requests-embedded/paypal_payment.json");
-    } else if ($paymentMethod === IDEAL) {
-        $payloadText = file_get_contents("../../example-requests-embedded/ideal_payment.json");
-    } else if ($paymentMethod === SEPA) {
-        $payloadText = file_get_contents("../../example-requests-embedded/sepa_dd_payment.json");
-    } else if ($paymentMethod === SOFORT) {
-        $payloadText = file_get_contents("../../example-requests-embedded/sofortbanking_payment.json");
-    }
-
     $payload = json_decode($payloadText, $assoc = true);
     $uuid = uniqid('payment_request_', true);
     $payload["payment"]["request-id"] = $uuid;
     $payload["payment"]["success-redirect-url"] = getBaseUrl() . $payload["payment"]["success-redirect-url"];
     $payload["payment"]["fail-redirect-url"] = getBaseUrl() . $payload["payment"]["fail-redirect-url"];
     $payload["payment"]["cancel-redirect-url"] = getBaseUrl() . $payload["payment"]["cancel-redirect-url"];
-
     return $payload;
 }
 
@@ -132,7 +90,6 @@ function postRegisterRequest($payload, $paymentMethod)
 function retrievePaymentRedirectUrl($payload, $paymentMethod)
 {
     $responseContent = postRegisterRequest($payload, $paymentMethod);
-    echo "123";
     // An error response looks like this:
     // { "errors" : [
     //      {
