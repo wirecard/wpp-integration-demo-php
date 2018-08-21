@@ -1,6 +1,6 @@
 <?php
 require_once('base.php');
-require_once('../util/general-functions.php');
+require_once('../util/helperFunctions.php');
 
 $creditcard = CCARD;
 $payload = createPayload($creditcard, 1);

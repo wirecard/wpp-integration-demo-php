@@ -2,7 +2,7 @@
 
 require '../../vendor/autoload.php';
 require '../util/globals.php';
-require '../util/general-functions.php';
+require '../util/helperFunctions.php';
 
 /**
  * Functions which are used for registering a payment by all 3 types of integration.

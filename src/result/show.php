@@ -18,6 +18,7 @@
 
 <div class="container" style="margin-top: 2%">
     <?php
+    require '../util/helperFunctions.php';
     session_start();
     ?>
 
@@ -34,39 +35,13 @@
     <div class="row">
         <div class="col-12">
             <h4><strong>responseSignatureBase64:</strong></h4>
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo $_SESSION['response']['response-signature-base64'];
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
+            <pre><code><?php echo showResponseData($_SESSION['response']['response-signature-base64']); ?></code></pre>
             <h4><strong>responseSignatureAlgorithm:</strong></h4>
-
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo $_SESSION['response']['response-signature-algorithm'];
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
+            <pre><code><?php echo showResponseData($_SESSION['response']['response-signature-algorithm']); ?></code></pre>
             <h4><strong>responseBase64:</strong></h4>
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo $_SESSION['response']['response-base64'];
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
+            <pre><code><?php echo showResponseData($_SESSION['response']['response-base64']); ?></code></pre>
             <h4><strong>decodedResponseBase64:</strong></h4>
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo base64_decode($_SESSION['response']['response-base64']);
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
-
+            <pre><code><?php echo showResponseData(base64_decode($_SESSION['response']['response-base64'])); ?></code></pre>
             <?php
             require_once('functions.php');
 

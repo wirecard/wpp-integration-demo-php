@@ -1,5 +1,5 @@
 <?php
-require_once('../util/general-functions.php');
+require_once('../util/helperFunctions.php');
 
 session_start();
 $_SESSION['msg'] = 'The payment was successful.';

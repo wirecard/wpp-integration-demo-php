@@ -1,5 +1,6 @@
 <?php
 
+require 'globals.php';
 /**
  * General functions which are not specific for the WPP domain.
  */
@@ -31,4 +32,9 @@ function getBaseUrl()
     }
     return $baseUrl;
 }
+
+function showResponseData($var){
+    return isset($var) ? $var : DEFAULT_RES_MSG;
+}
+
 
