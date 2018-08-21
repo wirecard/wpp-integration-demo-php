@@ -3,6 +3,7 @@
 require '../../vendor/autoload.php';
 require '../util/globals.php';
 require '../util/helperFunctions.php';
+require '../config.php';
 
 /**
  * Functions which are used for registering a payment by all 3 types of integration.
@@ -44,22 +45,8 @@ function modifyPayload($payloadText)
  */
 function postRegisterRequest($payload, $paymentMethod)
 {
-    if ($paymentMethod === CCARD) {
-        $username = "70000-APIDEMO-CARD";
-        $password = "ohysS0-dvfMx";
-    } elseif ($paymentMethod === PAYPAL) {
-        $username = "70000-APITEST-AP";
-        $password = "qD2wzQ_hrc!8";
-    } elseif ($paymentMethod === IDEAL) {
-        $username = "70000-APITEST-AP";
-        $password = "qD2wzQ_hrc!8";
-    } elseif ($paymentMethod === SEPA) {
-        $username = "16390-testing";
-        $password = "3!3013=D3fD8X7";
-    } elseif ($paymentMethod === SOFORT) {
-        $username = "16390-testing";
-        $password = "3!3013=D3fD8X7";
-    }
+    $username = MERCHANT[$paymentMethod]["username"];
+    $password = MERCHANT[$paymentMethod]["password"];
 
     $client = new GuzzleHttp\Client();
     $headers = [
