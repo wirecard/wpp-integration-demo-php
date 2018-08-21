@@ -2,6 +2,7 @@
 
 require '../../vendor/autoload.php';
 require '../util/globals.php';
+require '../util/general-functions.php';
 
 /**
  * Functions which are used for registering a payment by all 3 types of integration.
@@ -31,6 +32,13 @@ function createPayloadStandalone($paymentMethod)
     $payload = json_decode($payloadText, $assoc = true);
     $uuid = uniqid('payment_request_', true);
     $payload["payment"]["request-id"] = $uuid;
+    $payload["payment"]["success-redirect-url"] = getBaseUrl() . $payload["payment"]["success-redirect-url"];
+    $payload["payment"]["fail-redirect-url"] = getBaseUrl() . $payload["payment"]["fail-redirect-url"];
+    $payload["payment"]["cancel-redirect-url"] = getBaseUrl() . $payload["payment"]["cancel-redirect-url"];
+
+    echo $payload["payment"]["success-redirect-url"] . "<br>";
+    echo $payload["payment"]["fail-redirect-url"] . "<br>";
+    echo $payload["payment"]["cancel-redirect-url"] . "<br>";
 
     return $payload;
 }
@@ -62,6 +70,9 @@ function createPayloadEmbedded($paymentMethod)
     $payload = json_decode($payloadText, $assoc = true);
     $uuid = uniqid('payment_request_', true);
     $payload["payment"]["request-id"] = $uuid;
+    $payload["payment"]["success-redirect-url"] = getBaseUrl() . $payload["payment"]["success-redirect-url"];
+    $payload["payment"]["fail-redirect-url"] = getBaseUrl() . $payload["payment"]["fail-redirect-url"];
+    $payload["payment"]["cancel-redirect-url"] = getBaseUrl() . $payload["payment"]["cancel-redirect-url"];
 
     return $payload;
 }
@@ -121,7 +132,7 @@ function postRegisterRequest($payload, $paymentMethod)
 function retrievePaymentRedirectUrl($payload, $paymentMethod)
 {
     $responseContent = postRegisterRequest($payload, $paymentMethod);
-echo "123";
+    echo "123";
     // An error response looks like this:
     // { "errors" : [
     //      {
