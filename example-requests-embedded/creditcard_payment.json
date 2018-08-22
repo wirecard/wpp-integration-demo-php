@@ -1,0 +1,30 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "7a6dd74f-06ab-4f3f-a864-adc52687270a"
+    },
+    "request-id": "",
+    "transaction-type": "auto-sale",
+    "requested-amount": {
+      "value": 10,
+      "currency": "EUR"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "creditcard"
+        }
+      ]
+    },
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
+  }
+}

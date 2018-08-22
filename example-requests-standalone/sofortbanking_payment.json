@@ -1,0 +1,28 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "6c0e7efd-ee58-40f7-9bbd-5e7337a052cd"
+    },
+    "request-id": "",
+    "requested-amount": {
+      "value": "1.01",
+      "currency": "EUR"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
+    "transaction-type": "debit",
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "sofortbanking"
+        }
+      ]
+    },
+    "descriptor": "FANZEE XRZ-1282",
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  }
+}

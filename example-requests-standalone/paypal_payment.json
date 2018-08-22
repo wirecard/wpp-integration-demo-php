@@ -1,0 +1,27 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "9abf05c1-c266-46ae-8eac-7f87ca97af28"
+    },
+    "request-id": "",
+    "requested-amount": {
+      "value": "1.01",
+      "currency": "EUR"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
+    "transaction-type": "debit",
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "paypal"
+        }
+      ]
+    },
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "adb45327-170a-460b-9810-9008e9772f5f"
+    },
+    "request-id": "",
+    "requested-amount": {
+      "value": "10.99",
+      "currency": "EUR"
+    },
+    "order-number": "15684356856",
+    "descriptor": "customer-statement",
+    "transaction-type": "debit",
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "ideal"
+        }
+      ]
+    },
+    "bank-account": {
+      "bic": "INGBNL2A"
+    },
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  }
+}

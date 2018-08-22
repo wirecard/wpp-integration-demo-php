@@ -9,6 +9,10 @@
       "value": 10,
       "currency": "EUR"
     },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
     "payment-methods": {
       "payment-method": [
         {
@@ -16,11 +20,8 @@
         }
       ]
     },
-    "success-redirect-url": "http://localhost/wpp-integration-demo-php/src/result/success.php",
-    "fail-redirect-url": "http://localhost/wpp-integration-demo-php/src/result/fail.php",
-    "cancel-redirect-url": "http://localhost/wpp-integration-demo-php/src/result/cancel.php"
-  },
-  "options": {
-    "frame-ancestor": ""
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
   }
 }

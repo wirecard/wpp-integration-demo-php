@@ -1,0 +1,32 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "933ad170-88f0-4c3d-a862-cff315ecfbc0"
+    },
+    "request-id": "",
+    "requested-amount": {
+      "value": "1.01",
+      "currency": "EUR"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Doe"
+    },
+    "transaction-type": "debit",
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "sepadirectdebit"
+        }
+      ]
+    },
+    "mandate": {
+      "mandate-id": "12345678",
+      "signed-date": "2018-08-14"
+    },
+    "creditor-id": "DE98ZZZ09999999999",
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  }
+}
