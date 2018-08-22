@@ -13,11 +13,13 @@ require '../config.php';
  * Creates a payload for standalone payment page based on the example request JSON file,
  * which can be used as the body of a register payment POST request.
  *
+ * @param $paymentMethod
+ * @param $isStandalone
  * @return array An array containing all the required parameters of the POST body.
  */
 function createPayload($paymentMethod, $isStandalone)
 {
-    if ($isStandalone === true) {
+    if ($isStandalone) {
         $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
     } else {
         $payloadText = file_get_contents(PATHS_EMBEDDED[$paymentMethod]);
@@ -25,6 +27,13 @@ function createPayload($paymentMethod, $isStandalone)
     return modifyPayload($payloadText);
 }
 
+/**
+ * Modifies the payload. It sets a unique request id. The base url of the application is added to the success,
+ * cancel and fail url.
+ *
+ * @param $payloadText
+ * @return array An array containing all the required parameters of the POST body.
+ */
 function modifyPayload($payloadText)
 {
     $payload = json_decode($payloadText, $assoc = true);
@@ -40,6 +49,7 @@ function modifyPayload($payloadText)
  * Sends a POST request to the WPP register payment endpoint.
  *
  * @param $payload
+ * @param $paymentMethod
  * @return array|mixed The response from WPP as an array if the request was successful.
  *      An array with the number and the description of the curl error if the request was not successful.
  */
@@ -61,7 +71,7 @@ function postRegisterRequest($payload, $paymentMethod)
             'body' => json_encode($payload),
         ]);
     } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
-        return $exception->getResponse()->getBody(true);
+        return $exception->getResponse()->getBody()->getContents();
     }
 
     $contents = $response->getBody()->getContents();
@@ -72,6 +82,7 @@ function postRegisterRequest($payload, $paymentMethod)
  * Retrieves a payment-redirect-url from the WPP register payment endpoint and writes this URL into the session.
  *
  * @param $payload
+ * @param $paymentMethod
  * @return bool TRUE if the request was successful and the response contained a redirect URL. FALSE otherwise.
  */
 function retrievePaymentRedirectUrl($payload, $paymentMethod)

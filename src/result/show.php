@@ -41,10 +41,10 @@
             <h4><strong>responseBase64:</strong></h4>
             <pre><code><?php echo showResponseData('response-base64'); ?></code></pre>
             <h4><strong>decodedResponseBase64:</strong></h4>
-            <pre><code><?php echo showResponseData('response-base64'); ?></code></pre>
+            <pre><code><?php echo showResponseData('response-base64', true); ?></code></pre>
             <?php
-            require_once('functions.php');
-            require_once ('../config.php');
+            require_once('../util/helperFunctions.php');
+            require_once('../config.php');
 
             $isResponseBase64 = isset($_SESSION['response']['response-base64']);
             $isResponseSignatureBase64 = isset($_SESSION['response']['response-signature-base64']);
@@ -59,10 +59,11 @@
             <h4><strong>validSignature:</strong></h4>
             <pre><code><?php
                     $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
+                    if ($isResponseSet) {
                         echo $signatureVerification ? 'True' : 'False';
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
+                    } else {
+                        echo "Response data are not sent from the merchant acquirer!";
+                    }
                     ?></code></pre>
         </div>
     </div>

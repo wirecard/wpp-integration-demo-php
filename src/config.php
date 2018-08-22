@@ -25,5 +25,3 @@ const MERCHANT = [
     SEPA => MERCHANT_CONFIG_C,
     SOFORT => MERCHANT_CONFIG_C,
 ];
-
-

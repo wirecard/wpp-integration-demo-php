@@ -25,7 +25,3 @@ const PATHS_EMBEDDED = [
     SEPA => PATH_TO_EMBEDDED . 'sepa_dd_payment.json',
     SOFORT => PATH_TO_EMBEDDED . 'sofortbanking_payment.json',
 ];
-
-
-
-
