@@ -44,6 +44,7 @@
             <pre><code><?php echo showResponseData('response-base64'); ?></code></pre>
             <?php
             require_once('functions.php');
+            require_once ('../config.php');
 
             $isResponseBase64 = isset($_SESSION['response']['response-base64']);
             $isResponseSignatureBase64 = isset($_SESSION['response']['response-signature-base64']);
@@ -51,8 +52,7 @@
             if ($isResponseBase64 && $isResponseSignatureBase64) {
                 $responseBase64 = trim($_SESSION['response']['response-base64']);
                 $signatureBase64 = trim($_SESSION['response']['response-signature-base64']);
-                $secretKey = 'a8c3fce6-8df7-4fd6-a1fd-62fa229c5e55';
-                $signatureVerification = (isValidSignature($responseBase64, $signatureBase64, $secretKey));
+                $signatureVerification = (isValidSignature($responseBase64, $signatureBase64, SECRET_KEY));
             }
             ?>
 
