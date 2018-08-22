@@ -1,10 +1,5 @@
 <?php
 
-require '../../vendor/autoload.php';
-require '../util/globals.php';
-require '../util/helperFunctions.php';
-require '../config.php';
-
 /**
  * Functions which are used for registering a payment by all 3 types of integration.
  */
@@ -19,6 +14,8 @@ require '../config.php';
  */
 function createPayload($paymentMethod, $isStandalone)
 {
+    require_once('../util/globals.php');
+
     if ($isStandalone) {
         $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
     } else {
@@ -55,6 +52,8 @@ function modifyPayload($payloadText)
  */
 function postRegisterRequest($payload, $paymentMethod)
 {
+    require_once('../config.php');
+
     $username = MERCHANT[$paymentMethod]["username"];
     $password = MERCHANT[$paymentMethod]["password"];
 
