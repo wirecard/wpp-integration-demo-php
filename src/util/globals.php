@@ -19,7 +19,7 @@ const PATHS_STANDALONE = [
 ];
 
 const PATHS_EMBEDDED = [
-    CCARD => PATH_TO_STANDALONE . 'creditcard_payment.json',
+    CCARD => PATH_TO_EMBEDDED . 'creditcard_payment.json',
     PAYPAL => PATH_TO_EMBEDDED . 'paypal_payment.json',
     IDEAL => PATH_TO_EMBEDDED . 'ideal_payment.json',
     SEPA => PATH_TO_EMBEDDED . 'sepa_dd_payment.json',

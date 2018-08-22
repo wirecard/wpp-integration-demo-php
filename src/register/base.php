@@ -9,18 +9,28 @@
  * which can be used as the body of a register payment POST request.
  *
  * @param $paymentMethod
- * @param $isStandalone
  * @return array An array containing all the required parameters of the POST body.
  */
-function createPayload($paymentMethod, $isStandalone)
+function createPayloadStandalone($paymentMethod)
 {
     require_once('../util/globals.php');
 
-    if ($isStandalone) {
-        $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
-    } else {
-        $payloadText = file_get_contents(PATHS_EMBEDDED[$paymentMethod]);
-    }
+     $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
+    return modifyPayload($payloadText);
+}
+
+/**
+ * Creates a payload for embedded payment page based on the example request JSON file,
+ * which can be used as the body of a register payment POST request.
+ *
+ * @param $paymentMethod
+ * @return array An array containing all the required parameters of the POST body.
+ */
+function createPayloadEmbedded($paymentMethod)
+{
+    require_once('../util/globals.php');
+
+    $payloadText = file_get_contents(PATHS_EMBEDDED[$paymentMethod]);
     return modifyPayload($payloadText);
 }
 

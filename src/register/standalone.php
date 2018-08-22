@@ -4,7 +4,7 @@ require_once('base.php');
 require_once('../util/helperFunctions.php');
 
 $paymentMethod = $_GET['method'];
-$payload = createPayload($paymentMethod, true);
+$payload = createPayloadStandalone($paymentMethod);
 if (retrievePaymentRedirectUrl($payload, $paymentMethod)) {
     redirect('../payment/standalone.php');
 }
