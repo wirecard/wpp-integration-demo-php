@@ -1,6 +1,9 @@
 <?php
 
-require 'globals.php';
+require_once('../config.php');
+
+const DEFAULT_RES_MSG = 'Response data are not sent from the merchant acquirer!';
+
 /**
  * General functions which are not specific for the WPP domain.
  */
@@ -62,4 +65,28 @@ function isValidSignature($responseBase64, $signatureBase64, $merchantSecretKey)
 {
     $signature = hash_hmac('sha256', $responseBase64, $merchantSecretKey, $raw_output = true);
     return hash_equals($signature, base64_decode($signatureBase64));
+}
+
+/**
+ * Shows message if signature is valid.
+ *
+ */
+function showValidSignature()
+{
+    $isResponseBase64 = isset($_SESSION['response']['response-base64']);
+    $isResponseSignatureBase64 = isset($_SESSION['response']['response-signature-base64']);
+    $signatureVerification = false;
+
+    if ($isResponseBase64 && $isResponseSignatureBase64) {
+        $responseBase64 = trim($_SESSION['response']['response-base64']);
+        $signatureBase64 = trim($_SESSION['response']['response-signature-base64']);
+        $signatureVerification = (isValidSignature($responseBase64, $signatureBase64, SECRET_KEY));
+    }
+
+    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
+    if ($isResponseSet) {
+        echo $signatureVerification ? 'True' : 'False';
+    } else {
+        echo DEFAULT_RES_MSG;
+    }
 }

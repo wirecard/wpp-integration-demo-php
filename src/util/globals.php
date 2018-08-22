@@ -8,8 +8,6 @@ const SOFORT = 'sofort';
 const PATH_TO_STANDALONE = '../../example-requests-standalone/';
 const PATH_TO_EMBEDDED = '../../example-requests-embedded/';
 
-const DEFAULT_RES_MSG = 'Response data are not sent from the merchant acquirer!';
-
 const PATHS_STANDALONE = [
     CCARD => PATH_TO_STANDALONE . 'creditcard_payment.json',
     PAYPAL => PATH_TO_STANDALONE . 'paypal_payment.json',

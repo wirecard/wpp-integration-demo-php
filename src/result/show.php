@@ -42,29 +42,8 @@
             <pre><code><?php echo showResponseData('response-base64'); ?></code></pre>
             <h4><strong>decodedResponseBase64:</strong></h4>
             <pre><code><?php echo showResponseData('response-base64', true); ?></code></pre>
-            <?php
-            require_once('../util/helperFunctions.php');
-            require_once('../config.php');
-
-            $isResponseBase64 = isset($_SESSION['response']['response-base64']);
-            $isResponseSignatureBase64 = isset($_SESSION['response']['response-signature-base64']);
-
-            if ($isResponseBase64 && $isResponseSignatureBase64) {
-                $responseBase64 = trim($_SESSION['response']['response-base64']);
-                $signatureBase64 = trim($_SESSION['response']['response-signature-base64']);
-                $signatureVerification = (isValidSignature($responseBase64, $signatureBase64, SECRET_KEY));
-            }
-            ?>
-
             <h4><strong>validSignature:</strong></h4>
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet) {
-                        echo $signatureVerification ? 'True' : 'False';
-                    } else {
-                        echo "Response data are not sent from the merchant acquirer!";
-                    }
-                    ?></code></pre>
+            <pre><code><?php showValidSignature(); ?></code></pre>
         </div>
     </div>
 </div>
