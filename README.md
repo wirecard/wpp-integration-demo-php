@@ -26,16 +26,6 @@ You can install these dependencies by entering the following command on your com
 
 ```composer install```
 
-Next you may want to update all dependencies:
-
-```composer update```
-
-## Troubleshooting
-```Failed to clone https://github.com/squizlabs/PHP_CodeSniffer.git via https, ssh protocols, aborting.```
-
-If you get a RuntimeException during the installation process this means that your directory path is too long. Please
-rename your directories and choose shorter names.
-
 ## Run
 Copy this directory into a location where your webserver can serve it.  
 In the example we assume that

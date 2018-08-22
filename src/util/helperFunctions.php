@@ -33,6 +33,12 @@ function getBaseUrl()
     return $baseUrl;
 }
 
+/**
+ * Shows specified attribute value in response data of default message if response is empty.
+ *
+ * @param $attr
+ * @return string
+ */
 function showResponseData($attr){
     return isset($_SESSION['response'][$attr]) ? $_SESSION['response'][$attr] : DEFAULT_RES_MSG;
 }
