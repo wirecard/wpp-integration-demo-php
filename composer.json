@@ -1,13 +1,16 @@
 {
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "name": "wpp-integration-demo-php",
+  "type": "object",
+  "additionalProperties": false,
   "description": "A demo application showing how to integrate the Wirecard Payment Page.",
-  "type": "project",
   "keywords": ["payment", "credit card"],
   "readme": "README.md",
   "license": "GPL-3.0-only",
   "require" : {
     "php" : ">=5.6",
     "ext-curl": "*",
+    "ext-json": "*",
     "guzzlehttp/guzzle": "~6.0",
     "php-http/guzzle6-adapter": "^1.1",
     "wirecard/payment-sdk-php": "^3.1"
