@@ -38,25 +38,19 @@ use Wirecard\PaymentSdk\Response\SuccessResponse;
 use Wirecard\PaymentSdk\TransactionService;
 
 $baseUrl = 'https://wpp-test.wirecard.com';
-$httpUser = '70000-APITEST-AP';
-$httpPass = 'qD2wzQ_hrc!8';
+$httpUser = MERCHANT_CONFIG_A["username"];
+$httpPass = MERCHANT_CONFIG_A["password"];
+
+$config = new Config\Config($baseUrl, $httpUser, $httpPass, 'EUR');
+// ### Validation
 
 // We use Monolog as logger. Set up a logger for the notifications.
 $log = new Logger('Wirecard notifications');
 $log->pushHandler(new StreamHandler('../logs/notify.log', Logger::INFO));
 
-$log->info('notify.php entered');
-
-$config = new Config\Config($baseUrl, $httpUser, $httpPass, 'EUR');
-// ### Validation
-
-$log->info('notify.php -> config loaded');
-
 // Set a public key for certificate pinning used for response signature validation, this certificate needs to be always
 // up to date
 $config->setPublicKey(file_get_contents('../../certificate/api-test.wirecard.com.crt'));
-
-$log->info('notify.php -> public key set');
 
 // ## Transaction
 
@@ -65,15 +59,11 @@ $log->info('notify.php -> public key set');
 // The `TransactionService` is used to determine the response from the service provider.
 $service = new TransactionService($config);
 
-$log->info('notify.php -> transaction service set');
-
 // ## Notification status
 
 // The notification are transmitted as _POST_ request and is handled via the `handleNotification` method.
 $notification = $service->handleNotification(file_get_contents('php://input'));
 // Log the notification for a successful transaction.
-
-$log->info('notify.php -> handle notification -> is ok');
 
 if ($notification instanceof SuccessResponse) {
     $log->info(sprintf(

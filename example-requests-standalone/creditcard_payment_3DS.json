@@ -3,6 +3,10 @@
     "merchant-account-id": {
       "value": "508b8896-b37d-4614-845c-26bf8bf2c948"
     },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Doe"
+    },
     "request-id": "",
     "requested-amount": {
       "value": 10,
