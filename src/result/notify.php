@@ -46,7 +46,11 @@ $config = new Config\Config($baseUrl, $httpUser, $httpPass, 'EUR');
 
 // We use Monolog as logger. Set up a logger for the notifications.
 $log = new Logger('Wirecard notifications');
-$log->pushHandler(new StreamHandler('../logs/notify.log', Logger::INFO));
+try {
+    $log->pushHandler(new StreamHandler('../logs/notify.log', Logger::INFO));
+} catch (Exception $e) {
+    $log->info("Exception thrown in StreamHandler.");
+}
 
 // Set a public key for certificate pinning used for response signature validation, this certificate needs to be always
 // up to date

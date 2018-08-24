@@ -266,6 +266,81 @@ In the `WPP.seamlessSubmit` function you can also provide the `onSuccess` and `o
 
 You can display a message to your consumer on the checkout page or you can redirect them to another URL.
 
+### Get notifications
+
+You will be informed about the outcome of a settlement. A notification response is sent on a customized URL address.
+Here you can see an example how a notify respond could look like. 
+Please consider that the response could contain more fields like shipping or pos-transaction related
+information and depends on the payment method.
+
+```
+{
+  "payment": {
+    "statuses": {
+      "status": [
+        {
+          "code": "201.0000",
+          "description": "paypal:The resource was successfully created.",
+          "severity": "information",
+          "provider-transaction-id": "5D350213JP141252A"
+        }
+      ]
+    },
+    "merchant-account-id": {
+      "value": "2a0e9351-24ed-4110-9a1b-fd0fee6bec26"
+    },
+    "transaction-id": "978cc9d8-0530-4b9e-9cfc-9af5691f1328",
+    "request-id": "payment_request_5b7fc2a1a90836.41860468",
+    "transaction-type": "debit",
+    "transaction-state": "success",
+    "completion-time-stamp": 1535099576000,
+    "requested-amount": {
+      "value": 1.010000,
+      "currency": "EUR"
+    },
+    "parent-transaction-id": "48b0ad1a-e35a-4354-87a3-d20de19c8fce",
+    "account-holder": {
+      "email": "paypal.buyer2@wirecard.com",
+      "first-name": "Wirecardbuyer",
+      "last-name": "Spintzyk"
+    },
+    "custom-fields": {
+      "custom-field": []
+    },
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "paypal"
+        }
+      ]
+    },
+    "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php",
+    "fail-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/fail.php",
+    "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
+    "provider-account-id": "00000031718207D5"
+  }
+}
+``` 
+
+To get informed you have to define the notification URL where the response should be sent. You can also specify the
+format of the response.
+
+```
+"notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "http://8e50a674.ngrok.io/wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    }
+```
+
+For test purpose we use ngrok which can be downloaded [here](https://ngrok.com/). Ngrok creates a world wide accessible
+URL and forwards all requests to our local instance. Hence we are able to get notifications from payment service provider
+to local host instance. There are example requests available in our integration demo.
+
+
 ## Payment types
 
 The following payment types are currently supported:
