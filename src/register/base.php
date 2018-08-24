@@ -15,7 +15,7 @@ function createPayloadStandalone($paymentMethod)
 {
     require_once('../util/globals.php');
 
-     $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
+    $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
     return modifyPayload($payloadText);
 }
 

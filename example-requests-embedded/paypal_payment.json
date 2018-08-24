@@ -13,6 +13,14 @@
       "last-name": "Dao"
     },
     "transaction-type": "debit",
+    "notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "http://8e50a674.ngrok.io/wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    },
     "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"

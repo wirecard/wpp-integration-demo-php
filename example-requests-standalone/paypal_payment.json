@@ -1,7 +1,7 @@
 {
   "payment": {
     "merchant-account-id": {
-      "value": "9abf05c1-c266-46ae-8eac-7f87ca97af28"
+      "value": "2a0e9351-24ed-4110-9a1b-fd0fee6bec26"
     },
     "request-id": "",
     "requested-amount": {
@@ -17,6 +17,14 @@
       "payment-method": [
         {
           "name": "paypal"
+        }
+      ]
+    },
+    "notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "http://8e50a674.ngrok.io/wpp-integration-demo-php/src/result/notify.php"
         }
       ]
     },
