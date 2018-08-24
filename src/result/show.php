@@ -15,9 +15,10 @@
     <title>Wirecard Payment Page Integration Demo</title>
 </head>
 <body>
-
+<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
 <div class="container" style="margin-top: 2%">
     <?php
+    require '../util/helperFunctions.php';
     session_start();
     ?>
 
@@ -34,64 +35,17 @@
     <div class="row">
         <div class="col-12">
             <h4><strong>responseSignatureBase64:</strong></h4>
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo $_SESSION['response']['response-signature-base64'];
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
+            <pre><code><?php echo showResponseData('response-signature-base64'); ?></code></pre>
             <h4><strong>responseSignatureAlgorithm:</strong></h4>
-
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo $_SESSION['response']['response-signature-algorithm'];
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
+            <pre><code><?php echo showResponseData('response-signature-algorithm'); ?></code></pre>
             <h4><strong>responseBase64:</strong></h4>
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo $_SESSION['response']['response-base64'];
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
+            <pre><code><?php echo showResponseData('response-base64'); ?></code></pre>
             <h4><strong>decodedResponseBase64:</strong></h4>
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo base64_decode($_SESSION['response']['response-base64']);
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
-
-            <?php
-            require_once('functions.php');
-
-            $isResponseBase64 = isset($_SESSION['response']['response-base64']);
-            $isResponseSignatureBase64 = isset($_SESSION['response']['response-signature-base64']);
-
-            if ($isResponseBase64 && $isResponseSignatureBase64) {
-                $responseBase64 = trim($_SESSION['response']['response-base64']);
-                $signatureBase64 = trim($_SESSION['response']['response-signature-base64']);
-                $secretKey = 'a8c3fce6-8df7-4fd6-a1fd-62fa229c5e55';
-                $signatureVerification = (isValidSignature($responseBase64, $signatureBase64, $secretKey));
-            }
-            ?>
-
+            <pre><code><?php echo showResponseData('response-base64', true); ?></code></pre>
             <h4><strong>validSignature:</strong></h4>
-            <pre><code><?php
-                    $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
-                    if ($isResponseSet)
-                        echo $signatureVerification ? 'True' : 'False';
-                    else
-                        echo "Response data are not sent from the merchant acquirer!"
-                    ?></code></pre>
+            <pre><code><?php showValidSignature(); ?></code></pre>
         </div>
     </div>
 </div>
-<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
 </body>
 </html>

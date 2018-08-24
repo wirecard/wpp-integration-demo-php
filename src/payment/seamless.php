@@ -111,6 +111,6 @@
         ?>
     );
 </script>
-
+<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
 </body>
 </html>

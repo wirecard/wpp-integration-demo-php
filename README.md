@@ -11,6 +11,21 @@ This application demonstrates how to use the Wirecard Payment Page in PHP code.
 * PHP
 * curl extension
 
+## Installation 
+First install composer from [getcomposer.org](https://getcomposer.org/). Have a look and see how composer works. 
+
+Next download or clone the wpp-integration demo to any directory you like. If you have downloaded the zip file, extract it.
+Rename the extracted directory to `wpp-integration-demo-php` if it is not already set. You have to rename it because otherwise you would probably
+get a runtime error during installation via composer. The reason is that under some circumstances the path name is too long which leads to this 
+kind of error.
+
+### Installing via composer
+Open a command shell and navigate to the root path where you can find the composer.json and composer.lock files. 
+These files are required to install the dependencies by composer. 
+You can install these dependencies by entering the following command on your command line:
+
+```composer install```
+
 ## Run
 Copy this directory into a location where your webserver can serve it.  
 In the example we assume that
@@ -18,14 +33,7 @@ In the example we assume that
 * your web server runs at port 80,
 * the application is in the directory `wpp-integration-demo-php` in the document root of your web server.
 
-If your application is located in a different directory make sure that you adapt:
-
-* in `example-request/payment.json`
-  * success-redirect-url
-  * fail-redirect-url
-  * cancel-redirect-url
-* in `src/register/embedded.php` or `src/register/seamless.php`
-  * the option frame-ancestor
+However, you are free to choose any port and any name for your project you are comfortable with.
 
 ### Successful payment
 This application provides examples for several payment types. 

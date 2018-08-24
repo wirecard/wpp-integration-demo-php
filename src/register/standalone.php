@@ -1,6 +1,7 @@
 <?php
+require_once('../config.php');
 require_once('base.php');
-require_once('../util/general-functions.php');
+require_once('../util/helperFunctions.php');
 
 $paymentMethod = $_GET['method'];
 $payload = createPayloadStandalone($paymentMethod);
