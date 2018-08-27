@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <title>Wirecard Payment Page Integration Demo</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Find Registered Payments</h1>
+    <div class="panel panel-default" style="margin-top: 1.5em;">
+        <div class="panel-heading">
+            Select one of the three variants to get transaction data.
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-md-4 col-xs-12">
+                    <form action="../transactions/showTransactionId.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionID_form1">getTransactionByTransactionId</label>
+                            <input type="text" name="transactionId" class="form-control" id="transactionID_form1"
+                                   aria-describedby="transactionIDHelp_form1" placeholder="Enter transaction id">
+                            <small id="transactionIDHelp_form1" class="form-text text-muted">Define a transaction id
+                            </small>
+                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form1"
+                                   aria-describedby="paymentHelp_form1" placeholder="Enter payment method">
+                            <small id="paymentHelp_form1" class="form-text text-muted">Define a payment method</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <form action="../transactions/showTransactionRequest.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionID_form1">getTransactionByRequestId</label>
+                            <input type="text" name="transactionId" class="form-control" id="transactionID_form2"
+                                   aria-describedby="transactionIDHelp_form1" placeholder="Enter transaction id">
+                            <small id="transactionIDHelp_form2" class="form-text text-muted">Define a transaction id
+                            </small>
+                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form2"
+                                   aria-describedby="paymentHelp_form1" placeholder="Enter payment method">
+                            <small id="paymentHelp_form2" class="form-text text-muted">Define a payment method</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <form action="../transactions/showGroupOfTransactions.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionID_form1">getGroupOfTransactions</label>
+                            <input type="text" name="transactionId" class="form-control" id="transactionID_form3"
+                                   aria-describedby="transactionIDHelp_form1" placeholder="Enter transaction id">
+                            <small id="transactionIDHelp_form3" class="form-text text-muted">Define a transaction id
+                            </small>
+                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form3"
+                                   aria-describedby="paymentHelp_form1" placeholder="Enter payment method">
+                            <small id="paymentHelp_form3" class="form-text text-muted">Define a payment method</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
+</body>
+</html>
+
