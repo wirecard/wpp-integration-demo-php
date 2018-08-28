@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2b6347837bc9720c03656439086b2ea",
+    "content-hash": "fc19760b09e2118aed53e537a86a870a",
     "packages": [
+        {
+            "name": "chillerlan/php-qrcode",
+            "version": "dev-php5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chillerlan/php-qrcode.git",
+                "reference": "ecedd960fdd3b7882cc2ea82109967d3e040f375"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chillerlan/php-qrcode/zipball/ecedd960fdd3b7882cc2ea82109967d3e040f375",
+                "reference": "ecedd960fdd3b7882cc2ea82109967d3e040f375",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.3.*"
+            },
+            "suggest": {
+                "chillerlan/php-googleauth": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "chillerlan\\QRCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Smiley",
+                    "email": "smiley@chillerlan.net"
+                },
+                {
+                    "name": "Kazuhiko Arase",
+                    "homepage": "https://github.com/kazuhikoarase"
+                }
+            ],
+            "description": "A QR code generator. PHP 5.6+, PHP 7",
+            "homepage": "https://github.com/codemasher/php-qrcode",
+            "keywords": [
+                "qr code"
+            ],
+            "time": "2017-02-10T15:18:40+00:00"
+        },
         {
             "name": "clue/stream-filter",
             "version": "v1.4.0",
@@ -912,7 +962,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v3.4.14",
+            "version": "v3.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
@@ -966,19 +1016,20 @@
         },
         {
             "name": "wirecard/payment-sdk-php",
-            "version": "3.1.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wirecard/paymentSDK-php.git",
-                "reference": "05fa4881ee85e77dd441f6451e3bd317f824cfc7"
+                "reference": "550bdccb5ffeb38dc57a25cfa22f1cbcb2697d30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wirecard/paymentSDK-php/zipball/05fa4881ee85e77dd441f6451e3bd317f824cfc7",
-                "reference": "05fa4881ee85e77dd441f6451e3bd317f824cfc7",
+                "url": "https://api.github.com/repos/wirecard/paymentSDK-php/zipball/550bdccb5ffeb38dc57a25cfa22f1cbcb2697d30",
+                "reference": "550bdccb5ffeb38dc57a25cfa22f1cbcb2697d30",
                 "shasum": ""
             },
             "require": {
+                "chillerlan/php-qrcode": "dev-php5",
                 "ext-intl": ">=1.0.0",
                 "monolog/monolog": ">=1.16",
                 "myclabs/php-enum": "^1.5.0",
@@ -990,6 +1041,7 @@
             },
             "require-dev": {
                 "mikey179/vfsstream": "^1.6",
+                "mockery/mockery": "^1.1",
                 "php-http/guzzle6-adapter": ">=1.1.1",
                 "phpunit/phpunit": "^5.7",
                 "squizlabs/php_codesniffer": "^2.7"
@@ -1005,7 +1057,7 @@
                 "GPL-3.0-only"
             ],
             "description": "PHP SDK for the payment processing ReST API of Wirecard",
-            "time": "2018-08-02T11:50:55+00:00"
+            "time": "2018-08-28T13:05:08+00:00"
         }
     ],
     "packages-dev": [
@@ -1090,7 +1142,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "chillerlan/php-qrcode": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
