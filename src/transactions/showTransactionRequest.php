@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json; charset=utf-8');
 
 require_once('../util/helperFunctions.php');
 
@@ -19,7 +20,7 @@ use Wirecard\PaymentSdk\TransactionService;
 $paymentMethod = htmlspecialchars($_POST['paymentMethod']);
 $requestId = htmlspecialchars($_POST['requestId']);
 
-echo $paymentMethod . " : " . $requestId . "<br>";
+echo $paymentMethod . " : " . $requestId . "\n\n";
 
 // ## Connection
 // The basic configuration requires the base URL for Wirecard and the username and password for the HTTP requests.
@@ -66,17 +67,21 @@ $config->add($creditcardConfig);
 // The `TransactionService` is used to determine the response from the service provider.
 $service = new TransactionService($config);
 
-
 try {
     // get a transaction by passing transactionId and paymentMethod to getTransactionByTransactionId method.
     $transaction_details = $service->getTransactionByRequestId($requestId, $paymentMethod);
-    print_r($transaction_details);
-    echo "<br>";
-    var_dump($transaction_details);
-    // echo "Output: " . $transaction_details['errors'][0]['code'];
+    $json = json_encode(['result' => $transaction_details], JSON_PRETTY_PRINT);
+    $json = str_replace("\\", "", $json);
+    printf("%s", $json);
 
-
-    //if($transaction_details[])
+    //print_r($transaction_details);
 } catch (Exception $e) {
-    echo "No transaction id found for transactionId: ", $requestId, " and paymentMethod: ", $paymentMethod, "<br>";
+    if (!isset($requestId) || $requestId === "") {
+        echo "No request id found! Please specify a valid request id!";
+    } elseif (!isset($paymentMethod) || $paymentMethod === "") {
+        echo "No payment method found! Please specify a valid payment method!";
+    } else {
+        echo "No transaction found for requestId ", $requestId, " and paymentMethod ", $paymentMethod ."!".
+            "\nPlease check your input data and try again.";
+    }
 }
