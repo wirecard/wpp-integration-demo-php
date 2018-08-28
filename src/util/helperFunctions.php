@@ -1,6 +1,9 @@
 <?php
 
 const DEFAULT_RES_MSG = 'Response data are not sent from the merchant acquirer!';
+use Wirecard\PaymentSdk\Config;
+use Wirecard\PaymentSdk\Config\CreditCardConfig;
+use Wirecard\PaymentSdk\TransactionService;
 
 /**
  * General functions which are not specific for the WPP domain.
@@ -89,4 +92,51 @@ function showValidSignature()
     } else {
         echo DEFAULT_RES_MSG;
     }
+}
+
+/**
+ * Creates an instance of Wirecard\PaymentSdk\TransactionService
+ *
+ * @param array $httpUser Contains the keys username, password.
+ * @return Wirecard\PaymentSdk\TransactionService
+    Returns a Wirecard\PaymentSdk\TransactionService with a test configuration.
+ */
+function createTransactionService($httpUser)
+{
+    $baseUrl = 'https://api-test.wirecard.com';
+    $httpUsername = $httpUser["username"];
+    $httpPass = $httpUser["password"];
+
+    $merchant_account_id_cc = '53f2895a-e4de-4e82-a813-0d87a10e55e6';
+    $merchant_account_secret_key_cc = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
+
+    // The configuration is stored in an object containing the connection settings set above.
+    // A default currency can also be provided.
+    $config = new Config\Config($baseUrl, $httpUsername, $httpPass, 'EUR');
+
+    // Set a public key for certificate pinning used for response signature validation.
+    // This certificate needs to be always up to date.
+    $publicKey = file_get_contents('../../certificate/api-test.wirecard.com.crt');
+    $config->setPublicKey($publicKey);
+
+    // ## Payment methods
+    // Each payment method can be configured with an individual merchant account ID and the corresponding key.
+    // The configuration object for Credit Card is a little different than other payment methods and can be
+    // instantiated without any parameters. If you wish to omit non-3-D transactions you can just leave out the
+    // maid and secret in the default CreditCardConfig. However if you want to use non-3-D transactions you have two
+    // ways of setting the credentials. First via setting the parameters maid and secret -
+
+    // ### Credit Card Non-3-D
+
+    $creditcardConfig = new CreditCardConfig();
+
+### Credit Card Non-3-D
+    $creditcardConfig->setNonThreeDCredentials($merchant_account_id_cc, $merchant_account_secret_key_cc);
+
+// ### Credit Card 3-D
+    $creditcardConfig->setThreeDCredentials($merchant_account_id_cc, $merchant_account_secret_key_cc);
+
+    $config->add($creditcardConfig);
+
+    return new TransactionService($config);
 }
