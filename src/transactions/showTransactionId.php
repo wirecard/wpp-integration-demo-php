@@ -2,17 +2,8 @@
 header('Content-Type: application/json; charset=utf-8');
 
 require '../../vendor/autoload.php';
-require_once('../util/helperFunctions.php');
-
-// # PayPal notification
-
-// Wirecard sends a server-to-server request regarding any changes in the transaction status.
-
-// ## Required objects
-
-// To include the necessary files, we use the composer for PSR-4 autoloading.
-
-require_once('../config.php');
+require '../util/helperFunctions.php';
+require '../config.php';
 
 $paymentMethod = htmlspecialchars($_POST['paymentMethod']);
 $transactionId = htmlspecialchars($_POST['transactionId']);
@@ -26,13 +17,10 @@ $service = createTransactionService(MERCHANT_CONFIG_A);
 
 try {
     // get a transaction by passing transactionId and paymentMethod to getTransactionByTransactionId method.
-    $transaction_details = $service->getTransactionByTransactionId($transactionId, $paymentMethod);
-    $json = json_encode(['result' => $transaction_details], JSON_PRETTY_PRINT);
+    $transaction = $service->getTransactionByTransactionId($transactionId, $paymentMethod);
+    $json = json_encode(['result' => $transaction], JSON_PRETTY_PRINT);
     $json = str_replace("\\", "", $json);
     printf("%s", $json);
-
-
-    //if($transaction_details[])
 } catch (Exception $e) {
     if (!isset($transactionId) || $transactionId === "") {
         echo "No transactionId id found! Please specify a valid transactionId id!";
