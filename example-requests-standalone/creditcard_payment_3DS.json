@@ -27,7 +27,7 @@
       "format": "application/xml",
       "notification": [
         {
-          "url": "http://8e50a674.ngrok.io/wpp-integration-demo-php/src/result/notify.php"
+          "url": "http://78a95c02.ngrok.io/wpp-integration-demo-php/src/result/notify.php"
         }
       ]
     },
