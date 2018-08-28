@@ -10,9 +10,6 @@ $transactionId = htmlspecialchars($_POST['transactionId']);
 
 echo $paymentMethod . " : " . $transactionId . "\n\n";
 
-// ## Connection
-// The basic configuration requires the base URL for Wirecard and the username and password for the HTTP requests.
-
 $service = createTransactionService(MERCHANT_CONFIG_A);
 
 try {
@@ -23,7 +20,7 @@ try {
     printf("%s", $json);
 } catch (Exception $e) {
     if (!isset($transactionId) || $transactionId === "") {
-        echo "No transactionId id found! Please specify a valid transactionId id!";
+        echo "No transactionId id found! Please specify a valid transactionId!";
     } elseif (!isset($paymentMethod) || $paymentMethod === "") {
         echo "No payment method found! Please specify a valid payment method!";
     } else {

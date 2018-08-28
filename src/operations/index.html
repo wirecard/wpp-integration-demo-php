@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <title>Wirecard Payment Page Integration Demo</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Further Operations</h1>
+    <div class="panel panel-default" style="margin-top: 1.5em;">
+        <div class="panel-heading">
+            <h2>Credit card</h2>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-md-4 col-xs-12">
+                    <h3>Reserve</h3>
+                    <form action="../operations/reserve.php" method="post">
+                        <div class="form-group">
+                            <label for="parentTransactionIdReserve">Transaction ID</label>
+                            <input type="text" name="parentTransactionId" class="form-control" id="parentTransactionIdReserve"
+                             placeholder="Enter a parent transaction id or a token ID">
+                            <label for="tokenIdReserve">Token ID</label>
+                            <input type="text" name="tokenId" class="form-control" id="tokenIdReserve"
+                            placeholder="Enter a parent transaction id or a token ID">
+                            <label for="amountReserve">Amount</label>
+                            <input type="text" name="amountNumber" class="form-control" id="amountReserve">
+                            <label for="currencyReserve">Currency</label>
+                            <input type="text" name="amountCurrency" class="form-control" id="currencyReserve" value="EUR">
+                            <label for="successUrlReserve">Success URL</label>
+                            <input type="text" name="successUrl" class="form-control" id="successUrlReserve">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Reserve</button>
+                    </form>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <h3>Recurring</h3>
+                    <form action="../operations/recurring.php" method="post">
+                        <div class="form-group">
+                            <label for="tokenId">Token ID</label>
+                            <input type="text" name="tokenId" class="form-control" id="tokenId">
+                            <label for="amount">Amount</label>
+                            <input type="text" name="amountNumber" class="form-control" id="amount">
+                            <label for="currency">Currency</label>
+                            <input type="text" name="amountCurrency" class="form-control" id="currency" value="EUR">
+                            <label for="successUrl">Success URL</label>
+                            <input type="text" name="successUrl" class="form-control" id="successUrl">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Recurring</button>
+                    </form>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <h3>Cancel</h3>
+                    <form action="../operations/cancel.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionIdCancelCcard">Transaction ID</label>
+                            <input type="text" name="transactionId" class="form-control" id="transactionIdCancelCcard"
+                             placeholder="Enter transaction id">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
+</body>
+</html>
+
+
