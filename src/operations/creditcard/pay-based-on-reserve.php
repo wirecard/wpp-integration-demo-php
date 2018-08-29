@@ -20,7 +20,7 @@ if (!empty($amountNumber)) {
     $transaction->setAmount($amount);
 }
 
-$service = createTransactionService(MERCHANT_CONFIG_A);
+$service = createTransactionService('creditcard');
 $response = $service->pay($transaction);
 
 if ($response instanceof SuccessResponse) {

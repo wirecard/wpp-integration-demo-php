@@ -13,7 +13,7 @@ $transactionId = htmlspecialchars($_POST['transactionId']);
 $transaction = new CreditCardTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService(MERCHANT_CONFIG_A);
+$service = createTransactionService('creditcard');
 $response = $service->cancel($transaction);
     
 if ($response instanceof SuccessResponse) {

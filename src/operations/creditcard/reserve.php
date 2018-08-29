@@ -29,7 +29,7 @@ $transaction->setAmount($amount);
 $transaction->setTermUrl($successUrl);
 
 
-$service = createTransactionService(MERCHANT_CONFIG_A);
+$service = createTransactionService('creditcard');
 
 $response = $service->reserve($transaction);
     

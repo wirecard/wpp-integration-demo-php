@@ -2,7 +2,6 @@
 
 require '../../../vendor/autoload.php';
 require '../../util/helperFunctions.php';
-require '../../config.php';
 
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Mandate;
@@ -25,7 +24,11 @@ $transaction->setAccountHolder($accountHolder);
 $mandate = new Mandate($mandateId);
 $transaction->setMandate($mandate);
 
-$service = createTransactionServiceFor(CONFIGS['sepa-ct']);
+if (array_key_exists('parentTransactionId', $_POST)) {
+	$transaction->setParentTransactionId($_POST['parentTransactionId']);
+}
+
+$service = createTransactionService('sofortbanking');
 
 try {
 	$response = $service->credit($transaction);
