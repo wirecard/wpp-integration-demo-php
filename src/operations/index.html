@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md-4 col-xs-12">
                     <h3>Recurring</h3>
-                    <form action="../operations/recurring.php" method="post">
+                    <form action="creditcard/recurring.php" method="post">
                         <div class="form-group">
                             <label for="tokenId">Token ID</label>
                             <input type="text" name="tokenId" class="form-control" id="tokenId">
@@ -43,7 +43,7 @@
 
                 <div class="col-md-4 col-xs-12">
                     <h3>Reserve</h3>
-                    <form action="../operations/reserve.php" method="post">
+                    <form action="creditcard/reserve.php" method="post">
                         <div class="form-group">
                             <label for="parentTransactionIdReserve">Transaction ID</label>
                             <input type="text" name="parentTransactionId" class="form-control" id="parentTransactionIdReserve"
@@ -64,7 +64,7 @@
 
                 <div class="col-md-4 col-xs-12">
                     <h3>Payment based on reservation</h3>
-                    <form action="../operations/pay-based-on-reserve.php" method="post">
+                    <form action="creditcard/pay-based-on-reserve.php" method="post">
                         <div class="form-group">
                             <label for="parentTransactionIdPayOnReserve">Transaction ID</label>
                             <input type="text" name="parentTransactionId" class="form-control" id="parentTransactionIdPayOnReserve"
@@ -79,7 +79,7 @@
                     </form>
 
                     <h3>Cancel</h3>
-                    <form action="../operations/cancel.php" method="post">
+                    <form action="creditcard/cancel.php" method="post">
                         <div class="form-group">
                             <label for="transactionIdCancelCcard">Transaction ID</label>
                             <input type="text" name="transactionId" class="form-control" id="transactionIdCancelCcard"

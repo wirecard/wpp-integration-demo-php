@@ -1,5 +1,4 @@
 <?php
-require '../../vendor/autoload.php';
 
 const CCARD = 'ccard';
 const PAYPAL = 'paypal';

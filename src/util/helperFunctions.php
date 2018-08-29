@@ -116,7 +116,8 @@ function createTransactionService($httpUser)
 
     // Set a public key for certificate pinning used for response signature validation.
     // This certificate needs to be always up to date.
-    $publicKey = file_get_contents('../../certificate/api-test.wirecard.com.crt');
+    $certPath = $_SERVER['DOCUMENT_ROOT'] . '/wpp-integration-demo-php/certificate/api-test.wirecard.com.crt';
+    $publicKey = file_get_contents($certPath);
     $config->setPublicKey($publicKey);
 
     // ## Payment methods
