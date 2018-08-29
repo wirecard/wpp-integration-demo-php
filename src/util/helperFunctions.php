@@ -3,6 +3,7 @@
 const DEFAULT_RES_MSG = 'Response data are not sent from the merchant acquirer!';
 use Wirecard\PaymentSdk\Config;
 use Wirecard\PaymentSdk\Config\CreditCardConfig;
+use Wirecard\PaymentSdk\Config\SepaConfig;
 use Wirecard\PaymentSdk\Config\PaymentMethodConfig;
 use Wirecard\PaymentSdk\TransactionService;
 
@@ -170,12 +171,23 @@ function createTransactionServiceFor($configData)
     $publicKey = file_get_contents($certPath);
     $config->setPublicKey($publicKey);
 
-    $paypalConfig = new PaymentMethodConfig($configData['name'], $configData['maid'], $configData['secret']);
-    $config->add($paypalConfig);
+    if (startsWith($configData['name'],'sepa')) {
+        $sepaConfig = new SepaConfig($configData['name'], $configData['maid'], $configData['secret']);
+        $sepaConfig->setCreditorId($configData['creditorId']);
+        $config->add($sepaConfig);
+    } else {
+        $paymentMethodConfig = new PaymentMethodConfig($configData['name'], $configData['maid'], $configData['secret']);
+        $config->add($paymentMethodConfig);
+    }
 
     return new TransactionService($config);
 }
 
+function startsWith($haystack, $needle)
+{
+     $length = strlen($needle);
+     return (substr($haystack, 0, $length) === $needle);
+}
 
 /**
  * Echoes an output containing the code and message of the failure response.

@@ -141,7 +141,7 @@
                 </div>
                 <div class="panel-body">
                     <h3>Credit: Refund a Sofort. payment</h3>
-                    <form action="paypal/credit.php" method="post">
+                    <form action="sofort/credit.php" method="post">
                         <div class="form-group">
                             <label for="accountHolderLastName">Account holder last name</label>
                             <input type="text" name="accountHolderLastName" class="form-control" id="accountHolderLastName"
@@ -150,7 +150,8 @@
                             <input type="text" name="accountHolderFirstName" class="form-control" id="accountHolderFirstName"
                             value="Jane">
                             <label for="mandateId">Mandate ID</label>
-                            <input type="text" name="mandateId" class="form-control" id="mandateId">
+                            <input type="text" name="mandateId" class="form-control" id="mandateId"
+                            value="12345678">
                         </div>
                         <button type="submit" class="btn btn-primary">Credit</button>
                     </form>
