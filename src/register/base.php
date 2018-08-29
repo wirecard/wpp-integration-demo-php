@@ -43,9 +43,16 @@ function createPayloadEmbedded($paymentMethod)
  */
 function modifyPayload($payloadText)
 {
+    session_start();
     $payload = json_decode($payloadText, $assoc = true);
     $uuid = uniqid('payment_request_', true);
+    $_SESSION["uuid"] = $uuid;
     $payload["payment"]["request-id"] = $uuid;
+
+    foreach ($payload["payment"]["notifications"]["notification"] as $key => &$value) {
+        echo $value["url"] = getBaseUrl() . $value["url"];
+    }
+
     $payload["payment"]["success-redirect-url"] = getBaseUrl() . $payload["payment"]["success-redirect-url"];
     $payload["payment"]["fail-redirect-url"] = getBaseUrl() . $payload["payment"]["fail-redirect-url"];
     $payload["payment"]["cancel-redirect-url"] = getBaseUrl() . $payload["payment"]["cancel-redirect-url"];
