@@ -26,7 +26,7 @@
             <div class="row">
 
                 <div class="col-md-4 col-xs-12">
-                    <form action="../transactions/showTransactionId.php" method="post">
+                    <form action="../transactions/showRetrievedPayment.php?transactionMethod=transactionId" method="post">
                         <div class="form-group">
                             <label for="transactionID_form1">Use the transaction id to get a transaction</label>
                             <input type="text" name="transactionId" class="form-control" id="transactionID_form1"
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="col-md-4 col-xs-12">
-                    <form action="../transactions/showTransactionRequest.php" method="post">
+                    <form action="../transactions/showRetrievedPayment.php?transactionMethod=requestId" method="post">
                         <div class="form-group">
                             <label for="transactionID_form1">Use the request id to get a transaction</label>
                             <input type="text" name="requestId" class="form-control" id="requestId"
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="col-md-4 col-xs-12">
-                    <form action="../transactions/showGroupOfTransactions.php" method="post">
+                    <form action="../transactions/showRetrievedPayment.php?transactionMethod=group" method="post">
                         <div class="form-group">
                             <label for="transactionID_form1">Get a group of transactions</label>
                             <input type="text" name="transactionId" class="form-control" id="transactionID_form2"
