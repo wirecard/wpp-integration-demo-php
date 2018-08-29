@@ -87,13 +87,53 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Cancel</button>
                     </form>
-
                 </div>
 
+            <!--div class="row" -->
             </div>
+
+         <!--div class="panel-body"-->
         </div>
 
+    <!--div class="panel"-->
     </div>
+
+     <div class="row">
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>PayPal</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Credit: Transfer funds to a PayPal account</h3>
+                    <form action="paypal/credit.php" method="post">
+                        <div class="form-group">
+                            <label for="accountHolderCredit">Account holder email</label>
+                            <input type="text" name="accountHolderEmail" class="form-control" id="accountHolderCredit"
+                            value="customer@wirecard.com">
+                            <label for="amountCredit">Amount</label>
+                            <input type="text" name="amountNumber" class="form-control" id="amountCredit">
+                            <label for="currencyCredit">Currency</label>
+                            <input type="text" name="amountCurrency" class="form-control" id="currencyCredit" value="EUR">
+                            <label for="notificationUrlCredit">Notification URL</label>
+                            <input type="text" name="notificationUrl" class="form-control" id="notificationUrlCredit">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Credit</button>
+                    </form>
+
+                <!--panel-body-->
+                </div>
+
+            <!--panel-->
+            </div>
+
+        <!--div class="col-md-4 col-xs-12"-->
+        </div>
+
+    <!--row-->
+    </div>
+
 </div>
 <a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
 </body>

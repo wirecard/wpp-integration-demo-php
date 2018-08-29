@@ -3,6 +3,8 @@
 const DEFAULT_RES_MSG = 'Response data are not sent from the merchant acquirer!';
 use Wirecard\PaymentSdk\Config;
 use Wirecard\PaymentSdk\Config\CreditCardConfig;
+use Wirecard\PaymentSdk\Config\PaymentMethodConfig;
+use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
 use Wirecard\PaymentSdk\TransactionService;
 
 /**
@@ -138,6 +140,39 @@ function createTransactionService($httpUser)
     $creditcardConfig->setThreeDCredentials($merchant_account_id_cc, $merchant_account_secret_key_cc);
 
     $config->add($creditcardConfig);
+
+    return new TransactionService($config);
+}
+
+/**
+ * Creates an instance of Wirecard\PaymentSdk\TransactionService
+ *
+ * @param array $httpUser Contains the keys username, password.
+ * @return Wirecard\PaymentSdk\TransactionService
+    Returns a Wirecard\PaymentSdk\TransactionService with a test configuration.
+ */
+function createTransactionServiceForPayPal($httpUser)
+{
+
+    $baseUrl = 'https://api-test.wirecard.com';
+    $httpUsername = $httpUser["username"];
+    $httpPass = $httpUser["password"];
+
+    // The configuration is stored in an object containing the connection settings set above.
+    // A default currency can also be provided.
+    $config = new Config\Config($baseUrl, $httpUsername, $httpPass, 'EUR');
+
+    // Set a public key for certificate pinning used for response signature validation.
+    // This certificate needs to be always up to date.
+    $certPath = $_SERVER['DOCUMENT_ROOT'] . '/wpp-integration-demo-php/certificate/api-test.wirecard.com.crt';
+    $publicKey = file_get_contents($certPath);
+    $config->setPublicKey($publicKey);
+
+
+    $paypalMAID = '2a0e9351-24ed-4110-9a1b-fd0fee6bec26';
+    $paypalKey = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
+    $paypalConfig = new PaymentMethodConfig(PayPalTransaction::NAME, $paypalMAID, $paypalKey);
+    $config->add($paypalConfig);
 
     return new TransactionService($config);
 }
