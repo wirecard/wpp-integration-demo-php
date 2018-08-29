@@ -45,18 +45,18 @@
                     <h3>Reserve</h3>
                     <form action="creditcard/reserve.php" method="post">
                         <div class="form-group">
-                            <label for="parentTransactionIdReserve">Transaction ID</label>
+                            <label for="parentTransactionIdReserve">Parent transaction ID*</label>
                             <input type="text" name="parentTransactionId" class="form-control" id="parentTransactionIdReserve"
-                             placeholder="Enter a parent transaction ID or a token ID">
-                            <label for="tokenIdReserve">Token ID</label>
-                            <input type="text" name="tokenId" class="form-control" id="tokenIdReserve"
-                            placeholder="Enter a parent transaction ID or a token ID">
+                             >
+                            <label for="tokenIdReserve">Token ID*</label>
+                            <input type="text" name="tokenId" class="form-control" id="tokenIdReserve">
                             <label for="amountReserve">Amount</label>
                             <input type="text" name="amountNumber" class="form-control" id="amountReserve">
                             <label for="currencyReserve">Currency</label>
                             <input type="text" name="amountCurrency" class="form-control" id="currencyReserve" value="EUR">
                             <label for="successUrlReserve">Success URL</label>
                             <input type="text" name="successUrl" class="form-control" id="successUrlReserve">
+                            <small>* You should enter a parent transaction ID or a token ID.</small>
                         </div>
                         <button type="submit" class="btn btn-primary">Reserve</button>
                     </form>
