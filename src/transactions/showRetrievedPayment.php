@@ -29,7 +29,6 @@ $service = createTransactionService($paymentMethod);
 
 try {
     if ($selectTransactionMethod === 'requestId') {
-        //
         $transaction_details = $service->getTransactionByRequestId($requestId, $paymentMethod);
     } elseif ($selectTransactionMethod === 'transactionId') {
         $transaction_details = $service->getTransactionByTransactionId($transactionId, $paymentMethod);

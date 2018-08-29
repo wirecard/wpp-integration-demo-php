@@ -201,6 +201,8 @@ function createTransactionService($paymentMethod)
  */
 function echoFailureResponse($response)
 {
+    // In our example we iterate over all errors and echo them out.
+    // You should display them as error, warning or information based on the given severity.
     foreach ($response->getStatusCollection() as $status) {
         /**
          * @var $status \Wirecard\PaymentSdk\Entity\Status

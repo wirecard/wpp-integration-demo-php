@@ -1,7 +1,9 @@
 <?php
+
 require_once 'util/globals.php';
 
 const SECRET_KEY = 'a8c3fce6-8df7-4fd6-a1fd-62fa229c5e55';
+const BASE_URL = 'https://api-test.wirecard.com';
 
 const MERCHANT_CONFIG_A = [
     'username' => '70000-APITEST-AP',
@@ -10,7 +12,7 @@ const MERCHANT_CONFIG_A = [
 
 const MERCHANT_CONFIG_B = [
     'username' => '16390-testing',
-    'password' => '16390-testing'
+    'password' => '3!3013=D3fD8X7'
 ];
 
 const MERCHANT = [
