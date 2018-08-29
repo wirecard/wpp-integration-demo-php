@@ -28,5 +28,5 @@ $response = $service->pay($transaction);
 if ($response instanceof SuccessResponse) {
     echo 'Successful payment.<br>';
 } elseif ($response instanceof FailureResponse) {
-    echo 'Failure during the recurring payment.<br>';
+    echoFailureResponse($response);
 }

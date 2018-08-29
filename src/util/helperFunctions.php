@@ -7,6 +7,9 @@ use Wirecard\PaymentSdk\Config\PaymentMethodConfig;
 use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
 use Wirecard\PaymentSdk\TransactionService;
 
+use Wirecard\PaymentSdk\Response\FailureResponse;
+use Wirecard\PaymentSdk\Entity\Status;
+
 /**
  * General functions which are not specific for the WPP domain.
  */
@@ -175,4 +178,23 @@ function createTransactionServiceForPayPal($httpUser)
     $config->add($paypalConfig);
 
     return new TransactionService($config);
+}
+
+
+/**
+ * Echoes an output containing the code and message of the failure response.
+ *
+ * @param Wirecard\PaymentSdk\Response\FailureResponse $response
+ */
+function echoFailureResponse($response)
+{
+    foreach ($response->getStatusCollection() as $status) {
+        /**
+         * @var $status \Wirecard\PaymentSdk\Entity\Status
+         */
+        $severity = ucfirst($status->getSeverity());
+        $code = $status->getCode();
+        $description = $status->getDescription();
+        echo sprintf('%s with code %s and message "%s" occurred.<br>', $severity, $code, $description);
+    }
 }

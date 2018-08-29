@@ -36,5 +36,5 @@ $response = $service->reserve($transaction);
 if ($response instanceof SuccessResponse) {
     echo 'Successful reservation.<br>';
 } elseif ($response instanceof FailureResponse) {
-    echo 'Failure during the recurring reservation.<br>';
+    echoFailureResponse($response);
 }

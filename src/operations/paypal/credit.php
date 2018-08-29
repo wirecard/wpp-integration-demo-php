@@ -32,5 +32,5 @@ $response = $service->credit($transaction);
 if ($response instanceof SuccessResponse) {
     echo 'Funds successfully transferred.<br>';
 } elseif ($response instanceof FailureResponse) {
-    echo 'Failure during the fund transfer.<br>';
+    echoFailureResponse($response);
 }

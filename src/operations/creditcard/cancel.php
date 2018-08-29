@@ -19,5 +19,5 @@ $response = $service->cancel($transaction);
 if ($response instanceof SuccessResponse) {
     echo 'Payment successfully cancelled.<br>';
 } elseif ($response instanceof FailureResponse) {
-    echo 'Failure during cancelling the payment.<br>';
+    echoFailureResponse($response);
 }

@@ -26,5 +26,5 @@ $response = $service->pay($transaction);
 if ($response instanceof SuccessResponse) {
     echo 'Payment based on reservation successfully executed.<br>';
 } elseif ($response instanceof FailureResponse) {
-    echo 'Failure during the payment based on reservation.<br>';
+    echoFailureResponse($response);
 }
