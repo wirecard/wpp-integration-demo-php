@@ -5,10 +5,10 @@ require '../../util/helperFunctions.php';
 
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Mandate;
-use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
+use Wirecard\PaymentSdk\Exception\MalformedResponseException;
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
-use Wirecard\PaymentSdk\Exception\MalformedResponseException;
+use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
 
 $accountHolderLastName = htmlspecialchars($_POST['accountHolderLastName']);
 $accountHolderFirstName = htmlspecialchars($_POST['accountHolderFirstName']);
@@ -25,19 +25,20 @@ $mandate = new Mandate($mandateId);
 $transaction->setMandate($mandate);
 
 if (array_key_exists('parentTransactionId', $_POST)) {
-	$transaction->setParentTransactionId($_POST['parentTransactionId']);
+    $transaction->setParentTransactionId($_POST['parentTransactionId']);
 }
 
 $service = createTransactionService('sofortbanking');
 
 try {
-	$response = $service->credit($transaction);
-	if ($response instanceof SuccessResponse) {
-     echo 'Refund via SEPA Credit Transfer successfully completed.<br>';
-	} elseif ($response instanceof FailureResponse) {
-    	echoFailureResponse($response);
-	}
-} catch(MalformedResponseException $e) {
-	echo $e->getTraceAsString() . '<br>';
-	echo $e->getMessage();
+    $response = $service->credit($transaction);
+    if ($response instanceof SuccessResponse) {
+        echo 'Refund via SEPA Credit Transfer successfully completed.<br>';
+        echo getTransactionLink(BASE_URL, $response);
+    } elseif ($response instanceof FailureResponse) {
+        echoFailureResponse($response);
+    }
+} catch (MalformedResponseException $e) {
+    echo $e->getTraceAsString() . '<br>';
+    echo $e->getMessage();
 }

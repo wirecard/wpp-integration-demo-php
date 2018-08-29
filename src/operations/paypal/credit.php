@@ -3,7 +3,6 @@
 require '../../../vendor/autoload.php';
 require '../../util/helperFunctions.php';
 require '../../config.php';
-require '../../../vendor/wirecard/payment-sdk-php/examples/inc/common.php';
 
 use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Entity\AccountHolder;

@@ -32,9 +32,10 @@ $transaction->setTermUrl($successUrl);
 $service = createTransactionService('creditcard');
 
 $response = $service->reserve($transaction);
-    
+
 if ($response instanceof SuccessResponse) {
     echo 'Successful reservation.<br>';
+    echo getTransactionLink(BASE_URL, $response);
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

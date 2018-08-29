@@ -24,9 +24,10 @@ $transaction->setTermUrl($successUrl);
 $service = createTransactionService('creditcard');
 
 $response = $service->pay($transaction);
-    
+
 if ($response instanceof SuccessResponse) {
     echo 'Successful payment.<br>';
+    echo getTransactionLink(BASE_URL, $response);
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

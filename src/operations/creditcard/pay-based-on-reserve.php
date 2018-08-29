@@ -25,6 +25,7 @@ $response = $service->pay($transaction);
 
 if ($response instanceof SuccessResponse) {
     echo 'Payment based on reservation successfully executed.<br>';
+    echo getTransactionLink(BASE_URL, $response);
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

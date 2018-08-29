@@ -15,9 +15,10 @@ $transaction->setParentTransactionId($transactionId);
 
 $service = createTransactionService('creditcard');
 $response = $service->cancel($transaction);
-    
+
 if ($response instanceof SuccessResponse) {
     echo 'Payment successfully cancelled.<br>';
+    echo getTransactionLink(BASE_URL, $response);
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

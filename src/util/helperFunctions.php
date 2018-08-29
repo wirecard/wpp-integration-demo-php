@@ -213,3 +213,28 @@ function echoFailureResponse($response)
         echo sprintf('%s with code %s and message "%s" occurred.<br>', $severity, $code, $description);
     }
 }
+
+/**
+ * @param $baseUrl
+ * @param \Wirecard\PaymentSdk\Response\SuccessResponse $response
+ * @param \Wirecard\PaymentSdk\Config\Config|null $config
+ * @return string
+ */
+function getTransactionLink($baseUrl, $response, $config = null)
+{
+    if ($config !== null) {
+        $authorization = $config->getHttpUser() . ':' . $config->getHttpPassword();
+        $baseUrl = str_replace("//", "//$authorization@", $baseUrl);
+    }
+
+    $transactionId = $response->getTransactionId();
+    $output = 'Transaction ID: ';
+    $output .= sprintf(
+        '<a href="' . $baseUrl . '/engine/rest/merchants/%s/payments/%s">',
+        $response->findElement('merchant-account-id'),
+        $transactionId
+    );
+    $output .= $transactionId;
+    $output .= '</a>';
+    return $output;
+}
