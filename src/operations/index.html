@@ -117,7 +117,40 @@
                             <label for="currencyCredit">Currency</label>
                             <input type="text" name="amountCurrency" class="form-control" id="currencyCredit" value="EUR">
                             <label for="notificationUrlCredit">Notification URL</label>
-                            <input type="text" name="notificationUrl" class="form-control" id="notificationUrlCredit">
+                            <input type="text" name="notificationUrl" class="form-control" id="notificationUrlCredit"
+                            placeholder="optional">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Credit</button>
+                    </form>
+
+                <!--panel-body-->
+                </div>
+
+            <!--panel-->
+            </div>
+
+        <!--div class="col-md-4 col-xs-12"-->
+        </div>
+
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>Sofort.</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Credit: Refund a Sofort. payment</h3>
+                    <form action="paypal/credit.php" method="post">
+                        <div class="form-group">
+                            <label for="accountHolderLastName">Account holder last name</label>
+                            <input type="text" name="accountHolderLastName" class="form-control" id="accountHolderLastName"
+                            value="Doe">
+                            <label for="accountHolderFirstName">Account holder first name</label>
+                            <input type="text" name="accountHolderFirstName" class="form-control" id="accountHolderFirstName"
+                            value="Jane">
+                            <label for="mandateId">Mandate ID</label>
+                            <input type="text" name="mandateId" class="form-control" id="mandateId">
                         </div>
                         <button type="submit" class="btn btn-primary">Credit</button>
                     </form>

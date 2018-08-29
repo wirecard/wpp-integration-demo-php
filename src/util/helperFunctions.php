@@ -4,7 +4,6 @@ const DEFAULT_RES_MSG = 'Response data are not sent from the merchant acquirer!'
 use Wirecard\PaymentSdk\Config;
 use Wirecard\PaymentSdk\Config\CreditCardConfig;
 use Wirecard\PaymentSdk\Config\PaymentMethodConfig;
-use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
 use Wirecard\PaymentSdk\TransactionService;
 
 use Wirecard\PaymentSdk\Response\FailureResponse;
@@ -150,16 +149,16 @@ function createTransactionService($httpUser)
 /**
  * Creates an instance of Wirecard\PaymentSdk\TransactionService
  *
- * @param array $httpUser Contains the keys username, password.
+ * @param array $configData Contains some payment method specific config.
  * @return Wirecard\PaymentSdk\TransactionService
     Returns a Wirecard\PaymentSdk\TransactionService with a test configuration.
  */
-function createTransactionServiceForPayPal($httpUser)
+function createTransactionServiceFor($configData)
 {
 
     $baseUrl = 'https://api-test.wirecard.com';
-    $httpUsername = $httpUser["username"];
-    $httpPass = $httpUser["password"];
+    $httpUsername = $configData["httpUsername"];
+    $httpPass = $configData["httpPassword"];
 
     // The configuration is stored in an object containing the connection settings set above.
     // A default currency can also be provided.
@@ -171,10 +170,7 @@ function createTransactionServiceForPayPal($httpUser)
     $publicKey = file_get_contents($certPath);
     $config->setPublicKey($publicKey);
 
-
-    $paypalMAID = '2a0e9351-24ed-4110-9a1b-fd0fee6bec26';
-    $paypalKey = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
-    $paypalConfig = new PaymentMethodConfig(PayPalTransaction::NAME, $paypalMAID, $paypalKey);
+    $paypalConfig = new PaymentMethodConfig($configData['name'], $configData['maid'], $configData['secret']);
     $config->add($paypalConfig);
 
     return new TransactionService($config);
