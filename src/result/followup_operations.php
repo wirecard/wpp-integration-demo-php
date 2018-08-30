@@ -8,7 +8,7 @@ if (getPaymentMethod() === 'creditcard') {
     <br>
     <form action="../operations/creditcard/recurring_default.php" method="post">
         <input type="hidden" name="tokenId" value="<?= getTokenId() ?>"/>
-        <button type="submit" class="btn btn-primary">Recurring the payment</button>
+        <button type="submit" class="btn btn-primary">Create a recurring payment</button>
     </form>
     <br>
 <?php
