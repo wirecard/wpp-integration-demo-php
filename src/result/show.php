@@ -48,7 +48,9 @@
     <br>
 
     <?php
-    require 'followup_operations.php';
+    if (getTransactionState() === 'success') {
+        require 'followup_operations.php';
+    }
     ?>
 
 
