@@ -3,19 +3,14 @@
 const DEFAULT_RES_MSG = 'Response data are not sent from the merchant acquirer!';
 use Wirecard\PaymentSdk\Config;
 use Wirecard\PaymentSdk\Config\CreditCardConfig;
-use Wirecard\PaymentSdk\Config\SepaConfig;
 use Wirecard\PaymentSdk\Config\PaymentMethodConfig;
-
+use Wirecard\PaymentSdk\Config\SepaConfig;
 use Wirecard\PaymentSdk\Transaction\IdealTransaction;
 use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
-use Wirecard\PaymentSdk\Transaction\SepaDirectDebitTransaction;
 use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
+use Wirecard\PaymentSdk\Transaction\SepaDirectDebitTransaction;
 use Wirecard\PaymentSdk\Transaction\SofortTransaction;
-
 use Wirecard\PaymentSdk\TransactionService;
-
-use Wirecard\PaymentSdk\Response\FailureResponse;
-use Wirecard\PaymentSdk\Entity\Status;
 
 /**
  * General functions which are not specific for the WPP domain.
@@ -111,7 +106,7 @@ function showValidSignature()
  *
  * @param string $paymentMethod
  * @return Wirecard\PaymentSdk\TransactionService
-    Returns a Wirecard\PaymentSdk\TransactionService with a test configuration.
+ * Returns a Wirecard\PaymentSdk\TransactionService with a test configuration.
  */
 function createTransactionService($paymentMethod)
 {
@@ -122,9 +117,10 @@ function createTransactionService($paymentMethod)
     if ($paymentMethod === 'creditcard' || $paymentMethod === 'paypal') {
         $httpUser = '70000-APITEST-AP';
         $httpPass = 'qD2wzQ_hrc!8';
-    } elseif ($paymentMethod === 'sepadirectdebit' || $paymentMethod === 'ideal' || $paymentMethod === 'sofortbanking') {
+    } elseif ($paymentMethod === 'sepadirectdebit' || $paymentMethod === 'ideal'
+        || $paymentMethod === 'sofortbanking') {
         $httpUser = '16390-testing';
-        $httpPass = '16390-testing';
+        $httpPass = '3!3013=D3fD8X7';
     }
 
     // The configuration is stored in an object containing the connection settings set above.
@@ -180,14 +176,22 @@ function createTransactionService($paymentMethod)
     $sepaDirectDebitMAID = '933ad170-88f0-4c3d-a862-cff315ecfbc0';
     $sepaDirectDebitKey = 'ecdf5990-0372-47cd-a55d-037dccfe9d25';
     // SEPA requires the creditor ID, therefore a different config object is used.
-    $sepaDirectDebitConfig = new SepaConfig(SepaDirectDebitTransaction::NAME, $sepaDirectDebitMAID, $sepaDirectDebitKey);
+    $sepaDirectDebitConfig = new SepaConfig(
+        SepaDirectDebitTransaction::NAME,
+        $sepaDirectDebitMAID,
+        $sepaDirectDebitKey
+    );
     $sepaDirectDebitConfig->setCreditorId('DE98ZZZ09999999999');
     $config->add($sepaDirectDebitConfig);
 
     $sepaCreditTransferMAID = '59a01668-693b-49f0-8a1f-f3c1ba025d45';
     $sepaCreditTransferKey = 'ecdf5990-0372-47cd-a55d-037dccfe9d25';
     // SEPA requires the creditor ID, therefore a different config object is used.
-    $sepaCreditTransferConfig = new SepaConfig(SepaCreditTransferTransaction::NAME, $sepaCreditTransferMAID, $sepaCreditTransferKey);
+    $sepaCreditTransferConfig = new SepaConfig(
+        SepaCreditTransferTransaction::NAME,
+        $sepaCreditTransferMAID,
+        $sepaCreditTransferKey
+    );
     $sepaCreditTransferConfig->setCreditorId('DE98ZZZ09999999999');
     $config->add($sepaCreditTransferConfig);
 

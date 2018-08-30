@@ -143,7 +143,7 @@
                     <h3>Credit: Refund a Sofort. payment</h3>
                     <form action="sofort/credit.php" method="post">
                         <div class="form-group">
-                            <label for="parentTransactionIdSofort">Transaction ID</label>
+                            <label for="parentTransactionIdSofort">Parent transaction ID</label>
                             <input type="text" name="parentTransactionId" class="form-control" id="parentTransactionIdSofort">
                             <label for="accountHolderLastName">Account holder last name</label>
                             <input type="text" name="accountHolderLastName" class="form-control" id="accountHolderLastName"
@@ -166,6 +166,44 @@
 
         <!--div class="col-md-4 col-xs-12"-->
         </div>
+
+         <div class="col-md-4 col-xs-12">
+
+             <div class="panel panel-default" style="margin-top: 1.5em;">
+                 <div class="panel-heading">
+                     <h2>iDEAL</h2>
+                 </div>
+                 <div class="panel-body">
+                     <h3>Credit: Refund a iDEAL payment</h3>
+                     <form action="ideal/credit.php" method="post">
+                         <div class="form-group">
+                             <label for="parentTransactionIdIdeal">Parent transaction ID</label>
+                             <input type="text" name="parentTransactionId" class="form-control" id="parentTransactionIdIdeal">
+                             <label for="accountHolderLastName2">Account holder last name</label>
+                             <input type="text" name="accountHolderLastName" class="form-control" id="accountHolderLastName2"
+                                    value="Doe">
+                             <label for="accountHolderFirstName2">Account holder first name</label>
+                             <input type="text" name="accountHolderFirstName" class="form-control" id="accountHolderFirstName2"
+                                    value="Jane">
+                             <label for="amount2">Amount</label>
+                             <input type="text" name="amountNumber" class="form-control" id="amount2">
+                             <label for="currency2">Currency</label>
+                             <input type="text" name="amountCurrency" class="form-control" id="currency2" value="EUR">
+                             <label for="mandateId2">Mandate ID</label>
+                             <input type="text" name="mandateId" class="form-control" id="mandateId2"
+                                    value="12345678">
+                         </div>
+                         <button type="submit" class="btn btn-primary">Credit</button>
+                     </form>
+
+                     <!--panel-body-->
+                 </div>
+
+                 <!--panel-->
+             </div>
+
+             <!--div class="col-md-4 col-xs-12"-->
+         </div>
 
     <!--row-->
     </div>
