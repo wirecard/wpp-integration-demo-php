@@ -37,21 +37,22 @@ However, you are free to choose any port and any name for your project you are c
 
 ### Successful payment
 This application provides examples for several payment types. 
-Click on this [link](#payment-types) to see a list of all supported payment types. 
-For testing purpose you can use the following demo data to be able to do an successful request.
+Click on this [link](#payment-types) to see a list of all supported payment types.  
+For testing purposes you can use the data below.  
+For further test data consult [our documentation](https://document-center.wirecard.com/display/PTD/Appendix+K%3A+Test+Access+Data+and+Credentials)
 
 #### Credit Card
-In order to execute a successful credit card payment you can use the following test card:
+In order to execute a successful credit card payment you can use the following 3D test card:
 
 ````
 First & last name: arbitrary
-Credit card number (PAN): 4200000000000018
-CVV: 018
+Credit card number (PAN): 4012000300001003
+CVV: 003
 Expiry date: arbitrary month / year in the future
 ````
 
 #### SEPA Direct Debit Silent Pay
-You can use the following IBAN code to do an silent pay request. Append the bank-account field
+You can use the following IBAN to do a silent pay request. Append the bank-account field
 to your request body
 
 ```
@@ -64,7 +65,7 @@ Note: You can also use the IBAN code in the SEPA input mask for testing purpose.
 
 #### Sofort 
 ```
-Country: whatever you lik   
+Country: whatever you like  
 Bank Name: Demo Bank
 Reference Number: any alphanumeric combination with more than 3 characters
 Password: any alphanumeric combination with more than 3 characters
