@@ -294,3 +294,13 @@ function getPaymentMethod()
     return $paymentMethod;
 }
 
+/**
+ *  Reads the transaction state from the response
+ * @return string
+ */
+function getTransactionState()
+{
+    $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+    $obj = json_decode($decodedResponse, false);
+    return $obj->payment->{'transaction-state'};
+}
