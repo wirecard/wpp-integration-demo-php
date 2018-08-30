@@ -26,14 +26,14 @@
             <div class="row">
 
                 <div class="col-md-4 col-xs-12">
-                    <form action="../transactions/showRetrievedPayment.php?transactionMethod=transactionId" method="post">
+                    <form action="../transactions/showPaymentByTransactionId.php" method="post">
                         <div class="form-group">
-                            <label for="transactionID_form1">Use the transaction id to get a transaction</label>
-                            <input type="text" name="transactionId" class="form-control" id="transactionID_form1"
-                                   aria-describedby="transactionIDHelp_form1" placeholder="Enter transaction id">
-                            <small id="transactionIDHelp_form1" class="form-text text-muted">Define a transaction id
+                            <label for="transactionID">Use the transaction id to get a transaction</label>
+                            <input type="text" name="transactionId" class="form-control" id="transactionID"
+                                   aria-describedby="transactionIDHelp" placeholder="Enter transaction id">
+                            <small id="transactionIDHelp" class="form-text text-muted">Define a transaction id
                             </small>
-                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form1"
+                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod"
                                    aria-describedby="paymentHelp" placeholder="Enter payment method">
                             <small id="paymentHelp" class="form-text text-muted">Define a payment method</small>
                         </div>
@@ -42,32 +42,32 @@
                 </div>
 
                 <div class="col-md-4 col-xs-12">
-                    <form action="../transactions/showRetrievedPayment.php?transactionMethod=requestId" method="post">
+                    <form action="../transactions/showPaymentByRequestId.php" method="post">
                         <div class="form-group">
-                            <label for="transactionID_form1">Use the request id to get a transaction</label>
+                            <label for="requestId">Use the request id to get a transaction</label>
                             <input type="text" name="requestId" class="form-control" id="requestId"
                                    aria-describedby="requestIdHelp" placeholder="Enter request id">
                             <small id="requestIdHelp" class="form-text text-muted">Define a request id
                             </small>
-                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form3"
-                                   aria-describedby="paymentHelp_from3" placeholder="Enter payment method">
-                            <small id="paymentHelp_from3" class="form-text text-muted">Define a payment method</small>
+                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form2"
+                                   aria-describedby="paymentHelp_form2" placeholder="Enter payment method">
+                            <small id="paymentHelp_form2" class="form-text text-muted">Define a payment method</small>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
                 <div class="col-md-4 col-xs-12">
-                    <form action="../transactions/showRetrievedPayment.php?transactionMethod=group" method="post">
+                    <form action="../transactions/showPaymentByGroupTransactions.php" method="post">
                         <div class="form-group">
-                            <label for="transactionID_form1">Get a group of transactions</label>
-                            <input type="text" name="transactionId" class="form-control" id="transactionID_form2"
-                                   aria-describedby="transactionIDHelp_form1" placeholder="Enter transaction id">
-                            <small id="transactionIDHelp_form2" class="form-text text-muted">Define a transaction id
+                            <label for="groupTransactionID">Get a group of transactions</label>
+                            <input type="text" name="transactionId" class="form-control" id="groupTransactionID"
+                                   aria-describedby="transactionIDHelp_form3" placeholder="Enter transaction id">
+                            <small id="transactionIDHelp_form3" class="form-text text-muted">Define a transaction id
                             </small>
-                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form2"
-                                   aria-describedby="paymentHelp_from2" placeholder="Enter payment method">
-                            <small id="paymentHelp_from2" class="form-text text-muted">Define a payment method</small>
+                            <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form3"
+                                   aria-describedby="paymentHelp_from3" placeholder="Enter payment method">
+                            <small id="paymentHelp_from3" class="form-text text-muted">Define a payment method</small>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
