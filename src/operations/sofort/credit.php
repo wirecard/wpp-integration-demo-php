@@ -24,7 +24,7 @@ $accountHolder->setFirstName($accountHolderFirstName);
 
 $transaction->setAccountHolder($accountHolder);
 $transaction->setMandate($mandate);
-$transaction->setBic(BIC);
+// use the IBAN you will receive by notification response
 $transaction->setIban(IBAN);
 
 if (array_key_exists('parentTransactionId', $_POST)) {

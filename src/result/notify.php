@@ -80,9 +80,10 @@ echo "notify.php --> handle notification";
 
 if ($notification instanceof SuccessResponse) {
     $logger->info(sprintf(
-        'Transaction with id %s was successful and validation status is %s.',
+        'Transaction with id %s was successful and validation status is %s. The selected payment method was: %s',
         $notification->getTransactionId(),
-        $notification->isValidSignature() ? 'true' : 'false'
+        $notification->isValidSignature() ? 'true' : 'false',
+        $notification->getPaymentMethod()
     ));
 // Log the notification for a failed transaction.
 } elseif ($notification instanceof FailureResponse) {

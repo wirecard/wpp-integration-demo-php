@@ -31,7 +31,7 @@ $mandate = new Mandate($mandateId);
 $transaction->setAmount($amount);
 $transaction->setAccountHolder($accountHolder);
 $transaction->setMandate($mandate);
-$transaction->setBic(BIC);
+// use the IBAN you will receive by notification response
 $transaction->setIban(IBAN);
 
 
