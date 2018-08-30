@@ -4,20 +4,25 @@ require '../../../vendor/autoload.php';
 require '../../util/helperFunctions.php';
 require '../../config.php';
 
-use Wirecard\PaymentSdk\Transaction\CreditCardTransaction;
+use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
+use Wirecard\PaymentSdk\Transaction\CreditCardTransaction;
 
-$transactionId = $_POST['transactionId'];
+$tokenId = htmlspecialchars($_POST['tokenId']);
+
+$amount = new Amount(5.85, 'EUR');
 
 $transaction = new CreditCardTransaction();
-$transaction->setParentTransactionId($transactionId);
+$transaction->setAmount($amount);
+$transaction->setTokenId($tokenId);
 
 $service = createTransactionService('creditcard');
-$response = $service->cancel($transaction);
+
+$response = $service->pay($transaction);
 
 if ($response instanceof SuccessResponse) {
-    echo 'Payment successfully cancelled.<br>';
+    echo 'Successful payment.<br>';
     echo getTransactionLink(BASE_URL, $response);
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);

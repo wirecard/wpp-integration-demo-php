@@ -242,3 +242,55 @@ function getTransactionLink($baseUrl, $response, $config = null)
     $output .= '</a>';
     return $output;
 }
+
+/**
+ *  Reads the transaction id from the response
+ * @return string
+ */
+function getTransactionId()
+{
+    $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+    $obj = json_decode($decodedResponse, false);
+    $transactionId = $obj->payment->{'transaction-id'};
+    return $transactionId;
+}
+
+/**
+ *  Reads the parent transaction id from the response
+ * @return string
+ */
+function getParentTransactionId()
+{
+    $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+    $obj = json_decode($decodedResponse, false);
+    $parentTransactionId = $obj->payment->{'parent-transaction-id'};
+    return $parentTransactionId;
+}
+
+/**
+ *  Reads the token id from the response
+ * @return string
+ */
+function getTokenId()
+{
+    $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+    $obj = json_decode($decodedResponse, false);
+    $tokenId = $obj->payment->{'card-token'}->{'token-id'};
+    return $tokenId;
+}
+
+/**
+ *  Reads the payment token from the response
+ * @return string
+ */
+function getPaymentMethod()
+{
+    $paymentMethod = "";
+    if (!empty($_SESSION['response']['response-base64'])) {
+        $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+        $obj = json_decode($decodedResponse, false);
+        $paymentMethod = $obj->payment->{'payment-methods'}->{'payment-method'}[0]->name;
+    }
+    return $paymentMethod;
+}
+

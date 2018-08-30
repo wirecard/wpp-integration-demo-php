@@ -31,8 +31,11 @@ $mandate = new Mandate($mandateId);
 $transaction->setAmount($amount);
 $transaction->setAccountHolder($accountHolder);
 $transaction->setMandate($mandate);
-// use the IBAN you will receive by notification response
-$transaction->setIban(IBAN);
+
+/* use the IBAN you will receive by the notification response. Have a look at the notify.php and see how notifications
+ * are handled.
+ */
+$transaction->setIban(DEMO_IBAN);
 
 
 if (array_key_exists('parentTransactionId', $_POST)) {

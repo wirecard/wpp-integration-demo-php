@@ -11,28 +11,19 @@ use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
 use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
 
-$accountHolderLastName = htmlspecialchars($_POST['accountHolderLastName']);
-$accountHolderFirstName = htmlspecialchars($_POST['accountHolderFirstName']);
-$mandateId = htmlspecialchars($_POST['mandateId']);
+$transactionId = htmlspecialchars($_POST['transactionId']);
+
+$accountHolder = new AccountHolder();
+$accountHolder->setLastName('Doe');
+$accountHolder->setFirstName('Jane');
+
+$mandate = new Mandate('12345678');
 
 $transaction = new SepaCreditTransferTransaction();
-$accountHolder = new AccountHolder();
-$mandate = new Mandate($mandateId);
-
-$accountHolder->setLastName($accountHolderLastName);
-$accountHolder->setFirstName($accountHolderFirstName);
-
 $transaction->setAccountHolder($accountHolder);
 $transaction->setMandate($mandate);
-
-/* use the IBAN you will receive by the notification response. Have a look at the notify.php and see how notifications
- * are handled.
- */
+$transaction->setParentTransactionId($transactionId);
 $transaction->setIban(DEMO_IBAN);
-
-if (array_key_exists('parentTransactionId', $_POST)) {
-    $transaction->setParentTransactionId($_POST['parentTransactionId']);
-}
 
 $service = createTransactionService('sofortbanking');
 

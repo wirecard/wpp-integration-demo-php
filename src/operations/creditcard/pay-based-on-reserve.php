@@ -4,6 +4,7 @@ require '../../../vendor/autoload.php';
 require '../../util/helperFunctions.php';
 require '../../config.php';
 
+use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Transaction\CreditCardTransaction;
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
