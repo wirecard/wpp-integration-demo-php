@@ -51,17 +51,15 @@ CVV: 003
 Expiry date: arbitrary month / year in the future
 ````
 
-#### SEPA Direct Debit Silent Pay
-You can use the following IBAN to do a silent pay request. Append the bank-account field
-to your request body
+#### SEPA Direct Debit
+You can enter the following IBAN in the input mask.  
+Optionally you can provide the IBAN in the request body, so that the payment will be executed without consumer interaction (so-called "silent pay").
 
 ```
 "bank-account": {
       "iban": "DE42512308000000060004"
  }
 ```
-
-Note: You can also use the IBAN code in the SEPA input mask for testing purpose.
 
 #### Sofort 
 ```
@@ -73,17 +71,22 @@ Tan Code: 12345
 ```
 
 #### PayPal
-Access data for test accound can be found [here](https://document-center.wirecard.com/display/PTD/PayPal).
+```
+Email: paypal.buyer2@wirecard.com
+Password: Wirecardbuyer
+```
 
+#### iDeal
+No further test data needed.
 
 ### Failed payment
 #### Standalone and embedded mode
-In order to execute a failing payment you can use the following test card:
+In order to execute a failing payment you can use the following SSL test card:
 
 ````
 First & last name: arbitrary
-Credit card number (PAN): 4012000300001003
-CVV: arbitrary
+Credit card number (PAN): 4200000000000018
+CVV: 018
 Expiry date: arbitrary month / year in the future
 ````
 

@@ -24,7 +24,7 @@ if (getPaymentMethod() === 'creditcard') {
 ?>
     <form action="../operations/sofort/credit_default.php" method="post">
         <input type="hidden" name="transactionId" value="<?= getTransactionId() ?>"/>
-        <button type="submit" class="btn btn-primary">Credit the payment</button>
+        <button type="submit" class="btn btn-primary">Refund via SEPA credit transfer</button>
     </form>
     <br>
 <?php
