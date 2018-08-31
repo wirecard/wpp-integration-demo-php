@@ -379,3 +379,33 @@ The following elements are mandatory for a request:
 
 The test merchant used in these examples has only some very popular credit card brands configured. For a list of all supported credit card brands see our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
 
+## Queries and further operations
+For queries and further operations we suggest you use the [Payment SDK for PHP](https://github.com/wirecard/paymentSDK-php) library.  
+For the most common use cases we provide examples in this project. You can find further examples in the [wiki of the Payment SDK for PHP](https://wirecard.github.io/paymentSDK-php/examples/)
+
+### The most common queries
+
+#### Find a transaction
+* by transaction ID
+* by request ID
+
+#### Find a group of transactions
+* by transaction ID
+
+### The most common operations by payment type
+
+#### Credit card
+* reserve
+* payment / capture based on a reservation
+* create a recurring payment based on an existing payment
+* cancelling a payment
+
+#### PayPal
+* cancelling a payment
+* credit: transfer funds to a PayPal account
+
+#### Sofort.
+* credit: refund a payment via SEPA credit transfer
+
+#### iDEAL
+* credit: refund a payment via SEPA credit transfer
