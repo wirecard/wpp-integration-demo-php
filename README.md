@@ -358,23 +358,6 @@ The following payment types are currently supported:
 You will find examples for each payment type in this demo project.  
 Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
 
-The following elements are mandatory for a request:
-
-* merchant-account-id
-* request-id
-* transaction-type
-* payment-methods.payment-method
-* requested-amount
-* order-number
-* account-holder.first-name
-* account-holder.last-name
-* bank-account.iban
-* bank-account.bic
-* mandate.mandate-id
-* mandate.signed-date
-* creditor-id
-* country
-
 ### Credit card brands
 
 The test merchant used in these examples has only some very popular credit card brands configured. For a list of all supported credit card brands see our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
