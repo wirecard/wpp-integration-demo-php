@@ -4,11 +4,11 @@ require '../../../vendor/autoload.php';
 require '../../util/helperFunctions.php';
 require '../../config.php';
 
-use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Entity\AccountHolder;
-use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
+use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
+use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
 
 $accountHolderEmail = htmlspecialchars($_POST['accountHolderEmail']);
 $amountNumber = htmlspecialchars($_POST['amountNumber']);
@@ -31,7 +31,8 @@ $response = $service->credit($transaction);
 
 if ($response instanceof SuccessResponse) {
     echo 'Funds successfully transferred.<br>';
-    echo getTransactionLink(BASE_URL, $response);
+    echo 'TransactionID: ' . $response->getTransactionId();
+    require '../showButton.php';
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

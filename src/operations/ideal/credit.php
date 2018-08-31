@@ -6,7 +6,6 @@ require '../../config.php';
 
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Amount;
-use Wirecard\PaymentSdk\Entity\Mandate;
 use Wirecard\PaymentSdk\Exception\MalformedResponseException;
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
@@ -15,7 +14,6 @@ use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
 $amountNumber = htmlspecialchars($_POST['amountNumber']);
 $accountHolderLastName = htmlspecialchars($_POST['accountHolderLastName']);
 $accountHolderFirstName = htmlspecialchars($_POST['accountHolderFirstName']);
-$mandateId = htmlspecialchars($_POST['mandateId']);
 $currency = htmlspecialchars($_POST['amountCurrency']);
 
 $transaction = new SepaCreditTransferTransaction();
@@ -26,11 +24,8 @@ $accountHolder = new AccountHolder();
 $accountHolder->setLastName($accountHolderLastName);
 $accountHolder->setFirstName($accountHolderFirstName);
 
-$mandate = new Mandate($mandateId);
-
 $transaction->setAmount($amount);
 $transaction->setAccountHolder($accountHolder);
-$transaction->setMandate($mandate);
 
 /* use the IBAN you will receive by the notification response. Have a look at the notify.php and see how notifications
  * are handled.
@@ -48,7 +43,8 @@ try {
     $response = $service->credit($transaction);
     if ($response instanceof SuccessResponse) {
         echo 'Refund via SEPA Credit Transfer successfully completed.<br>';
-        echo getTransactionLink(BASE_URL, $response);
+        echo 'TransactionID: ' . $response->getTransactionId();
+        require '../showButton.php';
     } elseif ($response instanceof FailureResponse) {
         echoFailureResponse($response);
     }

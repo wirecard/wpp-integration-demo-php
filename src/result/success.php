@@ -27,7 +27,8 @@ try {
     $response = $client->request('GET', $get_url, [
         'headers' => $headers
     ]);
-} catch (\GuzzleHttp\Exception\GuzzleException $e) {
+} catch (\GuzzleHttp\Exception\GuzzleException $exception) {
+    error_log("Caught $exception");
 }
 
 redirect('show.php');

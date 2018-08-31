@@ -23,7 +23,8 @@ $response = $service->pay($transaction);
 
 if ($response instanceof SuccessResponse) {
     echo 'Successful payment.<br>';
-    echo getTransactionLink(BASE_URL, $response);
+    echo 'TransactionID: ' . $response->getTransactionId();
+    require '../showButton.php';
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

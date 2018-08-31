@@ -31,7 +31,8 @@ try {
     $response = $service->credit($transaction);
     if ($response instanceof SuccessResponse) {
         echo 'Refund via SEPA Credit Transfer successfully completed.<br>';
-        echo getTransactionLink(BASE_URL, $response);
+        echo 'TransactionID: ' . $response->getTransactionId();
+        require '../showButton.php';
     } elseif ($response instanceof FailureResponse) {
         echoFailureResponse($response);
     }

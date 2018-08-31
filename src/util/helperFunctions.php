@@ -219,31 +219,6 @@ function echoFailureResponse($response)
 }
 
 /**
- * @param $baseUrl
- * @param \Wirecard\PaymentSdk\Response\SuccessResponse $response
- * @param \Wirecard\PaymentSdk\Config\Config|null $config
- * @return string
- */
-function getTransactionLink($baseUrl, $response, $config = null)
-{
-    if ($config !== null) {
-        $authorization = $config->getHttpUser() . ':' . $config->getHttpPassword();
-        $baseUrl = str_replace("//", "//$authorization@", $baseUrl);
-    }
-
-    $transactionId = $response->getTransactionId();
-    $output = 'Transaction ID: ';
-    $output .= sprintf(
-        '<a href="' . $baseUrl . '/engine/rest/merchants/%s/payments/%s">',
-        $response->findElement('merchant-account-id'),
-        $transactionId
-    );
-    $output .= $transactionId;
-    $output .= '</a>';
-    return $output;
-}
-
-/**
  *  Reads the transaction id from the response
  * @return string
  */
@@ -300,7 +275,10 @@ function getPaymentMethod()
  */
 function getTransactionState()
 {
-    $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
-    $obj = json_decode($decodedResponse, false);
-    return $obj->payment->{'transaction-state'};
+    if (isset($_SESSION['response']['response-base64'])) {
+        $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+        $obj = json_decode($decodedResponse, false);
+        return $obj->payment->{'transaction-state'};
+    }
+    return "";
 }

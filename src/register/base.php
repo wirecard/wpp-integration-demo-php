@@ -81,13 +81,14 @@ function postRegisterRequest($payload, $paymentMethod)
         'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
     ];
 
+    $response = "";
     try {
         $response = $client->request('POST', 'https://wpp-test.wirecard.com/api/payment/register', [
             'headers' => $headers,
             'body' => json_encode($payload),
         ]);
     } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
-        return $exception->getResponse()->getBody()->getContents();
+        error_log("Caught $exception");
     }
 
     $contents = $response->getBody()->getContents();

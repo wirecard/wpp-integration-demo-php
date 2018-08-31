@@ -39,7 +39,7 @@ However, you are free to choose any port and any name for your project you are c
 This application provides examples for several payment types. 
 Click on this [link](#payment-types) to see a list of all supported payment types.  
 For testing purposes you can use the data below.  
-For further test data consult [our documentation](https://document-center.wirecard.com/display/PTD/Appendix+K%3A+Test+Access+Data+and+Credentials)
+For further test data consult [our documentation](https://document-center.wirecard.com/display/PTD/Appendix+K%3A+Test+Access+Data+and+Credentials).
 
 #### Credit Card
 In order to execute a successful credit card payment you can use the following 3D test card:
@@ -272,7 +272,7 @@ You can display a message to your consumer on the checkout page or you can redir
 
 ### Get notifications
 
-You will be informed about the outcome of a settlement. A notification response is sent on a customized URL address.
+You will be informed about the outcome of a settlement. A notification response is sent to a customized URL address.
 Here you can see an example how a notify respond could look like. 
 Please consider that the response could contain more fields like shipping or pos-transaction related
 information and depends on the payment method.
@@ -363,7 +363,7 @@ Furthermore you can register SEPA Direct Debit payments via the Austrian acquire
 The test merchant used in these examples has only some very popular credit card brands configured. For a list of all supported credit card brands see our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
 
 ## Queries and further operations
-For queries and further operations we suggest you use the [Payment SDK for PHP](https://github.com/wirecard/paymentSDK-php) library.  
+For queries and further operations we recommend to use the [Payment SDK for PHP](https://github.com/wirecard/paymentSDK-php) library.  
 For the most common use cases we provide examples in this project. You can find further examples in the [wiki of the Payment SDK for PHP](https://wirecard.github.io/paymentSDK-php/examples/)
 
 ### The most common queries

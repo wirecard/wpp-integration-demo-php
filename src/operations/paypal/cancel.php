@@ -6,14 +6,14 @@ require '../../config.php';
 
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
-use Wirecard\PaymentSdk\Transaction\CreditCardTransaction;
+use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
 
 $transactionId = $_POST['transactionId'];
 
-$transaction = new CreditCardTransaction();
+$transaction = new PayPalTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService('creditcard');
+$service = createTransactionService('paypal');
 $response = $service->cancel($transaction);
 
 if ($response instanceof SuccessResponse) {
