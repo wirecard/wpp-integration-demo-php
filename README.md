@@ -352,12 +352,12 @@ The following payment types are currently supported:
 * Credit Card
 * PayPal
 * SEPA Direct Debit
-* Hobex
 * iDEAL
-* Sofort (Klarna Group)
+* Sofort. (Klarna Group)
 
-You will find examples for each payment type in this wpp-integration demo project except Hobex because payment processing 
-can be handled in the same way as with SEPA Direct Debit. If you use Hobex you have to choose `hobex-vt` as payment method.
+You will find examples for each payment type in this demo project.  
+Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
+
 The following elements are mandatory for a request:
 
 * merchant-account-id
