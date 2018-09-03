@@ -318,9 +318,9 @@ information and depends on the payment method.
         }
       ]
     },
-    "cancel-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/cancel.php",
-    "fail-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/fail.php",
-    "success-redirect-url": "http://localhost:8180/wpp-integration-demo-php/src/result/success.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
     "provider-account-id": "00000031718207D5"
   }
 }
@@ -334,16 +334,11 @@ format of the response.
       "format": "application/xml",
       "notification": [
         {
-          "url": "http://8e50a674.ngrok.io/wpp-integration-demo-php/src/result/notify.php"
+          "url": "wpp-integration-demo-php/src/result/notify.php"
         }
       ]
     }
 ```
-
-For test purpose we use ngrok which can be downloaded [here](https://ngrok.com/). Ngrok creates a world wide accessible
-URL and forwards all requests to our local instance. Hence we are able to get notifications from payment service provider
-to local host instance. There are example requests available in our integration demo.
-
 
 ## Payment types
 
