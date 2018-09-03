@@ -15,9 +15,7 @@ This application demonstrates how to use the Wirecard Payment Page in PHP code.
 First install composer from [getcomposer.org](https://getcomposer.org/). Have a look and see how composer works. 
 
 Next download or clone the wpp-integration demo to any directory you like. If you have downloaded the zip file, extract it.
-Rename the extracted directory to `wpp-integration-demo-php` if it is not already set. You have to rename it because otherwise you would probably
-get a runtime error during installation via composer. The reason is that under some circumstances the path name is too long which leads to this 
-kind of error.
+Rename the extracted directory to `wpp-integration-demo-php` if it is not already set.
 
 ### Installing via composer
 Open a command shell and navigate to the root path where you can find the composer.json and composer.lock files. 
