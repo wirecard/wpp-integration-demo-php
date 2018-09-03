@@ -21,6 +21,14 @@
       ]
     },
     "descriptor": "FANZEE XRZ-1282",
+    "notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    },
     "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"

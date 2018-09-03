@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <title>Wirecard Payment Page Integration Demo</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Further Operations</h1>
+    <div class="panel panel-default" style="margin-top: 1.5em;">
+        <div class="panel-heading">
+            <h2>Credit card</h2>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <h3>Recurring payment</h3>
+                    <form action="creditcard/recurring.php" method="post">
+                        <div class="form-group">
+                            <label for="tokenIdRecurring">Token ID*</label>
+                            <input type="text" name="tokenId" class="form-control" id="tokenIdRecurring">
+                            <label for="amountRecurring">Amount</label>
+                            <input type="text" name="amountNumber" class="form-control" id="amountRecurring">
+                            <label for="currencyRecurring">Currency</label>
+                            <input type="text" name="amountCurrency" class="form-control" id="currencyRecurring"
+                                   value="EUR">
+                            <small>* You should enter a parent transaction ID or a token ID.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Pay</button>
+                    </form>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <h3>Reserve</h3>
+                    <form action="creditcard/reserve.php" method="post">
+                        <div class="form-group">
+                            <label for="parentTransactionIdReserve">Parent transaction ID*</label>
+                            <input type="text" name="parentTransactionId" class="form-control"
+                                   id="parentTransactionIdReserve">
+                            <label for="tokenIdReserve">Token ID*</label>
+                            <input type="text" name="tokenId" class="form-control" id="tokenIdReserve">
+                            <label for="amountReserve">Amount</label>
+                            <input type="text" name="amountNumber" class="form-control" id="amountReserve">
+                            <label for="currencyReserve">Currency</label>
+                            <input type="text" name="amountCurrency" class="form-control" id="currencyReserve"
+                                   value="EUR">
+                            <small>* You should enter a parent transaction ID or a token ID.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Reserve</button>
+                    </form>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <h3>Cancel</h3>
+                    <form action="creditcard/cancel.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionIdCancelCcard">Transaction ID</label>
+                            <input type="text" name="transactionId" class="form-control" id="transactionIdCancelCcard"
+                                   placeholder="Enter transaction id">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                    </form>
+                </div>
+
+
+                <!--div class="row" -->
+            </div>
+
+            <!--div class="panel-body"-->
+        </div>
+
+        <!--div class="panel"-->
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>PayPal</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Credit: Transfer funds to a PayPal account</h3>
+                    <form action="paypal/credit.php" method="post">
+                        <div class="form-group">
+                            <label for="accountHolderCredit">Account holder email</label>
+                            <input type="text" name="accountHolderEmail" class="form-control" id="accountHolderCredit"
+                                   value="customer@wirecard.com">
+                            <label for="amountCredit">Amount</label>
+                            <input type="text" name="amountNumber" class="form-control" id="amountCredit">
+                            <label for="currencyCredit">Currency</label>
+                            <input type="text" name="amountCurrency" class="form-control" id="currencyCredit"
+                                   value="EUR">
+                            <label for="notificationUrlCredit">Notification URL</label>
+                            <input type="text" name="notificationUrl" class="form-control" id="notificationUrlCredit"
+                                   placeholder="optional">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Credit</button>
+                    </form>
+
+                    <div>
+                        <h3>Cancel</h3>
+                        <form action="paypal/cancel.php" method="post">
+                            <div class="form-group">
+                                <label for="transactionIdCancelPaypal">Transaction ID</label>
+                                <input type="text" name="transactionId" class="form-control"
+                                       id="transactionIdCancelPaypal"
+                                       placeholder="Enter transaction id">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Cancel</button>
+                        </form>
+                    </div>
+
+                    <!--panel-body-->
+                </div>
+
+                <!--panel-->
+            </div>
+
+            <!--div class="col-md-4 col-xs-12"-->
+        </div>
+
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>Sofort.</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Credit: Refund a Sofort. payment</h3>
+                    <form action="sofort/credit.php" method="post">
+                        <div class="form-group">
+                            <label for="parentTransactionIdSofort">Parent transaction ID</label>
+                            <input type="text" name="parentTransactionId" class="form-control"
+                                   id="parentTransactionIdSofort">
+                            <label for="accountHolderLastName">Account holder last name</label>
+                            <input type="text" name="accountHolderLastName" class="form-control"
+                                   id="accountHolderLastName"
+                                   value="Doe">
+                            <label for="accountHolderFirstName">Account holder first name</label>
+                            <input type="text" name="accountHolderFirstName" class="form-control"
+                                   id="accountHolderFirstName"
+                                   value="Jane">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Credit</button>
+                    </form>
+
+                    <!--panel-body-->
+                </div>
+
+                <!--panel-->
+            </div>
+
+            <!--div class="col-md-4 col-xs-12"-->
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>iDEAL</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Credit: Refund a iDEAL payment</h3>
+                    <form action="ideal/credit.php" method="post">
+                        <div class="form-group">
+                            <label for="parentTransactionIdIdeal">Parent transaction ID</label>
+                            <input type="text" name="parentTransactionId" class="form-control"
+                                   id="parentTransactionIdIdeal">
+                            <label for="accountHolderLastName2">Account holder last name</label>
+                            <input type="text" name="accountHolderLastName" class="form-control"
+                                   id="accountHolderLastName2"
+                                   value="Doe">
+                            <label for="accountHolderFirstName2">Account holder first name</label>
+                            <input type="text" name="accountHolderFirstName" class="form-control"
+                                   id="accountHolderFirstName2"
+                                   value="Jane">
+                            <label for="amount2">Amount</label>
+                            <input type="text" name="amountNumber" class="form-control" id="amount2">
+                            <label for="currency2">Currency</label>
+                            <input type="text" name="amountCurrency" class="form-control" id="currency2" value="EUR">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Credit</button>
+                    </form>
+
+                    <!--panel-body-->
+                </div>
+
+                <!--panel-->
+            </div>
+
+            <!--div class="col-md-4 col-xs-12"-->
+        </div>
+
+        <!--row-->
+    </div>
+
+</div>
+<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
+</body>
+</html>
+
+

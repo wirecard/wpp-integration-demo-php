@@ -31,7 +31,6 @@
                 </strong></h3>
         </div>
     </div>
-
     <div class="row">
         <div class="col-12">
             <h4><strong>responseSignatureBase64:</strong></h4>
@@ -46,6 +45,15 @@
             <pre><code><?php showValidSignature(); ?></code></pre>
         </div>
     </div>
+    <br>
+
+    <?php
+    if (getTransactionState() === 'success') {
+        require 'followup_operations.php';
+    }
+    ?>
+
+
 </div>
 </body>
 </html>

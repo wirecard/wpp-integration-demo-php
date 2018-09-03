@@ -1,6 +1,16 @@
 <?php
 
 const DEFAULT_RES_MSG = 'Response data are not sent from the merchant acquirer!';
+use Wirecard\PaymentSdk\Config;
+use Wirecard\PaymentSdk\Config\CreditCardConfig;
+use Wirecard\PaymentSdk\Config\PaymentMethodConfig;
+use Wirecard\PaymentSdk\Config\SepaConfig;
+use Wirecard\PaymentSdk\Transaction\IdealTransaction;
+use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
+use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
+use Wirecard\PaymentSdk\Transaction\SepaDirectDebitTransaction;
+use Wirecard\PaymentSdk\Transaction\SofortTransaction;
+use Wirecard\PaymentSdk\TransactionService;
 
 /**
  * General functions which are not specific for the WPP domain.
@@ -89,4 +99,186 @@ function showValidSignature()
     } else {
         echo DEFAULT_RES_MSG;
     }
+}
+
+/**
+ * Creates an instance of Wirecard\PaymentSdk\TransactionService
+ *
+ * @param string $paymentMethod
+ * @return Wirecard\PaymentSdk\TransactionService
+ * Returns a Wirecard\PaymentSdk\TransactionService with a test configuration.
+ */
+function createTransactionService($paymentMethod)
+{
+    $baseUrl = 'https://api-test.wirecard.com';
+    $httpUser = '';
+    $httpPass = '';
+
+    if ($paymentMethod === 'creditcard' || $paymentMethod === 'paypal') {
+        $httpUser = '70000-APITEST-AP';
+        $httpPass = 'qD2wzQ_hrc!8';
+    } elseif ($paymentMethod === 'sepadirectdebit' || $paymentMethod === 'ideal'
+        || $paymentMethod === 'sofortbanking') {
+        $httpUser = '16390-testing';
+        $httpPass = '3!3013=D3fD8X7';
+    }
+
+    // The configuration is stored in an object containing the connection settings set above.
+    // A default currency can also be provided.
+    $config = new Config\Config($baseUrl, $httpUser, $httpPass, 'EUR');
+
+    // Set a public key for certificate pinning used for response signature validation.
+    // This certificate needs to be always up to date.
+    $certPath = $_SERVER['DOCUMENT_ROOT'] . '/wpp-integration-demo-php/certificate/api-test.wirecard.com.crt';
+    $publicKey = file_get_contents($certPath);
+    $config->setPublicKey($publicKey);
+
+    // ## Payment methods
+    // Each payment method can be configured with an individual merchant account ID and the corresponding key.
+    // The configuration object for Credit Card is a little different than other payment methods and can be
+    // instantiated without any parameters. If you wish to omit non-3-D transactions you can just leave out the
+    // maid and secret in the default CreditCardConfig. However if you want to use non-3-D transactions you have two
+    // ways of setting the credentials. First via setting the parameters maid and secret -
+
+    $merchant_account_id_cc = '53f2895a-e4de-4e82-a813-0d87a10e55e6';
+    $merchant_account_secret_key_cc = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
+
+    // ### Credit Card Non-3-D
+    $creditcardConfig = new CreditCardConfig();
+
+    ### Credit Card Non-3-D
+    $creditcardConfig->setNonThreeDCredentials($merchant_account_id_cc, $merchant_account_secret_key_cc);
+
+    // ### Credit Card 3-D
+    $creditcardConfig->setThreeDCredentials($merchant_account_id_cc, $merchant_account_secret_key_cc);
+
+    $config->add($creditcardConfig);
+
+    // ### PayPal
+    $paypalMAID = '2a0e9351-24ed-4110-9a1b-fd0fee6bec26';
+    $paypalKey = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
+    $paypalConfig = new PaymentMethodConfig(PayPalTransaction::NAME, $paypalMAID, $paypalKey);
+    $config->add($paypalConfig);
+
+    // ### iDEAL
+    $IdealMAID = '4aeccf39-0d47-47f6-a399-c05c1f2fc819';
+    $IdealSecretKey = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
+    $IdealConfig = new PaymentMethodConfig(IdealTransaction::NAME, $IdealMAID, $IdealSecretKey);
+    $config->add($IdealConfig);
+
+    // ### Sofortbanking
+    $sofortMAID = '6c0e7efd-ee58-40f7-9bbd-5e7337a052cd';
+    $sofortSecretKey = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
+    $sofortConfig = new PaymentMethodConfig(SofortTransaction::NAME, $sofortMAID, $sofortSecretKey);
+    $config->add($sofortConfig);
+
+    // ### SEPA Direct Debit
+    $sepaDirectDebitMAID = '933ad170-88f0-4c3d-a862-cff315ecfbc0';
+    $sepaDirectDebitKey = 'ecdf5990-0372-47cd-a55d-037dccfe9d25';
+    // SEPA requires the creditor ID, therefore a different config object is used.
+    $sepaDirectDebitConfig = new SepaConfig(
+        SepaDirectDebitTransaction::NAME,
+        $sepaDirectDebitMAID,
+        $sepaDirectDebitKey
+    );
+    $sepaDirectDebitConfig->setCreditorId('DE98ZZZ09999999999');
+    $config->add($sepaDirectDebitConfig);
+
+    $sepaCreditTransferMAID = '59a01668-693b-49f0-8a1f-f3c1ba025d45';
+    $sepaCreditTransferKey = 'ecdf5990-0372-47cd-a55d-037dccfe9d25';
+    // SEPA requires the creditor ID, therefore a different config object is used.
+    $sepaCreditTransferConfig = new SepaConfig(
+        SepaCreditTransferTransaction::NAME,
+        $sepaCreditTransferMAID,
+        $sepaCreditTransferKey
+    );
+    $sepaCreditTransferConfig->setCreditorId('DE98ZZZ09999999999');
+    $config->add($sepaCreditTransferConfig);
+
+    return new TransactionService($config);
+}
+
+/**
+ * Echoes an output containing the code and message of the failure response.
+ *
+ * @param Wirecard\PaymentSdk\Response\FailureResponse $response
+ */
+function echoFailureResponse($response)
+{
+    // In our example we iterate over all errors and echo them out.
+    // You should display them as error, warning or information based on the given severity.
+    foreach ($response->getStatusCollection() as $status) {
+        /**
+         * @var $status \Wirecard\PaymentSdk\Entity\Status
+         */
+        $severity = ucfirst($status->getSeverity());
+        $code = $status->getCode();
+        $description = $status->getDescription();
+        echo sprintf('%s with code %s and message "%s" occurred.<br>', $severity, $code, $description);
+    }
+}
+
+/**
+ *  Reads the transaction id from the response
+ * @return string
+ */
+function getTransactionId()
+{
+    $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+    $obj = json_decode($decodedResponse, false);
+    $transactionId = $obj->payment->{'transaction-id'};
+    return $transactionId;
+}
+
+/**
+ *  Reads the parent transaction id from the response
+ * @return string
+ */
+function getParentTransactionId()
+{
+    $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+    $obj = json_decode($decodedResponse, false);
+    $parentTransactionId = $obj->payment->{'parent-transaction-id'};
+    return $parentTransactionId;
+}
+
+/**
+ *  Reads the token id from the response
+ * @return string
+ */
+function getTokenId()
+{
+    $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+    $obj = json_decode($decodedResponse, false);
+    $tokenId = $obj->payment->{'card-token'}->{'token-id'};
+    return $tokenId;
+}
+
+/**
+ *  Reads the payment token from the response
+ * @return string
+ */
+function getPaymentMethod()
+{
+    $paymentMethod = "";
+    if (!empty($_SESSION['response']['response-base64'])) {
+        $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+        $obj = json_decode($decodedResponse, false);
+        $paymentMethod = $obj->payment->{'payment-methods'}->{'payment-method'}[0]->name;
+    }
+    return $paymentMethod;
+}
+
+/**
+ *  Reads the transaction state from the response
+ * @return string
+ */
+function getTransactionState()
+{
+    if (isset($_SESSION['response']['response-base64'])) {
+        $decodedResponse = base64_decode($_SESSION['response']['response-base64']);
+        $obj = json_decode($decodedResponse, false);
+        return $obj->payment->{'transaction-state'};
+    }
+    return "";
 }

@@ -15,7 +15,7 @@ function createPayloadStandalone($paymentMethod)
 {
     require_once('../util/globals.php');
 
-     $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
+    $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
     return modifyPayload($payloadText);
 }
 
@@ -43,9 +43,16 @@ function createPayloadEmbedded($paymentMethod)
  */
 function modifyPayload($payloadText)
 {
+    session_start();
     $payload = json_decode($payloadText, $assoc = true);
     $uuid = uniqid('payment_request_', true);
+    $_SESSION["uuid"] = $uuid;
     $payload["payment"]["request-id"] = $uuid;
+
+    foreach ($payload["payment"]["notifications"]["notification"] as $key => &$value) {
+        echo $value["url"] = getBaseUrl() . $value["url"];
+    }
+
     $payload["payment"]["success-redirect-url"] = getBaseUrl() . $payload["payment"]["success-redirect-url"];
     $payload["payment"]["fail-redirect-url"] = getBaseUrl() . $payload["payment"]["fail-redirect-url"];
     $payload["payment"]["cancel-redirect-url"] = getBaseUrl() . $payload["payment"]["cancel-redirect-url"];
@@ -74,13 +81,14 @@ function postRegisterRequest($payload, $paymentMethod)
         'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
     ];
 
+    $response = "";
     try {
         $response = $client->request('POST', 'https://wpp-test.wirecard.com/api/payment/register', [
             'headers' => $headers,
             'body' => json_encode($payload),
         ]);
     } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
-        return $exception->getResponse()->getBody()->getContents();
+        error_log("Caught $exception");
     }
 
     $contents = $response->getBody()->getContents();

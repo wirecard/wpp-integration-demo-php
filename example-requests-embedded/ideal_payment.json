@@ -1,7 +1,11 @@
 {
   "payment": {
     "merchant-account-id": {
-      "value": "adb45327-170a-460b-9810-9008e9772f5f"
+      "value": "4aeccf39-0d47-47f6-a399-c05c1f2fc819"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
     },
     "request-id": "",
     "requested-amount": {
@@ -10,7 +14,18 @@
     },
     "order-number": "15684356856",
     "descriptor": "customer-statement",
+    "bank-account": {
+      "bic": "INGBNL2A"
+    },
     "transaction-type": "debit",
+    "notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    },
     "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"

@@ -15,9 +15,7 @@ This application demonstrates how to use the Wirecard Payment Page in PHP code.
 First install composer from [getcomposer.org](https://getcomposer.org/). Have a look and see how composer works. 
 
 Next download or clone the wpp-integration demo to any directory you like. If you have downloaded the zip file, extract it.
-Rename the extracted directory to `wpp-integration-demo-php` if it is not already set. You have to rename it because otherwise you would probably
-get a runtime error during installation via composer. The reason is that under some circumstances the path name is too long which leads to this 
-kind of error.
+Rename the extracted directory to `wpp-integration-demo-php` if it is not already set.
 
 ### Installing via composer
 Open a command shell and navigate to the root path where you can find the composer.json and composer.lock files. 
@@ -37,22 +35,23 @@ However, you are free to choose any port and any name for your project you are c
 
 ### Successful payment
 This application provides examples for several payment types. 
-Click on this [link](#payment-types) to see a list of all supported payment types. 
-For testing purpose you can use the following demo data to be able to do an successful request.
+Click on this [link](#payment-types) to see a list of all supported payment types.  
+For testing purposes you can use the data below.  
+For further test data consult [our documentation](https://document-center.wirecard.com/display/PTD/Appendix+K%3A+Test+Access+Data+and+Credentials).
 
 #### Credit Card
-In order to execute a successful credit card payment you can use the following test card:
+In order to execute a successful credit card payment you can use the following 3D test card:
 
 ````
 First & last name: arbitrary
-Credit card number (PAN): 4200000000000018
-CVV: 018
+Credit card number (PAN): 4012000300001003
+CVV: 003
 Expiry date: arbitrary month / year in the future
 ````
 
-#### SEPA Direct Debit Silent Pay
-You can use the following IBAN code to do an silent pay request. Append the bank-account field
-to your request body
+#### SEPA Direct Debit
+You can enter the following IBAN in the input mask.  
+Optionally you can provide the IBAN in the request body, so that the payment will be executed without consumer interaction (so-called "silent pay").
 
 ```
 "bank-account": {
@@ -60,11 +59,9 @@ to your request body
  }
 ```
 
-Note: You can also use the IBAN code in the SEPA input mask for testing purpose.
-
 #### Sofort 
 ```
-Country: whatever you lik   
+Country: whatever you like  
 Bank Name: Demo Bank
 Reference Number: any alphanumeric combination with more than 3 characters
 Password: any alphanumeric combination with more than 3 characters
@@ -72,17 +69,22 @@ Tan Code: 12345
 ```
 
 #### PayPal
-Access data for test accound can be found [here](https://document-center.wirecard.com/display/PTD/PayPal).
+```
+Email: paypal.buyer2@wirecard.com
+Password: Wirecardbuyer
+```
 
+#### iDeal
+No further test data needed.
 
 ### Failed payment
 #### Standalone and embedded mode
-In order to execute a failing payment you can use the following test card:
+In order to execute a failing payment you can use the following SSL test card:
 
 ````
 First & last name: arbitrary
-Credit card number (PAN): 4012000300001003
-CVV: arbitrary
+Credit card number (PAN): 4200000000000018
+CVV: 018
 Expiry date: arbitrary month / year in the future
 ````
 
@@ -266,6 +268,76 @@ In the `WPP.seamlessSubmit` function you can also provide the `onSuccess` and `o
 
 You can display a message to your consumer on the checkout page or you can redirect them to another URL.
 
+### Get notifications
+
+You will be informed about the outcome of a settlement. A notification response is sent to a customized URL address.
+Here you can see an example how a notify respond could look like. 
+Please consider that the response could contain more fields like shipping or pos-transaction related
+information and depends on the payment method.
+
+```
+{
+  "payment": {
+    "statuses": {
+      "status": [
+        {
+          "code": "201.0000",
+          "description": "paypal:The resource was successfully created.",
+          "severity": "information",
+          "provider-transaction-id": "5D350213JP141252A"
+        }
+      ]
+    },
+    "merchant-account-id": {
+      "value": "2a0e9351-24ed-4110-9a1b-fd0fee6bec26"
+    },
+    "transaction-id": "978cc9d8-0530-4b9e-9cfc-9af5691f1328",
+    "request-id": "payment_request_5b7fc2a1a90836.41860468",
+    "transaction-type": "debit",
+    "transaction-state": "success",
+    "completion-time-stamp": 1535099576000,
+    "requested-amount": {
+      "value": 1.010000,
+      "currency": "EUR"
+    },
+    "parent-transaction-id": "48b0ad1a-e35a-4354-87a3-d20de19c8fce",
+    "account-holder": {
+      "email": "paypal.buyer2@wirecard.com",
+      "first-name": "Wirecardbuyer",
+      "last-name": "Spintzyk"
+    },
+    "custom-fields": {
+      "custom-field": []
+    },
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "paypal"
+        }
+      ]
+    },
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "provider-account-id": "00000031718207D5"
+  }
+}
+``` 
+
+To get informed you have to define the notification URL where the response should be sent. You can also specify the
+format of the response.
+
+```
+"notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    }
+```
+
 ## Payment types
 
 The following payment types are currently supported:
@@ -273,30 +345,43 @@ The following payment types are currently supported:
 * Credit Card
 * PayPal
 * SEPA Direct Debit
-* Hobex
 * iDEAL
-* Sofort (Klarna Group)
+* Sofort. (Klarna Group)
 
-You will find examples for each payment type in this wpp-integration demo project except Hobex because payment processing 
-can be handled in the same way as with SEPA Direct Debit. If you use Hobex you have to choose `hobex-vt` as payment method.
-The following elements are mandatory for a request:
-
-* merchant-account-id
-* request-id
-* transaction-type
-* payment-methods.payment-method
-* requested-amount
-* order-number
-* account-holder.first-name
-* account-holder.last-name
-* bank-account.iban
-* bank-account.bic
-* mandate.mandate-id
-* mandate.signed-date
-* creditor-id
-* country
+You will find examples for each payment type in this demo project.  
+Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
 
 ### Credit card brands
 
 The test merchant used in these examples has only some very popular credit card brands configured. For a list of all supported credit card brands see our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
 
+## Queries and further operations
+For queries and further operations we recommend to use the [Payment SDK for PHP](https://github.com/wirecard/paymentSDK-php) library.  
+For the most common use cases we provide examples in this project. You can find further examples in the [wiki of the Payment SDK for PHP](https://wirecard.github.io/paymentSDK-php/examples/)
+
+### The most common queries
+
+#### Find a transaction
+* by transaction ID
+* by request ID
+
+#### Find a group of transactions
+* by transaction ID
+
+### The most common operations by payment type
+
+#### Credit card
+* reserve
+* payment / capture based on a reservation
+* create a recurring payment based on an existing payment
+* cancelling a payment
+
+#### PayPal
+* cancelling a payment
+* credit: transfer funds to a PayPal account
+
+#### Sofort.
+* credit: refund a payment via SEPA credit transfer
+
+#### iDEAL
+* credit: refund a payment via SEPA credit transfer
