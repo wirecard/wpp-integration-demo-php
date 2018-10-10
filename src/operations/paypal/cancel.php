@@ -14,7 +14,15 @@ $transaction = new PayPalTransaction();
 $transaction->setParentTransactionId($transactionId);
 
 $service = createTransactionService('paypal');
-$response = $service->cancel($transaction);
+
+$response = null;
+try {
+    $response = $service->cancel($transaction);
+} catch (Exception $e) {
+    echo get_class($e), ': ', $e->getMessage(),
+    ' Probably credit was used as payment method which can not be canceled.<br>';
+}
+
 
 if ($response instanceof SuccessResponse) {
     echo 'Payment successfully cancelled.<br>';

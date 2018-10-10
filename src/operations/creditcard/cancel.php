@@ -14,7 +14,13 @@ $transaction = new CreditCardTransaction();
 $transaction->setParentTransactionId($transactionId);
 
 $service = createTransactionService('creditcard');
-$response = $service->cancel($transaction);
+
+$response = null;
+try {
+    $response = $service->cancel($transaction);
+} catch (Exception $e) {
+    echo get_class($e), ': ', $e->getMessage(), '<br>';
+}
 
 if ($response instanceof SuccessResponse) {
     echo 'Payment successfully cancelled.<br>';
