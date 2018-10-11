@@ -72,14 +72,10 @@
                         <button type="submit" class="btn btn-primary">Cancel</button>
                     </form>
                 </div>
-
-
                 <!--div class="row" -->
             </div>
-
             <!--div class="panel-body"-->
         </div>
-
         <!--div class="panel"-->
     </div>
 
@@ -121,13 +117,10 @@
                             <button type="submit" class="btn btn-primary">Cancel</button>
                         </form>
                     </div>
-
                     <!--panel-body-->
                 </div>
-
                 <!--panel-->
             </div>
-
             <!--div class="col-md-4 col-xs-12"-->
         </div>
 
@@ -156,13 +149,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Credit</button>
                     </form>
-
                     <!--panel-body-->
                 </div>
-
                 <!--panel-->
             </div>
-
             <!--div class="col-md-4 col-xs-12"-->
         </div>
 
@@ -194,16 +184,54 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Credit</button>
                     </form>
-
                     <!--panel-body-->
                 </div>
-
                 <!--panel-->
             </div>
-
             <!--div class="col-md-4 col-xs-12"-->
         </div>
+        <!--row-->
+    </div>
 
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>Paysafecard</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Reserve </h3>
+                    <form action="paysafecard/reserve.php" method="post">
+                        <div class="form-group">
+                            <label for="amountPaysafecardAuthorization">Amount</label>
+                            <input type="text" name="paymentAmount" class="form-control"
+                                   id="amountPaysafecardAuthorization">
+                            <label for="parentTransactionIdPaysafecard">Parent transaction ID</label>
+                            <input type="text" name="parentTransactionId" class="form-control"
+                                   id="parentTransactionIdPaysafecard" placeholder="optional">
+                            <label for="accountHolderLastName">Account holder last name</label>
+                            <input type="text" name="accountHolderLastName" class="form-control"
+                                   id="accountHolderLastNamePaysafecard" placeholder="optional">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Pay</button>
+                    </form>
+
+                    <h3>Cancel </h3>
+                    <form action="paysafecard/cancel.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionId">Transaction ID</label>
+                            <input type="text" name="transactionId" class="form-control"
+                                   id="transactionId">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                    </form>
+                    <!--panel-body-->
+                </div>
+                <!--panel-->
+            </div>
+            <!--div class="col-md-4 col-xs-12"-->
+        </div>
         <!--row-->
     </div>
 

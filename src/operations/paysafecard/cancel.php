@@ -6,14 +6,14 @@ require '../../config.php';
 
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
-use Wirecard\PaymentSdk\Transaction\CreditCardTransaction;
+use Wirecard\PaymentSdk\Transaction\PaysafecardTransaction;
 
 $transactionId = $_POST['transactionId'];
 
-$transaction = new CreditCardTransaction();
+$transaction = new PaysafecardTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService('ccard');
+$service = createTransactionService(PAYSAFECARD);
 
 $response = null;
 try {
@@ -23,7 +23,7 @@ try {
 }
 
 if ($response instanceof SuccessResponse) {
-    echo 'Payment successfully cancelled.<br>';
+    echo 'Reserve successfully cancelled.<br>';
     echo 'TransactionID: ' . $response->getTransactionId();
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);

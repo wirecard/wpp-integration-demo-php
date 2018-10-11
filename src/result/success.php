@@ -28,7 +28,7 @@ try {
         'headers' => $headers
     ]);
 } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
-    error_log("Caught $exception");
+    printf("%s", $e->getResponse()->getBody()->getContents());
 }
 
 redirect('show.php');
