@@ -13,7 +13,7 @@
       "value": 9.99,
       "currency": "EUR"
     },
-    "transaction-type": "debit",
+    "transaction-type": "authorization",
     "notifications": {
       "format": "application/xml",
       "notification": [

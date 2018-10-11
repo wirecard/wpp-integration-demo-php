@@ -12,7 +12,7 @@ if (getPaymentMethod() === 'creditcard') {
     </form>
     <br>
     <?php
-} elseif (getPaymentMethod() === 'paypal') {
+} elseif (getPaymentMethod() === PAYPAL) {
     ?>
     <form action="../operations/paypal/credit_default.php" method="post">
         <input type="hidden" name="transactionId" value=""/>
@@ -25,11 +25,24 @@ if (getPaymentMethod() === 'creditcard') {
     </form>
     <br>
     <?php
-} elseif (getPaymentMethod() === 'sofortbanking') {
+} elseif (getPaymentMethod() === SOFORT) {
     ?>
     <form action="../operations/sofort/credit_default.php" method="post">
         <input type="hidden" name="transactionId" value="<?= getTransactionId() ?>"/>
         <button type="submit" class="btn btn-primary">Refund via SEPA credit transfer</button>
+    </form>
+    <br>
+    <?php
+} elseif (getPaymentMethod() === PAYSAFECARD) {
+    ?>
+    <form action="../operations/paysafecard/pay_after_reservation.php" method="post">
+        <input type="hidden" name="transactionId" value="<?= getTransactionId() ?>"/>
+        <button type="submit" class="btn btn-primary">Pay</button>
+    </form>
+    <br>
+    <form action="../operations/paysafecard/cancel.php" method="post">
+        <input type="hidden" name="transactionId" value="<?= getTransactionId() ?>"/>
+        <button type="submit" class="btn btn-primary">Cancel the payment</button>
     </form>
     <br>
     <?php
