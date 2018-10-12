@@ -5,6 +5,7 @@ require '../../util/helperFunctions.php';
 require '../../config.php';
 
 use Wirecard\PaymentSdk\Entity\Amount;
+use Wirecard\PaymentSdk\Exception\MandatoryFieldMissingException;
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
 use Wirecard\PaymentSdk\Transaction\CreditCardTransaction;
@@ -30,6 +31,9 @@ $service = createTransactionService('ccard');
 $response = null;
 try {
     $response = $service->reserve($transaction);
+} catch (MandatoryFieldMissingException $e) {
+    echo 'No transaction id or token id found for cancellation. ';
+    echo 'Please check your input data and enter a valid transaction id or token id.';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
 }

@@ -53,7 +53,7 @@ function modifyPayload($payloadText)
     $_SESSION["uuid"] = $uuid;
 
     foreach ($payload["payment"]["notifications"]["notification"] as $key => &$value) {
-        //$value["url"] = getBaseUrl() . $value["url"];
+        $value["url"] = getBaseUrl() . $value["url"];
     }
 
     $payload["payment"]["success-redirect-url"] = getBaseUrl() . $payload["payment"]["success-redirect-url"];
