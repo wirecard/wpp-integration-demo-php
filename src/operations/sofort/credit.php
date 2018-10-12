@@ -30,7 +30,7 @@ if (array_key_exists('parentTransactionId', $_POST)) {
     $transaction->setParentTransactionId($_POST['parentTransactionId']);
 }
 
-$service = createTransactionService('sofortbanking');
+$service = createTransactionService(SOFORT);
 
 try {
     $response = $service->credit($transaction);

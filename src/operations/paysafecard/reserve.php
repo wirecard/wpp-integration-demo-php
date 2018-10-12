@@ -49,7 +49,7 @@ $transaction->setParentTransactionId($parentTransactionId);
 $transaction->setAccountHolder($accountHolder);
 
 // The service is used to execute the reserve operation itself. A response object is returned.
-$service = createTransactionService('paysafecard');
+$service = createTransactionService(PAYSAFECARD);
 $response = $service->reserve($transaction);
 
 // The response of the service must be handled depending on it's class

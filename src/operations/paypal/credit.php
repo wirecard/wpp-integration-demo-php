@@ -25,7 +25,7 @@ $accountHolder = new AccountHolder();
 $accountHolder->setEmail($accountHolderEmail);
 $transaction->setAccountHolder($accountHolder);
 
-$service = createTransactionService('paypal');
+$service = createTransactionService(PAYPAL);
 
 $response = $service->credit($transaction);
 

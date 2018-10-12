@@ -25,7 +25,7 @@ $transaction->setMandate($mandate);
 $transaction->setParentTransactionId($transactionId);
 $transaction->setIban(DEMO_IBAN);
 
-$service = createTransactionService('ideal');
+$service = createTransactionService(IDEAL);
 
 try {
     $response = $service->credit($transaction);

@@ -37,7 +37,7 @@ if (array_key_exists('parentTransactionId', $_POST)) {
     $transaction->setParentTransactionId($_POST['parentTransactionId']);
 }
 
-$service = createTransactionService('ideal');
+$service = createTransactionService(IDEAL);
 
 try {
     $response = $service->credit($transaction);

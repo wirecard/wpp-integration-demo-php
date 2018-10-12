@@ -15,7 +15,7 @@ $transactionId = $_POST['transactionId'];
 $transaction = new CreditCardTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService('ccard');
+$service = createTransactionService(CCARD);
 
 $response = null;
 try {

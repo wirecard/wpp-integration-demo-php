@@ -21,7 +21,7 @@ $transaction->setAmount($amount);
 $transaction->setParentTransactionId($transactionId);
 $transaction->setAccountHolder($accountHolder);
 
-$service = createTransactionService('paysafecard');
+$service = createTransactionService(PAYSAFECARD);
 
 $response = $service->pay($transaction);
 
@@ -32,3 +32,4 @@ if ($response instanceof SuccessResponse) {
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }
+

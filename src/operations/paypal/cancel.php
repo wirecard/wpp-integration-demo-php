@@ -15,7 +15,7 @@ $transactionId = $_POST['transactionId'];
 $transaction = new PayPalTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService('paypal');
+$service = createTransactionService(PAYPAL);
 
 $response = null;
 try {
