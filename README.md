@@ -77,6 +77,11 @@ Password: Wirecardbuyer
 #### iDeal
 No further test data needed.
 
+#### Paysafecard
+```
+Test Voucher Code: 3105 6626 4830 5874
+```
+
 ### Failed payment
 #### Standalone and embedded mode
 In order to execute a failing payment you can use the following SSL test card:
@@ -347,6 +352,7 @@ The following payment types are currently supported:
 * SEPA Direct Debit
 * iDEAL
 * Sofort. (Klarna Group)
+* Paysafecard
 
 You will find examples for each payment type in this demo project.  
 Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
@@ -368,7 +374,7 @@ For the most common use cases we provide examples in this project. You can find 
 #### Find a group of transactions
 * by transaction ID
 
-### The most common operations by payment type
+### The most common following up operations by payment methods
 
 #### Credit card
 * reserve
@@ -385,3 +391,7 @@ For the most common use cases we provide examples in this project. You can find 
 
 #### iDEAL
 * credit: refund a payment via SEPA credit transfer
+
+#### Paysafecard
+* Capture the reserved amount
+* Cancel the reserved amount
