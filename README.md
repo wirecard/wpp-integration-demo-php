@@ -400,5 +400,5 @@ For the most common use cases we provide examples in this project. You can find 
 * Capture the reserved amount
 * Cancel the reserved amount
 
-### Przelewy24
+#### Przelewy24
 * Cancel a payment

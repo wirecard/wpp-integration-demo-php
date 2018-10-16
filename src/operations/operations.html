@@ -237,15 +237,16 @@
 
             <div class="panel panel-default" style="margin-top: 1.5em;">
                 <div class="panel-heading">
-                    <h2>P24</h2>
+                    <h2>Przelewy24</h2>
                 </div>
                 <div class="panel-body">
-                    <h3>Cancel: Refund a p24 payment</h3>
+                    <h3>Cancel: Refund a Przelewy24 payment</h3>
                     <form action="przelewy24/cancel.php" method="post">
                         <div class="form-group">
                             <label for="transactionIdP24">Transaction ID</label>
                             <input type="text" name="transactionId" class="form-control"
-                                   id="transactionIdP24">
+                                   id="transactionIdP24"
+                                   placeholder="Enter transaction id">
                         </div>
                         <button type="submit" class="btn btn-primary">Cancel</button>
                     </form>
