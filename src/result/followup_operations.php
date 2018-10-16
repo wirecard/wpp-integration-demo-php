@@ -45,5 +45,13 @@ if (getPaymentMethod() === 'creditcard') {
     </form>
     <br>
     <?php
+} elseif (getPaymentMethod() === P24) {
+    ?>
+    <form action="../operations/przelewy24/cancel.php" method="post">
+        <input type="hidden" name="transactionId" value="<?= getTransactionId() ?>"/>
+        <button type="submit" class="btn btn-primary">Cancel the payment</button>
+    </form>
+    <br>
+<?php
 }
 

@@ -11,6 +11,7 @@ use Wirecard\PaymentSdk\Transaction\PaysafecardTransaction;
 use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
 use Wirecard\PaymentSdk\Transaction\SepaDirectDebitTransaction;
 use Wirecard\PaymentSdk\Transaction\SofortTransaction;
+use Wirecard\PaymentSdk\Transaction\PtwentyfourTransaction;
 use Wirecard\PaymentSdk\TransactionService;
 
 /**
@@ -192,6 +193,12 @@ function createTransactionService($paymentMethod)
     $paysafecardKey = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
     $paysafecardConfig = new PaymentMethodConfig(PaysafecardTransaction::NAME, $paysafecardMAID, $paysafecardKey);
     $config->add($paysafecardConfig);
+
+    // ### Przelewy24
+    $p24MAID = '86451785-3ed0-4aa1-99b2-cc32cf54ce9a';
+    $p24SecretKey = 'fdd54ea1-cef1-449a-945c-55abc631cfdc';
+    $p24Config = new PaymentMethodConfig(PtwentyfourTransaction::NAME, $p24MAID, $p24SecretKey);
+    $config->add($p24Config);
 
     return new TransactionService($config);
 }
