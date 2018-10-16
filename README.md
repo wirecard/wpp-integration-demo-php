@@ -82,6 +82,9 @@ No further test data needed.
 Test Voucher Code: 3105 6626 4830 5874
 ```
 
+#### Przelewy24
+No further test data needed.
+
 ### Failed payment
 #### Standalone and embedded mode
 In order to execute a failing payment you can use the following SSL test card:
@@ -353,6 +356,7 @@ The following payment types are currently supported:
 * iDEAL
 * Sofort. (Klarna Group)
 * Paysafecard
+* Przelewy24
 
 You will find examples for each payment type in this demo project.  
 Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
@@ -395,3 +399,6 @@ For the most common use cases we provide examples in this project. You can find 
 #### Paysafecard
 * Capture the reserved amount
 * Cancel the reserved amount
+
+### Przelewy24
+* Cancel a payment
