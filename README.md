@@ -34,8 +34,8 @@ In the example we assume that
 However, you are free to choose any port and any name for your project you are comfortable with.
 
 ### Successful payment
-This application provides examples for several payment types. 
-Click on this [link](#payment-types) to see a list of all supported payment types.  
+This application provides examples for several payment method. 
+Click on this [link](#payment-types) to see a list of all supported payment method.  
 For testing purposes you can use the data below.  
 For further test data consult [our documentation](https://document-center.wirecard.com/display/PTD/Appendix+K%3A+Test+Access+Data+and+Credentials).
 
@@ -84,6 +84,9 @@ Test Voucher Code: 3105 6626 4830 5874
 
 #### Przelewy24
 No further test data needed.
+
+#### EPS
+Choose the Apotheker Bank and enter arbitrary account data.
 
 ### Failed payment
 #### Standalone and embedded mode
@@ -186,10 +189,7 @@ e.g. the credit card data entry form is displayed to them immediately.
 },
 ```
 
-This option is useful if you want to decide about the payment type on a per request basis. E.g. for purchases above EUR 100 you want to accept only credit card. For purchases from a specific country you want to allow only Paypal etc.
-
-It is possible but not recommended to provide multiple payment methods:  
-In this case your consumer can use only the payment method which you specified as LAST.
+This option is useful if you want to decide about the payment method on a per request basis. E.g. for purchases above EUR 100 you want to accept only credit card. For purchases from a specific country you want to allow only Paypal etc.
 
 #### Request parameters which are specific for a type of integration
 For the standalone integration you are ready to go.  
@@ -346,9 +346,9 @@ format of the response.
     }
 ```
 
-## Payment types
+## Payment method
 
-The following payment types are currently supported:
+The following payment methods are currently supported:
 
 * Credit Card
 * PayPal
@@ -357,8 +357,9 @@ The following payment types are currently supported:
 * Sofort. (Klarna Group)
 * Paysafecard
 * Przelewy24
+* EPS
 
-You will find examples for each payment type in this demo project.  
+You will find examples for each payment method in this demo project.  
 Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
 
 ### Credit card brands
