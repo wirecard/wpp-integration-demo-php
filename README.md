@@ -35,7 +35,7 @@ However, you are free to choose any port and any name for your project you are c
 
 ### Successful payment
 This application provides examples for several payment method. 
-Click on this [link](#payment-types) to see a list of all supported payment method.  
+Click on this [link](#payment-method) to see a list of all supported payment method.  
 For testing purposes you can use the data below.  
 For further test data consult [our documentation](https://document-center.wirecard.com/display/PTD/Appendix+K%3A+Test+Access+Data+and+Credentials).
 
