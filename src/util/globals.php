@@ -8,6 +8,7 @@ const SEPA_CREDIT = 'sepacredit';
 const SOFORT = 'sofortbanking';
 const PAYSAFECARD = 'paysafecard';
 const P24 = 'p24';
+const EPS = 'eps';
 
 const PATH_TO_STANDALONE = '../../example-requests-standalone/';
 const PATH_TO_EMBEDDED = '../../example-requests-embedded/';
@@ -19,7 +20,8 @@ const PATHS_STANDALONE = [
     SEPA_DIRECTDEBIT => PATH_TO_STANDALONE . 'sepa_dd_payment.json',
     SOFORT => PATH_TO_STANDALONE . 'sofortbanking_payment.json',
     PAYSAFECARD => PATH_TO_STANDALONE . 'paysafecard_payment.json',
-    P24 => PATH_TO_STANDALONE . 'przelewy24_payment.json'
+    P24 => PATH_TO_STANDALONE . 'przelewy24_payment.json',
+    EPS => PATH_TO_STANDALONE . 'eps_payment.json'
 ];
 
 const PATHS_EMBEDDED = [
