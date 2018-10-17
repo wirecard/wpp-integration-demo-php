@@ -117,7 +117,7 @@ You can choose between 3 types of integration:
 
 * [standalone](https://document-center.wirecard.com/display/PTD/Hosted+Payment+Page) (a.k.a. hosted): Your consumer gets redirected to a standalone payment page hosted independently of your checkout page.
 * [embedded](https://document-center.wirecard.com/display/PTD/Embedded+Payment+Page): A payment form rendered over your checkout page as a modal window.
-* [seamless](https://document-center.wirecard.com/display/PTD/Seamless+Mode): A card form seamlessly integrated into your checkout page.
+* [seamless](https://document-center.wirecard.com/display/PTD/Seamless+Mode): A card form seamlessly integrated into your checkout page. This type of integration is relevant only for credit card, not for the other payment methods.
 
 You can find more details about the integration types in our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
 
@@ -379,7 +379,7 @@ For the most common use cases we provide examples in this project. You can find 
 #### Find a group of transactions
 * by transaction ID
 
-### The most common following up operations by payment methods
+### The most common follow-up operations by payment methods
 
 #### Credit card
 * reserve
