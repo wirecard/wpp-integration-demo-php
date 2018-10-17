@@ -32,4 +32,3 @@ if ($response instanceof SuccessResponse) {
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }
-

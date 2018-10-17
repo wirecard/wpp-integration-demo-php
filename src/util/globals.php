@@ -31,5 +31,6 @@ const PATHS_EMBEDDED = [
     SEPA_DIRECTDEBIT => PATH_TO_EMBEDDED . 'sepa_dd_payment.json',
     SOFORT => PATH_TO_EMBEDDED . 'sofortbanking_payment.json',
     PAYSAFECARD => PATH_TO_EMBEDDED . 'paysafecard_payment.json',
-    P24 => PATH_TO_EMBEDDED . 'przelewy24_payment.json'
+    P24 => PATH_TO_EMBEDDED . 'przelewy24_payment.json',
+    EPS => PATH_TO_EMBEDDED . 'eps_payment.json'
 ];

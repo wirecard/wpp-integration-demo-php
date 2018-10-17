@@ -23,7 +23,6 @@ try {
     // get a transaction by passing transactionId and paymentMethod to getTransactionByTransactionId method.
     $transaction = $service->getGroupOfTransactions($transactionId, $paymentMethod);
     require 'showPayment.php';
-
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
 }
