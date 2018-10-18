@@ -23,13 +23,13 @@ try {
 } catch (MandatoryFieldMissingException $e) {
     echo 'No transaction id found for cancellation. Please check your input data and enter a valid transaction id. ';
 } catch (UnsupportedOperationException $e) {
-    echo 'The transaction can not be refunded.';
+    echo 'The transaction can not be canceled.';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
 }
 
 if ($response instanceof SuccessResponse) {
-    echo 'Payment successfully refunded.<br>';
+    echo 'Payment successfully canceled.<br>';
     echo 'TransactionID: ' . $response->getTransactionId();
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);

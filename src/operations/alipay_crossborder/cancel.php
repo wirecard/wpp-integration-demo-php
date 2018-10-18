@@ -29,7 +29,7 @@ try {
 }
 
 if ($response instanceof SuccessResponse) {
-    echo 'Payment successfully refunded.<br>';
+    echo 'Payment successfully canceled.<br>';
     echo 'TransactionID: ' . $response->getTransactionId();
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
