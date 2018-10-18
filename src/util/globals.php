@@ -9,6 +9,7 @@ const SOFORT = 'sofortbanking';
 const PAYSAFECARD = 'paysafecard';
 const P24 = 'p24';
 const EPS = 'eps';
+const ALIPAY_XBORDER = 'alipay-xborder';
 
 const PATH_TO_STANDALONE = '../../example-requests-standalone/';
 const PATH_TO_EMBEDDED = '../../example-requests-embedded/';
@@ -21,7 +22,8 @@ const PATHS_STANDALONE = [
     SOFORT => PATH_TO_STANDALONE . 'sofortbanking_payment.json',
     PAYSAFECARD => PATH_TO_STANDALONE . 'paysafecard_payment.json',
     P24 => PATH_TO_STANDALONE . 'przelewy24_payment.json',
-    EPS => PATH_TO_STANDALONE . 'eps_payment.json'
+    EPS => PATH_TO_STANDALONE . 'eps_payment.json',
+    ALIPAY_XBORDER => PATH_TO_STANDALONE . 'alipay_cross_border_payment.json'
 ];
 
 const PATHS_EMBEDDED = [
@@ -32,5 +34,6 @@ const PATHS_EMBEDDED = [
     SOFORT => PATH_TO_EMBEDDED . 'sofortbanking_payment.json',
     PAYSAFECARD => PATH_TO_EMBEDDED . 'paysafecard_payment.json',
     P24 => PATH_TO_EMBEDDED . 'przelewy24_payment.json',
-    EPS => PATH_TO_EMBEDDED . 'eps_payment.json'
+    EPS => PATH_TO_EMBEDDED . 'eps_payment.json',
+    ALIPAY_XBORDER => PATH_TO_EMBEDDED . 'alipay_cross_border_payment.json'
 ];
