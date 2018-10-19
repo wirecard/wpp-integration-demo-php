@@ -86,7 +86,7 @@ function postRegisterRequest($payload, $paymentMethod)
 
     $response = "";
     try {
-        $response = $client->request('POST', 'https://wpp-test.wirecard.com/api/payment/register', [
+        $response = $client->request('POST', WPP_URL . '/api/payment/register', [
             'headers' => $headers,
             'body' => json_encode($payload),
         ]);
