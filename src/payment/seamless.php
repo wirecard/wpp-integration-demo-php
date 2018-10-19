@@ -44,7 +44,6 @@
         </ul>
     </div>
 
-
     <div class="panel panel-default" id="paymentResult">
         <div class="panel-heading">
             <h4 id="paymentResultTitle">Payment result</h4>
@@ -111,6 +110,15 @@
         ?>
     );
 </script>
-<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-primary center-block text-center" role="button"
+               style="text-align: right;float: right; margin: 30px 0 30px 0"
+               href="../../index.html">Back</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
