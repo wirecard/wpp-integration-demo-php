@@ -20,7 +20,7 @@
        style="text-align: right;float: right; margin: 30px 0 30px 0"
        href="../../index.html">Back</a>
     <?php
-    require '../util/helperFunctions.php';
+    
     session_start();
     ?>
 

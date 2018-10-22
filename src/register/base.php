@@ -72,7 +72,7 @@ function modifyPayload($payloadText)
  */
 function postRegisterRequest($payload, $paymentMethod)
 {
-    require_once('../config.php');
+    
 
     $username = MERCHANT[$paymentMethod]["username"];
     $password = MERCHANT[$paymentMethod]["password"];

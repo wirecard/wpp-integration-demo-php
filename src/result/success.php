@@ -1,7 +1,7 @@
 <?php
 require '../../vendor/autoload.php';
-require '../util/helperFunctions.php';
-require '../config.php';
+
+
 
 session_start();
 $_SESSION['msg'] = 'The payment was successful.';

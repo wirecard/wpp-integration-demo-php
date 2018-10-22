@@ -84,7 +84,7 @@ function isValidSignature($responseBase64, $signatureBase64, $merchantSecretKey)
  */
 function showValidSignature()
 {
-    require_once('../config.php');
+    
 
     $isResponseBase64 = isset($_SESSION['response']['response-base64']);
     $isResponseSignatureBase64 = isset($_SESSION['response']['response-signature-base64']);

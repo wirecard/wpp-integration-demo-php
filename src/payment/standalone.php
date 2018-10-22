@@ -6,7 +6,7 @@
 <h1>Wirecard Payment Page Integration Demo - Hosted / Standalone Payment</h1>
 
 <?php
-require_once('../util/helperFunctions.php');
+
 
 session_start();
 redirect($_SESSION['payment-redirect-url']);

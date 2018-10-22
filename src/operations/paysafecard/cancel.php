@@ -1,8 +1,8 @@
 <?php
 
 require '../../../vendor/autoload.php';
-require '../../util/helperFunctions.php';
-require '../../config.php';
+
+
 
 use Wirecard\PaymentSdk\Exception\MandatoryFieldMissingException;
 use Wirecard\PaymentSdk\Exception\UnsupportedOperationException;

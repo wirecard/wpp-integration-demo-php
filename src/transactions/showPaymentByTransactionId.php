@@ -1,7 +1,7 @@
 <?php
 require '../../vendor/autoload.php';
-require '../util/helperFunctions.php';
-require '../config.php';
+
+
 
 $paymentMethod = htmlspecialchars($_POST['paymentMethod']);
 $transactionId = htmlspecialchars($_POST['transactionId']);

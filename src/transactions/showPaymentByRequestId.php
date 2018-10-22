@@ -1,5 +1,5 @@
 <?php
-require_once('../util/helperFunctions.php');
+
 
 // # PayPal notification
 
@@ -9,7 +9,7 @@ require_once('../util/helperFunctions.php');
 
 // To include the necessary files, we use the composer for PSR-4 autoloading.
 require '../../vendor/autoload.php';
-require_once('../config.php');
+
 
 $paymentMethod = htmlspecialchars($_POST['paymentMethod']);
 $requestId = htmlspecialchars($_POST['requestId']);
