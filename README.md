@@ -86,7 +86,7 @@ Test Voucher Code: 3105 6626 4830 5874
 No further test data needed.
 
 #### EPS
-Choose the Apotheker Bank and enter arbitrary account data.
+Choose the bank "Österreichische Apothekerbank eG" and enter arbitrary account data.
 
 #### Alipay Cross-border
 ```
