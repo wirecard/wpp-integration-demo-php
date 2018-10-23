@@ -5,7 +5,7 @@ REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 
 VERSION=`cat VERSION`
-STATUS=`curl -s -o /dev/null -w "%{http_code}" -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/repos/wirecard/paymentSDK-php/git/refs/tags/${VERSION}`
+STATUS=`curl -s -o /dev/null -w "%{http_code}" -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/repos/wirecard/wpp-integration-demo-php/git/refs/tags/${VERSION}`
 
 if [[ ${STATUS} == "200" ]] ; then
     echo "Tag is up to date with version."
