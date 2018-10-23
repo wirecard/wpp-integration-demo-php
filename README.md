@@ -287,7 +287,7 @@ You can display a message to your consumer on the checkout page or you can redir
 ### Get notifications
 
 You will be informed about the outcome of a settlement. A notification response is sent to a customized URL address.
-Here you can see an example how a notify respond could look like. 
+Here you can see an example how a notification response could look like. 
 Please consider that the response could contain more fields like shipping or pos-transaction related
 information and depends on the payment method.
 
