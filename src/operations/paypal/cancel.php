@@ -2,8 +2,6 @@
 
 require '../../../vendor/autoload.php';
 
-
-
 use Wirecard\PaymentSdk\Exception\MandatoryFieldMissingException;
 use Wirecard\PaymentSdk\Exception\UnsupportedOperationException;
 use Wirecard\PaymentSdk\Response\FailureResponse;

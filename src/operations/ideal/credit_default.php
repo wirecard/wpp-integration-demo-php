@@ -2,8 +2,6 @@
 
 require '../../../vendor/autoload.php';
 
-
-
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Mandate;
 use Wirecard\PaymentSdk\Exception\MalformedResponseException;
