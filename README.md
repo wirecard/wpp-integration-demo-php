@@ -372,16 +372,16 @@ You will find examples for each payment method in this demo project.
 
 ### Hobex VT
 You can register SEPA Direct Debit payments via the Austrian acquirer Hobex.
-If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
+If you use Hobex, you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
 Additional fields `order-number`, `creditor-id` and `country` are required.
 
 | Field | Description |
 | ----- | ----------- |
 | order-number | Merchant-side order number. Allowed characters: a-z, A-Z, 0-9. |
-| creditor-id | The hobex AG creditor ID (always "AT94ZZZ00000001251"). |
+| creditor-id | The Hobex AG creditor ID (always "AT94ZZZ00000001251"). |
 | country | A 2-letter code, representing the first two characters of the consumer's IBAN. |
 
-#### Available countries for hobex VT
+#### Available countries for Hobex VT
 * AT (Austria)
 * CZ (Czech Republic)
 * DE (Germany)
