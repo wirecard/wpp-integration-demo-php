@@ -18,6 +18,8 @@
     <script type='text/javascript'>
         WPP.embeddedPayUrl(
             <?php
+            require '../../vendor/autoload.php';
+            
             session_start();
             echo '"' . $_SESSION['payment-redirect-url'] . '"';
             ?>

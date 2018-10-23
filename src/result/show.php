@@ -20,6 +20,7 @@
        style="text-align: right;float: right; margin: 30px 0 30px 0"
        href="../../index.html">Back</a>
     <?php
+    require '../../vendor/autoload.php';
     
     session_start();
     ?>

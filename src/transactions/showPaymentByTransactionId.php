@@ -1,8 +1,6 @@
 <?php
 require '../../vendor/autoload.php';
 
-
-
 $paymentMethod = htmlspecialchars($_POST['paymentMethod']);
 $transactionId = htmlspecialchars($_POST['transactionId']);
 
