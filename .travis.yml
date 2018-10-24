@@ -16,6 +16,13 @@ env:
   global:
   - COMPOSER_ARGS="--no-interaction"
 
+before_install:
+  - travis_retry composer self-update
+
+install:
+  - travis_retry composer install $COMPOSER_ARGS
+  - composer show
+
 script:
   - composer cs-check
   
