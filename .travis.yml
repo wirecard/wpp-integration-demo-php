@@ -17,7 +17,7 @@ env:
   - COMPOSER_ARGS="--no-interaction"
 
 script:
-  - composer test
+  - composer cs-check
   
 before_deploy:
   - bash .bin/generate-release-package.sh $TRAVIS_TAG
