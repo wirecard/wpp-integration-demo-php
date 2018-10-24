@@ -427,11 +427,12 @@ For the most common use cases we provide examples in this project. You can find 
 * credit: refund a payment via SEPA credit transfer
 
 #### Paysafecard
-* Capture the reserved amount
-* Cancel the reserved amount
+* capture the reserved amount
+* cancel the reserved amount
 
 #### Przelewy24
-* Cancel a payment
+* cancel a payment
 
 #### Alipay Cross-border
 * Cancel a payment
+* Refund a payment
