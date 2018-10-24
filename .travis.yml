@@ -15,6 +15,9 @@ cache:
 env:
   global:
   - COMPOSER_ARGS="--no-interaction"
+
+script:
+  - composer test
   
 before_deploy:
   - bash .bin/generate-release-package.sh $TRAVIS_TAG
