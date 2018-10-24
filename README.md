@@ -435,4 +435,3 @@ For the most common use cases we provide examples in this project. You can find 
 
 #### Alipay Cross-border
 * Cancel a payment
-* Refund a payment
