@@ -12,7 +12,6 @@ use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
 use Wirecard\PaymentSdk\Transaction\SepaDirectDebitTransaction;
 use Wirecard\PaymentSdk\Transaction\SofortTransaction;
 use Wirecard\PaymentSdk\Transaction\PtwentyfourTransaction;
-use Wirecard\PaymentSdk\Transaction\AlipayCrossborderTransaction;
 use Wirecard\PaymentSdk\TransactionService;
 
 /**
@@ -84,7 +83,7 @@ function isValidSignature($responseBase64, $signatureBase64, $merchantSecretKey)
  */
 function showValidSignature()
 {
-    
+    require_once('../config.php');
 
     $isResponseBase64 = isset($_SESSION['response']['response-base64']);
     $isResponseSignatureBase64 = isset($_SESSION['response']['response-signature-base64']);
@@ -200,16 +199,6 @@ function createTransactionService($paymentMethod)
     $p24SecretKey = 'fdd54ea1-cef1-449a-945c-55abc631cfdc';
     $p24Config = new PaymentMethodConfig(PtwentyfourTransaction::NAME, $p24MAID, $p24SecretKey);
     $config->add($p24Config);
-
-    // ### Alipay Cross-border
-    $alipaycrossborderMAID = '47cd4edf-b13c-4298-9344-53119ab8b9df';
-    $alipaycrossborderSecretKey = '94fe4f40-16c5-4019-9c6c-bc33ec858b1d';
-    $alipaycrossborderConfig = new PaymentMethodConfig(
-        AlipayCrossborderTransaction::NAME,
-        $alipaycrossborderMAID,
-        $alipaycrossborderSecretKey
-    );
-    $config->add($alipaycrossborderConfig);
 
     return new TransactionService($config);
 }

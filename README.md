@@ -86,15 +86,7 @@ Test Voucher Code: 3105 6626 4830 5874
 No further test data needed.
 
 #### EPS
-Choose the bank "Österreichische Apothekerbank eG" and enter arbitrary account data.
-
-#### Alipay Cross-border
-```
-Account name: alipaytest20091@gmail.com
-Password: 111111
-Captcha Code: 8888
-Payment Password: 111111
-```
+Choose the Apotheker Bank and enter arbitrary account data.
 
 ### Failed payment
 #### Standalone and embedded mode
@@ -287,7 +279,7 @@ You can display a message to your consumer on the checkout page or you can redir
 ### Get notifications
 
 You will be informed about the outcome of a settlement. A notification response is sent to a customized URL address.
-Here you can see an example how a notification response could look like. 
+Here you can see an example how a notify respond could look like. 
 Please consider that the response could contain more fields like shipping or pos-transaction related
 information and depends on the payment method.
 
@@ -366,30 +358,9 @@ The following payment methods are currently supported:
 * Paysafecard
 * Przelewy24
 * EPS
-* Alipay Cross-border
 
 You will find examples for each payment method in this demo project.  
-
-### Hobex VT
-You can register SEPA Direct Debit payments via the Austrian acquirer Hobex.
-If you use Hobex, you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
-Additional fields `order-number`, `creditor-id` and `country` are required.
-
-| Field | Description |
-| ----- | ----------- |
-| order-number | Merchant-side order number. Allowed characters: a-z, A-Z, 0-9. |
-| creditor-id | The Hobex AG creditor ID (always "AT94ZZZ00000001251"). |
-| country | A 2-letter code, representing the first two characters of the consumer's IBAN. |
-
-#### Available countries for Hobex VT
-* AT (Austria)
-* CZ (Czech Republic)
-* DE (Germany)
-* IT (Italy)
-* NL (Netherlands)
-* SI (Slovenia)
-
- Please note that the only available payment currency for consumers is EUR (€).
+Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
 
 ### Credit card brands
 
@@ -427,11 +398,8 @@ For the most common use cases we provide examples in this project. You can find 
 * credit: refund a payment via SEPA credit transfer
 
 #### Paysafecard
-* capture the reserved amount
-* cancel the reserved amount
+* Capture the reserved amount
+* Cancel the reserved amount
 
 #### Przelewy24
-* cancel a payment
-
-#### Alipay Cross-border
 * Cancel a payment
