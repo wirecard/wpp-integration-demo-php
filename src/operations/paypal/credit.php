@@ -1,8 +1,8 @@
 <?php
 
 require '../../../vendor/autoload.php';
-require '../../util/helperFunctions.php';
-require '../../config.php';
+
+
 
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Amount;
@@ -25,7 +25,7 @@ $accountHolder = new AccountHolder();
 $accountHolder->setEmail($accountHolderEmail);
 $transaction->setAccountHolder($accountHolder);
 
-$service = createTransactionService('paypal');
+$service = createTransactionService(PAYPAL);
 
 $response = $service->credit($transaction);
 

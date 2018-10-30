@@ -34,8 +34,8 @@ In the example we assume that
 However, you are free to choose any port and any name for your project you are comfortable with.
 
 ### Successful payment
-This application provides examples for several payment types. 
-Click on this [link](#payment-types) to see a list of all supported payment types.  
+This application provides examples for several payment method. 
+Click on this [link](#payment-method) to see a list of all supported payment method.  
 For testing purposes you can use the data below.  
 For further test data consult [our documentation](https://document-center.wirecard.com/display/PTD/Appendix+K%3A+Test+Access+Data+and+Credentials).
 
@@ -77,6 +77,17 @@ Password: Wirecardbuyer
 #### iDeal
 No further test data needed.
 
+#### Paysafecard
+```
+Test Voucher Code: 3105 6626 4830 5874
+```
+
+#### Przelewy24
+No further test data needed.
+
+#### EPS
+Choose the Apotheker Bank and enter arbitrary account data.
+
 ### Failed payment
 #### Standalone and embedded mode
 In order to execute a failing payment you can use the following SSL test card:
@@ -106,7 +117,7 @@ You can choose between 3 types of integration:
 
 * [standalone](https://document-center.wirecard.com/display/PTD/Hosted+Payment+Page) (a.k.a. hosted): Your consumer gets redirected to a standalone payment page hosted independently of your checkout page.
 * [embedded](https://document-center.wirecard.com/display/PTD/Embedded+Payment+Page): A payment form rendered over your checkout page as a modal window.
-* [seamless](https://document-center.wirecard.com/display/PTD/Seamless+Mode): A card form seamlessly integrated into your checkout page.
+* [seamless](https://document-center.wirecard.com/display/PTD/Seamless+Mode): A card form seamlessly integrated into your checkout page. This type of integration is relevant only for credit card, not for the other payment methods.
 
 You can find more details about the integration types in our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
 
@@ -178,10 +189,7 @@ e.g. the credit card data entry form is displayed to them immediately.
 },
 ```
 
-This option is useful if you want to decide about the payment type on a per request basis. E.g. for purchases above EUR 100 you want to accept only credit card. For purchases from a specific country you want to allow only Paypal etc.
-
-It is possible but not recommended to provide multiple payment methods:  
-In this case your consumer can use only the payment method which you specified as LAST.
+This option is useful if you want to decide about the payment method on a per request basis. E.g. for purchases above EUR 100 you want to accept only credit card. For purchases from a specific country you want to allow only Paypal etc.
 
 #### Request parameters which are specific for a type of integration
 For the standalone integration you are ready to go.  
@@ -338,19 +346,42 @@ format of the response.
     }
 ```
 
-## Payment types
+## Payment method
 
-The following payment types are currently supported:
+The following payment methods are currently supported:
 
 * Credit Card
 * PayPal
 * SEPA Direct Debit
 * iDEAL
 * Sofort. (Klarna Group)
+* Paysafecard
+* Przelewy24
+* EPS
 
-You will find examples for each payment type in this demo project.  
-Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
+You will find examples for each payment method in this demo project.  
 
+### Hobex
+You can register SEPA Direct Debit payments via the Austrian acquirer Hobex.
+If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
+Additional fields `order-number`, `creditor-id` and `country` are required.
+
+| Field | Description |
+| ----- | ----------- |
+| order-number | Merchant-side order number. Allowed characters: a-z, A-Z, 0-9. |
+| creditor-id | The hobex AG creditor ID (always "AT94ZZZ00000001251"). |
+| country | A 2-letter code, representing the first two characters of the consumer's IBAN. |
+
+#### Available countries for Hobex 
+* AT (Austria)
+* CZ (Czech Republic)
+* DE (Germany)
+* IT (Italy)
+* NL (Netherlands)
+* SI (Slovenia)
+
+ Please note that the only available payment currency for consumers is EUR (€).
+ 
 ### Credit card brands
 
 The test merchant used in these examples has only some very popular credit card brands configured. For a list of all supported credit card brands see our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
@@ -368,7 +399,7 @@ For the most common use cases we provide examples in this project. You can find 
 #### Find a group of transactions
 * by transaction ID
 
-### The most common operations by payment type
+### The most common follow-up operations by payment methods
 
 #### Credit card
 * reserve
@@ -385,3 +416,10 @@ For the most common use cases we provide examples in this project. You can find 
 
 #### iDEAL
 * credit: refund a payment via SEPA credit transfer
+
+#### Paysafecard
+* Capture the reserved amount
+* Cancel the reserved amount
+
+#### Przelewy24
+* Cancel a payment

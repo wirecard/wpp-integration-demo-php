@@ -1,8 +1,6 @@
 <?php
 
 require '../../../vendor/autoload.php';
-require '../../util/helperFunctions.php';
-require '../../config.php';
 
 use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Response\FailureResponse;
@@ -19,7 +17,7 @@ $transaction = new CreditCardTransaction();
 $transaction->setAmount($amount);
 $transaction->setTokenId($tokenId);
 
-$service = createTransactionService('creditcard');
+$service = createTransactionService(CCARD);
 
 $response = $service->pay($transaction);
 

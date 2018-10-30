@@ -1,6 +1,7 @@
 <?php
-$link = '../../register/retrievePayment.php?paymentMethod=' . $response->getPaymentMethod() .
-    '&tid=' . $response->getTransactionId() . '&rid=' . $response->getRequestId();
+$json_str = json_encode(['result' => $transaction], JSON_PRETTY_PRINT);
+$json_str = str_replace("\\", "", $json_str);
+$json_str = substr($json_str, 1, strlen($json_str) - 2);
 ?>
 <html>
 <head>
@@ -18,6 +19,13 @@ $link = '../../register/retrievePayment.php?paymentMethod=' . $response->getPaym
 </head>
 </html>
 
-<br><br>
-<a href="<?php echo $link; ?>" class="btn btn-primary" role="button">Find Payments</a>
-<br>
+<h3 style="text-align: center"><strong>Payment Result</strong></h3>
+<div class="row">
+    <div class="col-12">
+        <p style="text-align: center">
+        <pre>
+                <?php echo $json_str; ?>
+            </pre>
+        </p>
+    </div>
+</div>

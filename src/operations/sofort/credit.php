@@ -1,8 +1,8 @@
 <?php
 
 require '../../../vendor/autoload.php';
-require '../../util/helperFunctions.php';
-require '../../config.php';
+
+
 
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Exception\MalformedResponseException;
@@ -30,7 +30,7 @@ if (array_key_exists('parentTransactionId', $_POST)) {
     $transaction->setParentTransactionId($_POST['parentTransactionId']);
 }
 
-$service = createTransactionService('sofortbanking');
+$service = createTransactionService(SOFORT);
 
 try {
     $response = $service->credit($transaction);

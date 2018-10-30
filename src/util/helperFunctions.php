@@ -7,9 +7,11 @@ use Wirecard\PaymentSdk\Config\PaymentMethodConfig;
 use Wirecard\PaymentSdk\Config\SepaConfig;
 use Wirecard\PaymentSdk\Transaction\IdealTransaction;
 use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
+use Wirecard\PaymentSdk\Transaction\PaysafecardTransaction;
 use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
 use Wirecard\PaymentSdk\Transaction\SepaDirectDebitTransaction;
 use Wirecard\PaymentSdk\Transaction\SofortTransaction;
+use Wirecard\PaymentSdk\Transaction\PtwentyfourTransaction;
 use Wirecard\PaymentSdk\TransactionService;
 
 /**
@@ -111,21 +113,12 @@ function showValidSignature()
 function createTransactionService($paymentMethod)
 {
     $baseUrl = 'https://api-test.wirecard.com';
-    $httpUser = '';
-    $httpPass = '';
-
-    if ($paymentMethod === 'creditcard' || $paymentMethod === 'paypal') {
-        $httpUser = '70000-APITEST-AP';
-        $httpPass = 'qD2wzQ_hrc!8';
-    } elseif ($paymentMethod === 'sepadirectdebit' || $paymentMethod === 'ideal'
-        || $paymentMethod === 'sofortbanking') {
-        $httpUser = '16390-testing';
-        $httpPass = '3!3013=D3fD8X7';
-    }
+    $username = MERCHANT[$paymentMethod]["username"];
+    $password = MERCHANT[$paymentMethod]["password"];
 
     // The configuration is stored in an object containing the connection settings set above.
     // A default currency can also be provided.
-    $config = new Config\Config($baseUrl, $httpUser, $httpPass, 'EUR');
+    $config = new Config\Config($baseUrl, $username, $password, 'EUR');
 
     // Set a public key for certificate pinning used for response signature validation.
     // This certificate needs to be always up to date.
@@ -194,6 +187,18 @@ function createTransactionService($paymentMethod)
     );
     $sepaCreditTransferConfig->setCreditorId('DE98ZZZ09999999999');
     $config->add($sepaCreditTransferConfig);
+
+    // ### paysafecard
+    $paysafecardMAID = '28d4938b-d0d6-4c4a-b591-fb63175de53e';
+    $paysafecardKey = 'dbc5a498-9a66-43b9-bf1d-a618dd399684';
+    $paysafecardConfig = new PaymentMethodConfig(PaysafecardTransaction::NAME, $paysafecardMAID, $paysafecardKey);
+    $config->add($paysafecardConfig);
+
+    // ### Przelewy24
+    $p24MAID = '86451785-3ed0-4aa1-99b2-cc32cf54ce9a';
+    $p24SecretKey = 'fdd54ea1-cef1-449a-945c-55abc631cfdc';
+    $p24Config = new PaymentMethodConfig(PtwentyfourTransaction::NAME, $p24MAID, $p24SecretKey);
+    $config->add($p24Config);
 
     return new TransactionService($config);
 }
@@ -281,4 +286,32 @@ function getTransactionState()
         return $obj->payment->{'transaction-state'};
     }
     return "";
+}
+
+/**
+ * For requests which includes an URL for e.g. notifications it is easier to get the URL from the server variables.
+ * @param $path
+ * @return string
+ */
+function getUrl($path)
+{
+    $protocol = 'http';
+
+    if ($_SERVER['SERVER_PORT'] === 443 || (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) === 'on')) {
+        $protocol .= 's';
+    }
+
+    $host = $_SERVER['HTTP_HOST'];
+    $request = $_SERVER['PHP_SELF'];
+    return dirname(sprintf('%s://%s%s', $protocol, $host, $request)) . '/' . $path;
+}
+
+/**
+ * Checks if a string is neither null nor empty
+ * @param $str
+ * @return bool
+ */
+function isNullOrEmptyString($str)
+{
+    return (!isset($str) || trim($str) === '');
 }

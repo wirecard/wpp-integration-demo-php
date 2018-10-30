@@ -18,6 +18,12 @@
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.7"
   },
+  "autoload": {
+    "files": [
+      "src/config.php",
+      "src/util/helperFunctions.php"
+    ]
+  },
   "scripts": {
     "cs-check": "phpcs",
     "cs-fix": "phpcbf"

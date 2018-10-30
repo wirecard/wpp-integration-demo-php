@@ -1,8 +1,6 @@
 <?php
 
 require '../../../vendor/autoload.php';
-require '../../util/helperFunctions.php';
-require '../../config.php';
 
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Mandate;
@@ -25,7 +23,7 @@ $transaction->setMandate($mandate);
 $transaction->setParentTransactionId($transactionId);
 $transaction->setIban(DEMO_IBAN);
 
-$service = createTransactionService('ideal');
+$service = createTransactionService(IDEAL);
 
 try {
     $response = $service->credit($transaction);

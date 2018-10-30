@@ -1,7 +1,7 @@
 dist: trusty
 sudo: false
 language: php
-php: 
+php:
   - '5.6'
 addons:
     github_token:
@@ -24,7 +24,7 @@ install:
 
 script:
   - composer cs-check
-  
+
 before_deploy:
   - bash .bin/generate-release-package.sh $TRAVIS_TAG
   - ls -lah target

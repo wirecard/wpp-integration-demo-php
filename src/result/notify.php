@@ -19,7 +19,7 @@
 </html>
 
 <?php
-require_once('../util/helperFunctions.php');
+
 
 // # PayPal notification
 
@@ -29,7 +29,7 @@ require_once('../util/helperFunctions.php');
 
 // To include the necessary files, we use the composer for PSR-4 autoloading.
 require '../../vendor/autoload.php';
-require '../config.php';
+
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;

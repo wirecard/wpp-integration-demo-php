@@ -30,10 +30,11 @@
                         <div class="form-group">
                             <label for="transactionID">Use the transaction id to get a transaction</label>
                             <input type="text" name="transactionId" class="form-control" id="transactionID"
+                                   value="<?php echo isset($_GET['tid']) ? $_GET['tid'] : ''; ?>"
                                    aria-describedby="transactionIDHelp" placeholder="Enter transaction id">
-                            <small id="transactionIDHelp" class="form-text text-muted">Define a transaction id
-                            </small>
+                            <small id="transactionIDHelp" class="form-text text-muted">Define a transaction id</small>
                             <input type="text" name="paymentMethod" class="form-control" id="paymentMethod"
+                                   value="<?php echo isset($_GET['paymentMethod']) ? $_GET['paymentMethod'] : ''; ?>"
                                    aria-describedby="paymentHelp" placeholder="Enter payment method">
                             <small id="paymentHelp" class="form-text text-muted">Define a payment method</small>
                         </div>
@@ -46,10 +47,12 @@
                         <div class="form-group">
                             <label for="requestId">Use the request id to get a transaction</label>
                             <input type="text" name="requestId" class="form-control" id="requestId"
+                                   value="<?php echo isset($_GET['rid']) ? $_GET['rid'] : ''; ?>"
                                    aria-describedby="requestIdHelp" placeholder="Enter request id">
                             <small id="requestIdHelp" class="form-text text-muted">Define a request id
                             </small>
                             <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form2"
+                                   value="<?php echo isset($_GET['paymentMethod']) ? $_GET['paymentMethod'] : ''; ?>"
                                    aria-describedby="paymentHelp_form2" placeholder="Enter payment method">
                             <small id="paymentHelp_form2" class="form-text text-muted">Define a payment method</small>
                         </div>
@@ -62,10 +65,12 @@
                         <div class="form-group">
                             <label for="groupTransactionID">Get a group of transactions</label>
                             <input type="text" name="transactionId" class="form-control" id="groupTransactionID"
+                                   value="<?php echo isset($_GET['tid']) ? $_GET['tid'] : ''; ?>"
                                    aria-describedby="transactionIDHelp_form3" placeholder="Enter transaction id">
                             <small id="transactionIDHelp_form3" class="form-text text-muted">Define a transaction id
                             </small>
                             <input type="text" name="paymentMethod" class="form-control" id="paymentMethod_form3"
+                                   value="<?php echo isset($_GET['paymentMethod']) ? $_GET['paymentMethod'] : ''; ?>"
                                    aria-describedby="paymentHelp_from3" placeholder="Enter payment method">
                             <small id="paymentHelp_from3" class="form-text text-muted">Define a payment method</small>
                         </div>
@@ -76,8 +81,14 @@
         </div>
 
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-primary center-block text-center" role="button"
+               style="text-align: right;float: right; margin: 30px 0 30px 0"
+               href="../../index.html">Back</a>
+        </div>
+    </div>
 </div>
-<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
 </body>
 </html>
 
