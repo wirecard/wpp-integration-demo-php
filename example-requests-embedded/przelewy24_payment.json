@@ -1,0 +1,36 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "86451785-3ed0-4aa1-99b2-cc32cf54ce9a"
+    },
+    "request-id": "",
+    "requested-amount": {
+      "value": "23.5",
+      "currency": "PLN"
+    },
+    "account-holder": {
+      "email" : "john.doe@test.com",
+      "address": {
+        "country": "PL"
+      }
+    },
+    "order-number": "ON 111222",
+    "transaction-type": "debit",
+    "descriptor": "descriptor 123",
+    "locale": "en",
+    "notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    },
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
+  }
+}
