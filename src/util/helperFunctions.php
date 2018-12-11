@@ -5,14 +5,14 @@ use Wirecard\PaymentSdk\Config;
 use Wirecard\PaymentSdk\Config\CreditCardConfig;
 use Wirecard\PaymentSdk\Config\PaymentMethodConfig;
 use Wirecard\PaymentSdk\Config\SepaConfig;
+use Wirecard\PaymentSdk\Transaction\AlipayCrossborderTransaction;
 use Wirecard\PaymentSdk\Transaction\IdealTransaction;
 use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
 use Wirecard\PaymentSdk\Transaction\PaysafecardTransaction;
+use Wirecard\PaymentSdk\Transaction\PtwentyfourTransaction;
 use Wirecard\PaymentSdk\Transaction\SepaCreditTransferTransaction;
 use Wirecard\PaymentSdk\Transaction\SepaDirectDebitTransaction;
 use Wirecard\PaymentSdk\Transaction\SofortTransaction;
-use Wirecard\PaymentSdk\Transaction\PtwentyfourTransaction;
-use Wirecard\PaymentSdk\Transaction\AlipayCrossborderTransaction;
 use Wirecard\PaymentSdk\TransactionService;
 
 /**

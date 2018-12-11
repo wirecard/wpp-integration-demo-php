@@ -72,8 +72,6 @@ function modifyPayload($payloadText)
  */
 function postRegisterRequest($payload, $paymentMethod)
 {
-    
-
     $username = MERCHANT[$paymentMethod]["username"];
     $password = MERCHANT[$paymentMethod]["password"];
 

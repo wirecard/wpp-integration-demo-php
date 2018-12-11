@@ -57,7 +57,7 @@ if (getPaymentMethod() === 'creditcard') {
     ?>
     <form action="../operations/alipay_crossborder/cancel.php" method="post">
         <input type="hidden" name="transactionId" value="<?= getTransactionId() ?>"/>
-        <button type="submit" class="btn btn-primary">Cancel the payment</button>
+        <button type="submit" class="btn btn-primary">Refund the payment</button>
     </form>
     <br>
     <?php
