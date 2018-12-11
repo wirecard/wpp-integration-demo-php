@@ -367,9 +367,6 @@ The following payment methods are currently supported:
 * Przelewy24
 * EPS
 * Alipay Cross-border
-* Paysafecard
-* Przelewy24
-* EPS
 
 You will find examples for each payment method in this demo project.  
 
@@ -384,8 +381,6 @@ Additional fields `order-number`, `creditor-id` and `country` are required.
 | creditor-id | The hobex AG creditor ID (always "AT94ZZZ00000001251"). |
 | country | A 2-letter code, representing the first two characters of the consumer's IBAN. |
 
-You will find examples for each payment method in this demo project.  
-Furthermore you can register SEPA Direct Debit payments via the Austrian acquirer Hobex. If you use Hobex you have to choose `hobex-vt` as payment method instead of `sepadirectdebit`.
 #### Available countries for Hobex 
 * AT (Austria)
 * CZ (Czech Republic)

@@ -13,6 +13,13 @@
       "last-name": "Dao"
     },
     "transaction-type": "debit",
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "alipay-xborder"
+        }
+      ]
+    },
     "notifications": {
       "format": "application/xml",
       "notification": [
