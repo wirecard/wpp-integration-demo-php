@@ -204,7 +204,11 @@ function createTransactionService($paymentMethod)
     // ### Alipay Cross-border
     $alipaycrossborderMAID = '47cd4edf-b13c-4298-9344-53119ab8b9df';
     $alipaycrossborderSecretKey = '94fe4f40-16c5-4019-9c6c-bc33ec858b1d';
-    $alipaycrossborderConfig = new PaymentMethodConfig(AlipayCrossborderTransaction::NAME, $alipaycrossborderMAID, $alipaycrossborderSecretKey);
+    $alipaycrossborderConfig = new PaymentMethodConfig(
+        AlipayCrossborderTransaction::NAME,
+        $alipaycrossborderMAID,
+        $alipaycrossborderSecretKey
+    );
     $config->add($alipaycrossborderConfig);
 
     return new TransactionService($config);
