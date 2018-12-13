@@ -1,0 +1,35 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "47cd4edf-b13c-4298-9344-53119ab8b9df"
+    },
+    "request-id": "",
+    "requested-amount": {
+      "value": "1.01",
+      "currency": "EUR"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
+    },
+    "transaction-type": "debit",
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "alipay-xborder"
+        }
+      ]
+    },
+    "notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    },
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  }
+}

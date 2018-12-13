@@ -88,6 +88,14 @@ No further test data needed.
 #### EPS
 Choose the Apotheker Bank and enter arbitrary account data.
 
+#### Alipay Cross-border
+```
+Account name: alipaytest20091@gmail.com
+Password: 111111
+Captcha Code: 8888
+Payment Password: 111111
+```
+
 ### Failed payment
 #### Standalone and embedded mode
 In order to execute a failing payment you can use the following SSL test card:
@@ -358,6 +366,7 @@ The following payment methods are currently supported:
 * Paysafecard
 * Przelewy24
 * EPS
+* Alipay Cross-border
 
 You will find examples for each payment method in this demo project.  
 
@@ -422,4 +431,7 @@ For the most common use cases we provide examples in this project. You can find 
 * Cancel the reserved amount
 
 #### Przelewy24
+* Cancel a payment
+
+#### Alipay Cross-border
 * Cancel a payment

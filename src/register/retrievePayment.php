@@ -32,11 +32,12 @@
                             <input type="text" name="transactionId" class="form-control" id="transactionID"
                                    value="<?php echo isset($_GET['tid']) ? $_GET['tid'] : ''; ?>"
                                    aria-describedby="transactionIDHelp" placeholder="Enter transaction id">
-                            <small id="transactionIDHelp" class="form-text text-muted">Define a transaction id</small>
+                            <small id="transactionIDHelp" class="form-text text-muted">Define a transaction id *</small>
                             <input type="text" name="paymentMethod" class="form-control" id="paymentMethod"
                                    value="<?php echo isset($_GET['paymentMethod']) ? $_GET['paymentMethod'] : ''; ?>"
                                    aria-describedby="paymentHelp" placeholder="Enter payment method">
-                            <small id="paymentHelp" class="form-text text-muted">Define a payment method</small>
+                            <small id="paymentHelp" class="form-text text-muted">Define a payment method</br>
+                                * For Alipay Cross-border payments use alipay-xborder</small>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
