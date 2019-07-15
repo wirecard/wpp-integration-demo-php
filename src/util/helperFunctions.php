@@ -93,7 +93,8 @@ function showValidSignature()
     if ($isResponseBase64 && $isResponseSignatureBase64) {
         $responseBase64 = trim($_SESSION['response']['response-base64']);
         $signatureBase64 = trim($_SESSION['response']['response-signature-base64']);
-        $signatureVerification = (isValidSignature($responseBase64, $signatureBase64, SECRET_KEY));
+        $paymentMethod = getPaymentMethod();
+        $signatureVerification = (isValidSignature($responseBase64, $signatureBase64, SECRET_KEY[$paymentMethod]));
     }
 
     $isResponseSet = isset($_SESSION['response']['response-signature-base64']);
