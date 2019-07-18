@@ -128,7 +128,12 @@ function retrievePaymentRedirectUrl($payload, $paymentMethod)
 
     // A successful response looks like this:
     // { "payment-redirect-url" : "https://wpp-test.wirecard.com/?wPaymentToken=eQloDaTU-QvoB-whatever" }
-    session_start();
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    //session_start();
     $paymentRedirectUrl = $responseContent["payment-redirect-url"];
     $_SESSION["payment-redirect-url"] = $paymentRedirectUrl;
 

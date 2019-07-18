@@ -1,3 +1,9 @@
+<?php
+require '../../vendor/autoload.php';
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,9 +111,6 @@
 
     renderSeamlessForm(
         <?php
-        require '../../vendor/autoload.php';
-        
-        session_start();
         echo '"' . $_SESSION['payment-redirect-url'] . '"';
         ?>
     );

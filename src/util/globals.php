@@ -1,5 +1,6 @@
 <?php
 
+const CREDITCARD ='creditcard';
 const CCARD = 'ccard';
 const PAYPAL = 'paypal';
 const IDEAL = 'ideal';

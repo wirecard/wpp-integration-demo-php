@@ -19,6 +19,7 @@ const MERCHANT_CONFIG_B = [
 ];
 
 const MERCHANT = [
+    CREDITCARD => MERCHANT_CONFIG_A,
     CCARD => MERCHANT_CONFIG_A,
     PAYPAL => MERCHANT_CONFIG_A,
     PAYSAFECARD => MERCHANT_CONFIG_A,
@@ -32,7 +33,7 @@ const MERCHANT = [
 ];
 
 const SECRET_KEY = [
-    'creditcard' => 'dbc5a498-9a66-43b9-bf1d-a618dd399684',
+    CREDITCARD => 'dbc5a498-9a66-43b9-bf1d-a618dd399684',
     PAYPAL => 'dbc5a498-9a66-43b9-bf1d-a618dd399684',
     PAYSAFECARD => 'dbc5a498-9a66-43b9-bf1d-a618dd399684',
     IDEAL => '7a353766-23b5-4992-ae96-cb4232998954',
