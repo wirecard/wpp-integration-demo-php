@@ -133,7 +133,6 @@ function retrievePaymentRedirectUrl($payload, $paymentMethod)
         session_start();
     }
 
-    //session_start();
     $paymentRedirectUrl = $responseContent["payment-redirect-url"];
     $_SESSION["payment-redirect-url"] = $paymentRedirectUrl;
 
