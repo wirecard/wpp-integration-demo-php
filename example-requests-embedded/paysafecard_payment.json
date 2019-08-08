@@ -1,0 +1,32 @@
+{
+  "payment": {
+    "merchant-account-id": {
+      "value": "28d4938b-d0d6-4c4a-b591-fb63175de53e"
+    },
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao",
+      "merchant-crm-id": "A123456789"
+    },
+    "request-id": "",
+    "requested-amount": {
+      "value": 9.99,
+      "currency": "EUR"
+    },
+    "transaction-type": "authorization",
+    "notifications": {
+      "format": "application/xml",
+      "notification": [
+        {
+          "url": "wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    },
+    "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
+    "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
+    "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
+  }
+}

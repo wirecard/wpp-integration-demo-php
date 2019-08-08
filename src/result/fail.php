@@ -1,5 +1,5 @@
 <?php
-require_once('../util/helperFunctions.php');
+require '../../vendor/autoload.php';
 
 session_start();
 $_SESSION['msg'] = 'The payment failed.';

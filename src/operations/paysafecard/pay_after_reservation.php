@@ -8,22 +8,25 @@ use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
-use Wirecard\PaymentSdk\Transaction\PayPalTransaction;
+use Wirecard\PaymentSdk\Transaction\PaysafecardTransaction;
 
-$amount = new Amount(5.85, 'EUR');
+$transactionId = htmlspecialchars($_POST['transactionId']);
+
+$amount = new Amount(9.99, 'EUR');
 $accountHolder = new AccountHolder();
-$accountHolder->setEmail('paypal.buyer2@wirecard.com');
+$accountHolder->setCrmId('A123456789');
 
-$transaction = new PayPalTransaction();
+$transaction = new PaysafecardTransaction();
 $transaction->setAmount($amount);
+$transaction->setParentTransactionId($transactionId);
 $transaction->setAccountHolder($accountHolder);
 
-$service = createTransactionService(PAYPAL);
+$service = createTransactionService(PAYSAFECARD);
 
-$response = $service->credit($transaction);
+$response = $service->pay($transaction);
 
 if ($response instanceof SuccessResponse) {
-    echo 'Funds successfully transferred.<br>';
+    echo 'The payment was successfully.<br>';
     echo 'TransactionID: ' . $response->getTransactionId();
     require '../showButton.php';
 } elseif ($response instanceof FailureResponse) {

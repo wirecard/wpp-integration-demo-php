@@ -72,14 +72,10 @@
                         <button type="submit" class="btn btn-primary">Cancel</button>
                     </form>
                 </div>
-
-
                 <!--div class="row" -->
             </div>
-
             <!--div class="panel-body"-->
         </div>
-
         <!--div class="panel"-->
     </div>
 
@@ -108,7 +104,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Credit</button>
                     </form>
-
+                    <hr />
                     <div>
                         <h3>Cancel</h3>
                         <form action="paypal/cancel.php" method="post">
@@ -121,13 +117,10 @@
                             <button type="submit" class="btn btn-primary">Cancel</button>
                         </form>
                     </div>
-
                     <!--panel-body-->
                 </div>
-
                 <!--panel-->
             </div>
-
             <!--div class="col-md-4 col-xs-12"-->
         </div>
 
@@ -156,13 +149,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Credit</button>
                     </form>
-
                     <!--panel-body-->
                 </div>
-
                 <!--panel-->
             </div>
-
             <!--div class="col-md-4 col-xs-12"-->
         </div>
 
@@ -194,6 +184,99 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Credit</button>
                     </form>
+                    <!--panel-body-->
+                </div>
+                <!--panel-->
+            </div>
+            <!--div class="col-md-4 col-xs-12"-->
+        </div>
+        <!--row-->
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>Paysafecard</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Capture the reserved amount </h3>
+                    <form action="paysafecard/reserve.php" method="post">
+                        <div class="form-group">
+                            <label for="amountPaysafecardAuthorization">Amount</label>
+                            <input type="text" name="paymentAmount" class="form-control"
+                                   id="amountPaysafecardAuthorization">
+                            <label for="parentTransactionIdPaysafecard">Parent transaction ID</label>
+                            <input type="text" name="parentTransactionId" class="form-control"
+                                   id="parentTransactionIdPaysafecard">
+                            <label for="accountHolderLastName">Account holder last name</label>
+                            <input type="text" name="accountHolderLastName" class="form-control"
+                                   id="accountHolderLastNamePaysafecard" placeholder="optional">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Pay</button>
+                    </form>
+                    <hr />
+                    <h3>Cancel </h3>
+                    <form action="paysafecard/cancel.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionId">Transaction ID</label>
+                            <input type="text" name="transactionId" class="form-control"
+                                   id="transactionId">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                    </form>
+                    <!--panel-body-->
+                </div>
+                <!--panel-->
+            </div>
+            <!--div class="col-md-4 col-xs-12"-->
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>Przelewy24</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Cancel: Refund a Przelewy24 payment</h3>
+                    <form action="przelewy24/cancel.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionIdP24">Transaction ID</label>
+                            <input type="text" name="transactionId" class="form-control"
+                                   id="transactionIdP24"
+                                   placeholder="Enter transaction id">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                    </form>
+
+                    <!--panel-body-->
+                </div>
+
+                <!--panel-->
+            </div>
+
+            <!--div class="col-md-4 col-xs-12"-->
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="panel panel-default" style="margin-top: 1.5em;">
+                <div class="panel-heading">
+                    <h2>Alipay Cross-border</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Cancel an Alipay Cross-border payment</h3>
+                    <form action="alipay_crossborder/cancel.php" method="post">
+                        <div class="form-group">
+                            <label for="transactionIdAlipayXBorder">Transaction ID</label>
+                            <input type="text" name="transactionId" class="form-control"
+                                   id="transactionIdAlipayXBorder"
+                                   placeholder="Enter transaction id">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                    </form>
 
                     <!--panel-body-->
                 </div>
@@ -206,9 +289,14 @@
 
         <!--row-->
     </div>
-
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-primary center-block text-center" href="../../index.html"
+               role="button"
+               style="text-align: right;float: right; margin: 30px 0 30px 0">Back</a>
+        </div>
+    </div>
 </div>
-<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
 </body>
 </html>
 

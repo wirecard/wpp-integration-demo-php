@@ -1,3 +1,9 @@
+<?php
+require '../../vendor/autoload.php' ;
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <html>
 <head>
     <title>Wirecard Payment Page Integration Demo</title>
@@ -18,7 +24,6 @@
     <script type='text/javascript'>
         WPP.embeddedPayUrl(
             <?php
-            session_start();
             echo '"' . $_SESSION['payment-redirect-url'] . '"';
             ?>
         );

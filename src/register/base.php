@@ -45,12 +45,15 @@ function modifyPayload($payloadText)
 {
     session_start();
     $payload = json_decode($payloadText, $assoc = true);
-    $uuid = uniqid('payment_request_', true);
+    $uuid = $payload["payment"]["request-id"];
+    if ($payload["payment"]["request-id"] === "") {
+        $uuid = uniqid();
+        $payload["payment"]["request-id"] = $uuid;
+    }
     $_SESSION["uuid"] = $uuid;
-    $payload["payment"]["request-id"] = $uuid;
 
     foreach ($payload["payment"]["notifications"]["notification"] as $key => &$value) {
-        echo $value["url"] = getBaseUrl() . $value["url"];
+        $value["url"] = getBaseUrl() . $value["url"];
     }
 
     $payload["payment"]["success-redirect-url"] = getBaseUrl() . $payload["payment"]["success-redirect-url"];
@@ -69,8 +72,6 @@ function modifyPayload($payloadText)
  */
 function postRegisterRequest($payload, $paymentMethod)
 {
-    require_once('../config.php');
-
     $username = MERCHANT[$paymentMethod]["username"];
     $password = MERCHANT[$paymentMethod]["password"];
 
@@ -83,12 +84,12 @@ function postRegisterRequest($payload, $paymentMethod)
 
     $response = "";
     try {
-        $response = $client->request('POST', 'https://wpp-test.wirecard.com/api/payment/register', [
+        $response = $client->request('POST', WPP_URL . '/api/payment/register', [
             'headers' => $headers,
             'body' => json_encode($payload),
         ]);
-    } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
-        error_log("Caught $exception");
+    } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+        printf("%s", $e->getResponse()->getBody()->getContents());
     }
 
     $contents = $response->getBody()->getContents();
@@ -127,7 +128,11 @@ function retrievePaymentRedirectUrl($payload, $paymentMethod)
 
     // A successful response looks like this:
     // { "payment-redirect-url" : "https://wpp-test.wirecard.com/?wPaymentToken=eQloDaTU-QvoB-whatever" }
-    session_start();
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
     $paymentRedirectUrl = $responseContent["payment-redirect-url"];
     $_SESSION["payment-redirect-url"] = $paymentRedirectUrl;
 

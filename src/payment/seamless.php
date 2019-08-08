@@ -1,3 +1,9 @@
+<?php
+require '../../vendor/autoload.php';
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +49,6 @@
             <li>a submit button</li>
         </ul>
     </div>
-
 
     <div class="panel panel-default" id="paymentResult">
         <div class="panel-heading">
@@ -106,11 +111,19 @@
 
     renderSeamlessForm(
         <?php
-        session_start();
         echo '"' . $_SESSION['payment-redirect-url'] . '"';
         ?>
     );
 </script>
-<a href="../../index.html" style="text-align: right;float: right; margin: 30px">back</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-primary center-block text-center" role="button"
+               style="text-align: right;float: right; margin: 30px 0 30px 0"
+               href="../../index.html">Back</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
