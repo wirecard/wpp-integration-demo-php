@@ -40,7 +40,7 @@ function redirect($url)
  */
 function getBaseUrl()
 {
-    $baseUrl = $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . '/';
+    $baseUrl = $_SERVER['HTTP_HOST'] . '/';
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") {
         $baseUrl = "https://" . $baseUrl;
     } else {
