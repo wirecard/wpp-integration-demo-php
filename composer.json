@@ -11,7 +11,7 @@
     "ext-json": "*",
     "guzzlehttp/guzzle": "~6.0",
     "php-http/guzzle6-adapter": "^1.1",
-    "wirecard/payment-sdk-php": "^3.3",
+    "wirecard/payment-sdk-php": "^4.0",
     "monolog/monolog": "^1.23",
     "chillerlan/php-qrcode": "dev-php5"
   },
