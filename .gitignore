@@ -1,5 +1,7 @@
 # IntelliJ project files
 .idea/
+*.iml
 
 # dependency directories
 vendor
+

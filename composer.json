@@ -1,5 +1,5 @@
 {
-  "name": "wpp-integration-demo-php",
+  "name": "wirecard/wpp-integration-demo-php",
   "type": "object",
   "description": "A demo application showing how to integrate the Wirecard Payment Page.",
   "keywords": ["payment", "credit card"],
