@@ -3,7 +3,6 @@
 require '../../../vendor/autoload.php';
 
 
-
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Response\FailureResponse;
@@ -18,9 +17,13 @@ $transaction = new PayPalTransaction();
 $transaction->setAmount($amount);
 $transaction->setAccountHolder($accountHolder);
 
-$service = createTransactionService(PAYPAL);
+$service = initTransactionService(PAYPAL);
 
-$response = $service->credit($transaction);
+try {
+    $response = $service->credit($transaction);
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
+}
 
 if ($response instanceof SuccessResponse) {
     echo 'Funds successfully transferred.<br>';

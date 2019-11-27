@@ -18,11 +18,13 @@ if (isNullOrEmptyString($paymentMethod) || isNullOrEmptyString($transactionId)) 
     echo "No payment method or transaction id found. Please enter a valid payment method and transaction id.";
     return;
 }
-$service = createTransactionService($paymentMethod);
+$service = initTransactionService($paymentMethod);
 try {
     // get a transaction by passing transactionId and paymentMethod to getTransactionByTransactionId method.
     $transaction = $service->getGroupOfTransactions($transactionId, $paymentMethod);
     require 'showPayment.php';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }

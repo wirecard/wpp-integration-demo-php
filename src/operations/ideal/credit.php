@@ -35,7 +35,7 @@ if (array_key_exists('parentTransactionId', $_POST)) {
     $transaction->setParentTransactionId($_POST['parentTransactionId']);
 }
 
-$service = createTransactionService(IDEAL);
+$service = initTransactionService(IDEAL);
 
 try {
     $response = $service->credit($transaction);
@@ -49,4 +49,6 @@ try {
 } catch (MalformedResponseException $e) {
     echo $e->getTraceAsString() . '<br>';
     echo $e->getMessage();
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }

@@ -15,9 +15,13 @@ $transaction = new CreditCardTransaction();
 $transaction->setAmount($amount);
 $transaction->setTokenId($tokenId);
 
-$service = createTransactionService(CREDITCARD);
+$service = initTransactionService(CREDITCARD);
 
-$response = $service->pay($transaction);
+try {
+    $response = $service->pay($transaction);
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
+}
 
 if ($response instanceof SuccessResponse) {
     echo 'Successful payment.<br>';

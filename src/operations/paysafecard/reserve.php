@@ -3,7 +3,6 @@
 require '../../../vendor/autoload.php';
 
 
-
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Entity\Redirect;
@@ -49,8 +48,12 @@ $transaction->setParentTransactionId($parentTransactionId);
 $transaction->setAccountHolder($accountHolder);
 
 // The service is used to execute the reserve operation itself. A response object is returned.
-$service = createTransactionService(PAYSAFECARD);
-$response = $service->reserve($transaction);
+$service = initTransactionService(PAYSAFECARD);
+try {
+    $response = $service->reserve($transaction);
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
+}
 
 // The response of the service must be handled depending on it's class
 // In case of an `InteractionResponse`, a browser interaction by the consumer is required

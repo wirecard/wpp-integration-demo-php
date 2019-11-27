@@ -3,7 +3,6 @@
 require '../../../vendor/autoload.php';
 
 
-
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Entity\Amount;
 use Wirecard\PaymentSdk\Response\FailureResponse;
@@ -21,9 +20,13 @@ $transaction->setAmount($amount);
 $transaction->setParentTransactionId($transactionId);
 $transaction->setAccountHolder($accountHolder);
 
-$service = createTransactionService(PAYSAFECARD);
+$service = initTransactionService(PAYSAFECARD);
 
-$response = $service->pay($transaction);
+try {
+    $response = $service->pay($transaction);
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
+}
 
 if ($response instanceof SuccessResponse) {
     echo 'The payment was successfully.<br>';

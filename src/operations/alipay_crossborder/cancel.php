@@ -13,7 +13,7 @@ $transactionId = $_POST['transactionId'];
 $transaction = new AlipayCrossborderTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService(ALIPAY_XBORDER);
+$service = initTransactionService(ALIPAY_XBORDER);
 
 $response = null;
 try {
@@ -24,6 +24,8 @@ try {
     echo 'The transaction can not be canceled.';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }
 
 if ($response instanceof SuccessResponse) {

@@ -3,7 +3,6 @@
 require '../../../vendor/autoload.php';
 
 
-
 use Wirecard\PaymentSdk\Exception\MandatoryFieldMissingException;
 use Wirecard\PaymentSdk\Exception\UnsupportedOperationException;
 use Wirecard\PaymentSdk\Response\FailureResponse;
@@ -15,7 +14,7 @@ $transactionId = $_POST['transactionId'];
 $transaction = new PaysafecardTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService(PAYSAFECARD);
+$service = initTransactionService(PAYSAFECARD);
 
 $response = null;
 try {
@@ -27,6 +26,8 @@ try {
     echo 'Probably <i>debit</i> or <i>capture-authorization</i> was used as payment method which can not be canceled.';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }
 
 if ($response instanceof SuccessResponse) {

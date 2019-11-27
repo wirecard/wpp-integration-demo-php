@@ -13,7 +13,7 @@ $transactionId = $_POST['transactionId'];
 $transaction = new PayPalTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService(PAYPAL);
+$service = initTransactionService(PAYPAL);
 
 $response = null;
 try {
@@ -25,6 +25,8 @@ try {
     echo 'Probably <i>credit</i> was used as payment method which can not be canceled.';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }
 
 if ($response instanceof SuccessResponse) {

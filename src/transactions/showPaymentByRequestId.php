@@ -19,11 +19,13 @@ if (isNullOrEmptyString($paymentMethod) || isNullOrEmptyString($requestId)) {
     return;
 }
 
-$service = createTransactionService($paymentMethod);
+$service = initTransactionService($paymentMethod);
 try {
     // get a transaction by passing transactionId and paymentMethod to getTransactionByTransactionId method.
     $transaction = $service->getTransactionByRequestId($requestId, $paymentMethod);
     require 'showPayment.php';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }

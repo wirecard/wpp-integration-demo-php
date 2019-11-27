@@ -24,7 +24,7 @@ if (!empty($parentTransactionId)) {
 
 $transaction->setAmount($amount);
 
-$service = createTransactionService(CREDITCARD);
+$service = initTransactionService(CREDITCARD);
 
 $response = null;
 try {
@@ -34,6 +34,8 @@ try {
     echo 'Please check your input data and enter a valid transaction id or token id.';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }
 
 if ($response instanceof SuccessResponse) {

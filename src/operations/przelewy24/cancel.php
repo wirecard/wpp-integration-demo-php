@@ -3,7 +3,6 @@
 require '../../../vendor/autoload.php';
 
 
-
 use Wirecard\PaymentSdk\Exception\MandatoryFieldMissingException;
 use Wirecard\PaymentSdk\Exception\UnsupportedOperationException;
 use Wirecard\PaymentSdk\Response\FailureResponse;
@@ -15,7 +14,7 @@ $transactionId = $_POST['transactionId'];
 $transaction = new PtwentyfourTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService(P24);
+$service = initTransactionService(P24);
 
 $response = null;
 try {
@@ -26,6 +25,8 @@ try {
     echo 'The transaction can not be canceled.';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }
 
 if ($response instanceof SuccessResponse) {

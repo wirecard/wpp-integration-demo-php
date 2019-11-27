@@ -13,7 +13,7 @@ $transactionId = $_POST['transactionId'];
 $transaction = new CreditCardTransaction();
 $transaction->setParentTransactionId($transactionId);
 
-$service = createTransactionService(CREDITCARD);
+$service = initTransactionService(CREDITCARD);
 
 $response = null;
 try {
@@ -25,6 +25,8 @@ try {
     echo 'Please check your input data and provide a valid transaction id.';
 } catch (Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '<br>';
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }
 
 if ($response instanceof SuccessResponse) {

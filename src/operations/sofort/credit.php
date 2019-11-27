@@ -3,7 +3,6 @@
 require '../../../vendor/autoload.php';
 
 
-
 use Wirecard\PaymentSdk\Entity\AccountHolder;
 use Wirecard\PaymentSdk\Exception\MalformedResponseException;
 use Wirecard\PaymentSdk\Response\FailureResponse;
@@ -30,7 +29,7 @@ if (array_key_exists('parentTransactionId', $_POST)) {
     $transaction->setParentTransactionId($_POST['parentTransactionId']);
 }
 
-$service = createTransactionService(SOFORT);
+$service = initTransactionService(SOFORT);
 
 try {
     $response = $service->credit($transaction);
@@ -44,4 +43,6 @@ try {
 } catch (MalformedResponseException $e) {
     echo $e->getTraceAsString() . '<br>';
     echo $e->getMessage();
+} catch (\Http\Client\Exception $e) {
+    echo 'Transaction failed: ', $e->getMessage(), '\n';
 }
