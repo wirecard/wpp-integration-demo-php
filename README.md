@@ -1,8 +1,8 @@
 # Wirecard Payment Page Integration Demo with PHP
 
 [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://raw.githubusercontent.com/wirecard/wpp-integration-demo-php/master/LICENSE)
-[![PHP v5.6](https://img.shields.io/badge/php-v5.6-yellow.svg)](http://www.php.net)
 [![PHP v7.2](https://img.shields.io/badge/php-v7.2-yellow.svg)](http://www.php.net)
+[![PHP v7.3](https://img.shields.io/badge/php-v7.3-yellow.svg)](http://www.php.net)
 [![Wirecard Company](https://img.shields.io/badge/Wirecard-Company-blue.svg)](https://www.wirecard.com/)
 
 This application demonstrates how to use the Wirecard Payment Page in PHP code.
@@ -18,15 +18,20 @@ Next download or clone the wpp-integration demo to any directory you like. If yo
 Rename the extracted directory to `wpp-integration-demo-php` if it is not already set.
 
 ### Installing via composer
-Open a command shell and navigate to the root path where you can find the composer.json and composer.lock files. 
-These files are required to install the dependencies by composer. 
-You can install these dependencies by follwing these steps:
+Open a command shell and navigate to the root path where you can find the composer.json and composer.lock files and run
+
+```composer install```
+
+Composer will fetch all dependencies and install them in your root directory. If you run in troubles please check the 
+notice below.
+
+Notice: <br>
+If you are working on Windows check if the extension php_intl.dll is in your php.ini file. <br>
+If you get into troubles on Linux this solution could help you:
 
 1. Open file ```/etc/php/7.2/cli/php.ini``` and uncomment ```extension=intl```
 2. Open file ```/etc/php/7.2/apache2/php.ini``` and uncomment ```extension=intl```
 3. Run command ```sudo apt-get install php7.2-intl```
-4. Run ```composer install```
-
 
 ## Run
 Copy this directory into a location where your webserver can serve it.  
