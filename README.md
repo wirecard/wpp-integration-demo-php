@@ -41,7 +41,7 @@ However, you are free to choose any port and any name for your project you are c
 This application provides examples for several payment method. 
 Click on this [link](#payment-method) to see a list of all supported payment method.  
 For testing purposes you can use the data below.  
-For further test data consult [our documentation](https://document-center.wirecard.com/display/PTD/Appendix+K%3A+Test+Access+Data+and+Credentials).
+For further test data consult [our documentation](https://doc.wirecard.com/AppendixK.html).
 
 #### Credit Card
 In order to execute a successful credit card payment you can use the following 3D test card:
@@ -127,11 +127,11 @@ After the payment form has been displayed
 
 You can choose between 3 types of integration:
 
-* [standalone](https://document-center.wirecard.com/display/PTD/Hosted+Payment+Page) (a.k.a. hosted): Your consumer gets redirected to a standalone payment page hosted independently of your checkout page.
-* [embedded](https://document-center.wirecard.com/display/PTD/Embedded+Payment+Page): A payment form rendered over your checkout page as a modal window.
-* [seamless](https://document-center.wirecard.com/display/PTD/Seamless+Mode): A card form seamlessly integrated into your checkout page. This type of integration is relevant only for credit card, not for the other payment methods.
+* [standalone](https://doc.wirecard.com/PPv2.html#PaymentPageSolutions_PPv2_HPP) (a.k.a. hosted): Your consumer gets redirected to a standalone payment page hosted independently of your checkout page.
+* [embedded](https://doc.wirecard.com/PPv2.html#PaymentPageSolutions_PPv2_EPP): A payment form rendered over your checkout page as a modal window.
+* [seamless](https://doc.wirecard.com/PPv2.html#PPv2_Seamless): A card form seamlessly integrated into your checkout page. This type of integration is relevant only for credit card, not for the other payment methods.
 
-You can find more details about the integration types in our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
+You can find more details about the integration types in our [documentation](https://doc.wirecard.com/PPv2.html).
 
 This application provides an example for all 3 types of integration.
 
@@ -397,7 +397,7 @@ Additional fields `order-number`, `creditor-id` and `country` are required.
  
 ### Credit card brands
 
-The test merchant used in these examples has only some very popular credit card brands configured. For a list of all supported credit card brands see our [documentation](https://document-center.wirecard.com/display/PTD/Wirecard+Payment+Page).
+The test merchant used in these examples has only some very popular credit card brands configured. For a list of all supported credit card brands see our [documentation](https://doc.wirecard.com/PPv2.html).
 
 ## Queries and further operations
 For queries and further operations we recommend to use the [Payment SDK for PHP](https://github.com/wirecard/paymentSDK-php) library.  
