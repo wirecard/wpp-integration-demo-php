@@ -37,6 +37,12 @@ In the example we assume that
 
 However, you are free to choose any port and any name for your project you are comfortable with.
 
+## Fixing errors automatically
+* install squizlabs/PHP_CodeSniffer via composer: `composer global require "squizlabs/php_codesniffer=*"`
+* From the root directory you can execute `./vendor/bin/phpcbf name_of_file`
+
+https://github.com/squizlabs/PHP_CodeSniffer
+
 ### Successful payment
 This application provides examples for several payment method. 
 Click on this [link](#payment-method) to see a list of all supported payment method.  
