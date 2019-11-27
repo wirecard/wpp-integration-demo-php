@@ -24,7 +24,7 @@ if (!empty($parentTransactionId)) {
 
 $transaction->setAmount($amount);
 
-$service = createTransactionService(CCARD);
+$service = createTransactionService(CREDITCARD);
 
 $response = null;
 try {

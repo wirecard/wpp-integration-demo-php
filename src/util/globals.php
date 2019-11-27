@@ -1,7 +1,6 @@
 <?php
 
 const CREDITCARD ='creditcard';
-const CCARD = 'ccard';
 const PAYPAL = 'paypal';
 const IDEAL = 'ideal';
 const SEPA_DIRECTDEBIT = 'sepadirectdebit';
@@ -16,7 +15,7 @@ const PATH_TO_STANDALONE = '../../example-requests-standalone/';
 const PATH_TO_EMBEDDED = '../../example-requests-embedded/';
 
 const PATHS_STANDALONE = [
-    CCARD => PATH_TO_STANDALONE . 'creditcard_payment_3DS.json',
+    CREDITCARD => PATH_TO_STANDALONE . 'creditcard_payment_3DS.json',
     PAYPAL => PATH_TO_STANDALONE . 'paypal_payment.json',
     IDEAL => PATH_TO_STANDALONE . 'ideal_payment.json',
     SEPA_DIRECTDEBIT => PATH_TO_STANDALONE . 'sepa_dd_payment.json',
@@ -28,7 +27,7 @@ const PATHS_STANDALONE = [
 ];
 
 const PATHS_EMBEDDED = [
-    CCARD => PATH_TO_EMBEDDED . 'creditcard_payment_3DS.json',
+    CREDITCARD => PATH_TO_EMBEDDED . 'creditcard_payment_3DS.json',
     PAYPAL => PATH_TO_EMBEDDED . 'paypal_payment.json',
     IDEAL => PATH_TO_EMBEDDED . 'ideal_payment.json',
     SEPA_DIRECTDEBIT => PATH_TO_EMBEDDED . 'sepa_dd_payment.json',

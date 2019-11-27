@@ -4,7 +4,7 @@ require_once '../../vendor/autoload.php';
 require_once('base.php');
 
 
-$creditcard = CCARD;
+$creditcard = CREDITCARD;
 $payload = createPayloadStandalone($creditcard);
 $payload['options']['frame-ancestor'] = getBaseUrl();
 $payload['options']['mode'] = 'seamless';
