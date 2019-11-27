@@ -17,7 +17,7 @@ $transaction = new CreditCardTransaction();
 $transaction->setAmount($amount);
 $transaction->setTokenId($tokenId);
 
-$service = createTransactionService(CCARD);
+$service = createTransactionService(CREDITCARD);
 
 $response = $service->pay($transaction);
 
