@@ -30,7 +30,7 @@ try {
     if ($response instanceof SuccessResponse) {
         echo 'Refund via SEPA Credit Transfer successfully completed.<br>';
         echo 'TransactionID: ' . $response->getTransactionId();
-        require '../showButton.php';
+        require '../findPayments.php';
     } elseif ($response instanceof FailureResponse) {
         echoFailureResponse($response);
     }

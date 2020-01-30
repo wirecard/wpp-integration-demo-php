@@ -1,7 +1,6 @@
 <?php
-$json_str = json_encode(['result' => $transaction], JSON_PRETTY_PRINT);
-$json_str = str_replace("\\", "", $json_str);
-$json_str = substr($json_str, 1, strlen($json_str) - 2);
+$link = '../../register/retrievePayment.php?paymentMethod=' . $response->getPaymentMethod() .
+    '&tid=' . $response->getTransactionId() . '&rid=' . $response->getRequestId();
 ?>
 <html>
 <head>
@@ -19,25 +18,9 @@ $json_str = substr($json_str, 1, strlen($json_str) - 2);
 </head>
 </html>
 
-<div class="container" style="margin-top: 2%">
-    <?php
-    require '../../vendor/autoload.php';
+<br>
+<button class="btn btn-primary center-block text-center"
+        style="text-align: left;float: left; margin: 30px 0 30px 0"
+        onclick="history.go(-1);">Back
+</button>
 
-    session_start();
-    ?>
-
-    <h1>Payment Result</h1>
-
-    <div class="row">
-        <div class="col-12">
-           <pre>
-                <?php echo $json_str; ?>
-            </pre>
-        </div>
-    </div>
-
-    <button class="btn btn-primary center-block text-center"
-            style="text-align: right;float: right; margin: 30px 0 30px 0"
-            onclick="history.go(-1);">Back
-    </button>
-</div>

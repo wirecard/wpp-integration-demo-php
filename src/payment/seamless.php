@@ -10,7 +10,7 @@ if (!isset($_SESSION)) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -64,10 +64,21 @@ if (!isset($_SESSION)) {
         </div>
 
     </div>
+
+    <?php
+    if (getTransactionState() === 'success') {
+        require '../result/followup_operations.php';
+    }
+    ?>
+
+    <a class="btn btn-primary center-block text-center" role="button"
+       style="text-align: right;float: right; margin: 30px 0 30px 0"
+       href="../../index.html">Back to main page</a>
+
 </div>
 
 <script type='text/javascript'>
-    function renderSeamlessForm(paymentRedirectUrl) {
+    function renderSeamlessForm (paymentRedirectUrl) {
         WPP.seamlessRender({
             wrappingDivId: 'seamless-form-target',
             url: paymentRedirectUrl,
@@ -80,7 +91,7 @@ if (!isset($_SESSION)) {
         });
     }
 
-    function submitPayment() {
+    function submitPayment () {
         WPP.seamlessSubmit({
             onSuccess: function (response) {
                 displaySuccessfulPayment(response);
@@ -90,7 +101,7 @@ if (!isset($_SESSION)) {
             }
         });
 
-        function displaySuccessfulPayment(response) {
+        function displaySuccessfulPayment (response) {
             var paymentResult = document.getElementById("paymentResult");
             paymentResult.classList.remove("panel-default");
             paymentResult.classList.add("panel-success");
@@ -99,7 +110,7 @@ if (!isset($_SESSION)) {
             console.log("The payment has been executed successfully.");
         }
 
-        function displayError(response) {
+        function displayError (response) {
             var paymentResult = document.getElementById("paymentResult");
             paymentResult.classList.remove("panel-default");
             paymentResult.classList.add("panel-danger");
@@ -115,15 +126,5 @@ if (!isset($_SESSION)) {
         ?>
     );
 </script>
-
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <a class="btn btn-primary center-block text-center" role="button"
-               style="text-align: right;float: right; margin: 30px 0 30px 0"
-               href="../../index.html">Back</a>
-        </div>
-    </div>
-</div>
 </body>
 </html>

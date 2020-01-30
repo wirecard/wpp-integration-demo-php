@@ -1,7 +1,7 @@
 {
   "payment": {
     "merchant-account-id": {
-      "value": "1f629760-1a66-4f83-a6b4-6a35620b4a6d"
+      "value": "47cd4edf-b13c-4298-9344-53119ab8b9df"
     },
     "request-id": "",
     "requested-amount": {
@@ -13,13 +13,6 @@
       "last-name": "Dao"
     },
     "transaction-type": "debit",
-    "payment-methods": {
-      "payment-method": [
-        {
-          "name": "eps"
-        }
-      ]
-    },
     "notifications": {
       "format": "application/xml",
       "notification": [
@@ -31,5 +24,8 @@
     "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
   }
 }

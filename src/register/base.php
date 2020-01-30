@@ -1,36 +1,23 @@
 <?php
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Functions which are used for registering a payment by all 3 types of integration.
  */
 
 /**
- * Creates a payload for standalone payment page based on the example request JSON file,
+ * Creates a payload for standalone or embedded payment page based on the example request JSON file,
  * which can be used as the body of a register payment POST request.
  *
  * @param $paymentMethod
  * @return array An array containing all the required parameters of the POST body.
  */
-function createPayloadStandalone($paymentMethod)
+function createPayload($paymentMethod)
 {
     require_once('../util/globals.php');
 
-    $payloadText = file_get_contents(PATHS_STANDALONE[$paymentMethod]);
-    return modifyPayload($payloadText);
-}
-
-/**
- * Creates a payload for embedded payment page based on the example request JSON file,
- * which can be used as the body of a register payment POST request.
- *
- * @param $paymentMethod
- * @return array An array containing all the required parameters of the POST body.
- */
-function createPayloadEmbedded($paymentMethod)
-{
-    require_once('../util/globals.php');
-
-    $payloadText = file_get_contents(PATHS_EMBEDDED[$paymentMethod]);
+    $payloadText = file_get_contents(PATHS_TO_SAMPLE_REQUESTS[$paymentMethod]);
     return modifyPayload($payloadText);
 }
 
@@ -69,6 +56,7 @@ function modifyPayload($payloadText)
  * @param $paymentMethod
  * @return array|mixed The response from WPP as an array if the request was successful.
  *      An array with the number and the description of the curl error if the request was not successful.
+ * @throws GuzzleException
  */
 function postRegisterRequest($payload, $paymentMethod)
 {
@@ -82,18 +70,13 @@ function postRegisterRequest($payload, $paymentMethod)
         'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
     ];
 
-    $response = "";
-    try {
-        $response = $client->request('POST', WPP_URL . '/api/payment/register', [
-            'headers' => $headers,
-            'body' => json_encode($payload),
-        ]);
-    } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-        printf("%s", $e->getResponse()->getBody()->getContents());
-    }
+    $response = $client->request('POST', WPP_CUSTOMER_TEST_URL . WPP_REGISTER_URL, [
+        'headers' => $headers,
+        'body' => json_encode($payload),
+    ]);
 
     $contents = $response->getBody()->getContents();
-    return json_decode($contents, $assoc = true);
+    return json_decode($contents, true);
 }
 
 /**
@@ -102,6 +85,7 @@ function postRegisterRequest($payload, $paymentMethod)
  * @param $payload
  * @param $paymentMethod
  * @return bool TRUE if the request was successful and the response contained a redirect URL. FALSE otherwise.
+ * @throws GuzzleException
  */
 function retrievePaymentRedirectUrl($payload, $paymentMethod)
 {

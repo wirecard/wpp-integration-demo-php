@@ -38,11 +38,10 @@ use Wirecard\PaymentSdk\Response\FailureResponse;
 use Wirecard\PaymentSdk\Response\SuccessResponse;
 use Wirecard\PaymentSdk\TransactionService;
 
-$baseUrl = 'https://wpp-test.wirecard.com';
 $httpUser = MERCHANT_CONFIG_A["username"];
 $httpPass = MERCHANT_CONFIG_A["password"];
 
-$config = new Config\Config($baseUrl, $httpUser, $httpPass, 'EUR');
+$config = new Config\Config(WPP_CUSTOMER_TEST_URL, $httpUser, $httpPass, 'EUR');
 // ### Validation
 
 // We use Monolog as logger. Set up a logger for the notifications.

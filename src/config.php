@@ -2,9 +2,11 @@
 
 require_once 'util/globals.php';
 
-const BASE_URL = 'https://api-test.wirecard.com';
+const ELASTIC_ENGINE_CUSTOMER_TEST_BASE_URL = 'https://api-test.wirecard.com';
+const WPP_CUSTOMER_TEST_URL = 'https://wpp-test.wirecard.com';
+const WPP_REGISTER_URL = '/api/payment/register';
+
 const DEMO_IBAN = 'DE42512308000000060004';
-const WPP_URL = 'https://wpp-test.wirecard.com';
 
 const MERCHANT_CONFIG_A = [
     'username' => '70000-APITEST-AP',

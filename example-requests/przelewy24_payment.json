@@ -1,26 +1,23 @@
 {
   "payment": {
     "merchant-account-id": {
-      "value": "6c0e7efd-ee58-40f7-9bbd-5e7337a052cd"
+      "value": "86451785-3ed0-4aa1-99b2-cc32cf54ce9a"
     },
     "request-id": "",
     "requested-amount": {
-      "value": "1.01",
-      "currency": "EUR"
+      "value": "23.5",
+      "currency": "PLN"
     },
     "account-holder": {
-      "first-name": "John",
-      "last-name": "Dao"
+      "email" : "john.doe@test.com",
+      "address": {
+        "country": "PL"
+      }
     },
+    "order-number": "ON 111222",
     "transaction-type": "debit",
-    "payment-methods": {
-      "payment-method": [
-        {
-          "name": "sofortbanking"
-        }
-      ]
-    },
-    "descriptor": "FANZEE XRZ-1282",
+    "descriptor": "SHOP ABC - Product A86500",
+    "locale": "en",
     "notifications": {
       "format": "application/xml",
       "notification": [
@@ -32,5 +29,8 @@
     "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
   }
 }
