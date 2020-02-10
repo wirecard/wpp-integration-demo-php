@@ -376,51 +376,6 @@
             "time": "2019-12-20T14:15:16+00:00"
         },
         {
-            "name": "myclabs/php-enum",
-            "version": "1.6.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/myclabs/php-enum.git",
-                "reference": "32c4202886c51fbe5cc3a7c34ec5c9a4a790345e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/32c4202886c51fbe5cc3a7c34ec5c9a4a790345e",
-                "reference": "32c4202886c51fbe5cc3a7c34ec5c9a4a790345e",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
-                "squizlabs/php_codesniffer": "1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MyCLabs\\Enum\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP Enum contributors",
-                    "homepage": "https://github.com/myclabs/php-enum/graphs/contributors"
-                }
-            ],
-            "description": "PHP Enum implementation",
-            "homepage": "http://github.com/myclabs/php-enum",
-            "keywords": [
-                "enum"
-            ],
-            "time": "2019-02-04T21:18:49+00:00"
-        },
-        {
             "name": "php-http/client-common",
             "version": "1.10.0",
             "source": {
@@ -1056,25 +1011,25 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v5.0.0",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68"
+                "reference": "9a02d6662660fe7bfadad63b5f0b0718d4c8b6b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68",
-                "reference": "1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/9a02d6662660fe7bfadad63b5f0b0718d4c8b6b0",
+                "reference": "9a02d6662660fe7bfadad63b5f0b0718d4c8b6b0",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2.5"
+                "php": "^7.1.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -1106,20 +1061,20 @@
                 "configuration",
                 "options"
             ],
-            "time": "2019-11-18T17:27:11+00:00"
+            "time": "2020-01-04T13:00:46+00:00"
         },
         {
             "name": "whichbrowser/parser",
-            "version": "v2.0.37",
+            "version": "v2.0.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhichBrowser/Parser-PHP.git",
-                "reference": "9c6ad8eadc23294b1c66d92876c11f13c5d4cf48"
+                "reference": "c7b71a46f5f51b5b7284ed36a5b16c62b6f9dc8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhichBrowser/Parser-PHP/zipball/9c6ad8eadc23294b1c66d92876c11f13c5d4cf48",
-                "reference": "9c6ad8eadc23294b1c66d92876c11f13c5d4cf48",
+                "url": "https://api.github.com/repos/WhichBrowser/Parser-PHP/zipball/c7b71a46f5f51b5b7284ed36a5b16c62b6f9dc8c",
+                "reference": "c7b71a46f5f51b5b7284ed36a5b16c62b6f9dc8c",
                 "shasum": ""
             },
             "require": {
@@ -1128,11 +1083,11 @@
             },
             "require-dev": {
                 "icomefromthenet/reverse-regex": "0.0.6.3",
-                "phpunit/php-code-coverage": "^2.2|^3.0",
-                "phpunit/phpunit": "^4.0|^5.0",
+                "phpunit/php-code-coverage": "^2.2 || ^3.0",
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
                 "satooshi/php-coveralls": "^1.0",
                 "squizlabs/php_codesniffer": "2.5.*",
-                "symfony/yaml": ">=2.8"
+                "symfony/yaml": "~2.8 || ~3.4 || ~4.2 || ~5.0"
             },
             "suggest": {
                 "cache/array-adapter": "Allows testing of the caching functionality"
@@ -1165,7 +1120,7 @@
                 "ua",
                 "useragent"
             ],
-            "time": "2018-10-02T09:26:41+00:00"
+            "time": "2020-01-02T14:36:46+00:00"
         },
         {
             "name": "wirecard/iso-paypal-converter",
@@ -1203,16 +1158,16 @@
         },
         {
             "name": "wirecard/payment-sdk-php",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wirecard/paymentSDK-php.git",
-                "reference": "ff0b2488e8253946f4d7f6f03220932b13bce1ac"
+                "reference": "f4da8678c51f641104eb7f5c460bc3549b744e63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wirecard/paymentSDK-php/zipball/ff0b2488e8253946f4d7f6f03220932b13bce1ac",
-                "reference": "ff0b2488e8253946f4d7f6f03220932b13bce1ac",
+                "url": "https://api.github.com/repos/wirecard/paymentSDK-php/zipball/f4da8678c51f641104eb7f5c460bc3549b744e63",
+                "reference": "f4da8678c51f641104eb7f5c460bc3549b744e63",
                 "shasum": ""
             },
             "require": {
@@ -1225,7 +1180,6 @@
                 "ext-openssl": "*",
                 "ext-simplexml": "*",
                 "monolog/monolog": "^1.16",
-                "myclabs/php-enum": "~1.5.0 || ~1.6.0",
                 "php": "5.6.* || 7.0.* || 7.1.* || 7.2.* || 7.3.*",
                 "php-http/client-common": "^1.0",
                 "php-http/discovery": "^1.0 <= 1.6.1",
@@ -1255,7 +1209,7 @@
                 "MIT"
             ],
             "description": "PHP SDK for the payment processing ReST API of Wirecard",
-            "time": "2019-11-13T16:12:44+00:00"
+            "time": "2020-02-07T12:57:22+00:00"
         }
     ],
     "packages-dev": [
