@@ -1,26 +1,19 @@
 {
   "payment": {
     "merchant-account-id": {
-      "value": "28d4938b-d0d6-4c4a-b591-fb63175de53e"
-    },
-    "account-holder": {
-      "first-name": "John",
-      "last-name": "Dao",
-      "merchant-crm-id": "A123456789"
+      "value": "6c0e7efd-ee58-40f7-9bbd-5e7337a052cd"
     },
     "request-id": "",
     "requested-amount": {
-      "value": 9.99,
+      "value": "1.01",
       "currency": "EUR"
     },
-    "transaction-type": "authorization",
-    "payment-methods": {
-      "payment-method": [
-        {
-          "name": "paysafecard"
-        }
-      ]
+    "account-holder": {
+      "first-name": "John",
+      "last-name": "Dao"
     },
+    "transaction-type": "debit",
+    "descriptor": "SHOP ABC - Product A86500",
     "notifications": {
       "format": "application/xml",
       "notification": [
@@ -32,5 +25,8 @@
     "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
   }
 }

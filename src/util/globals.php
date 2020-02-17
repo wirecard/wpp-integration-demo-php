@@ -11,29 +11,14 @@ const P24 = 'p24';
 const EPS = 'eps';
 const ALIPAY_XBORDER = 'alipay-xborder';
 
-const PATH_TO_STANDALONE = '../../example-requests-standalone/';
-const PATH_TO_EMBEDDED = '../../example-requests-embedded/';
-
-const PATHS_STANDALONE = [
-    CREDITCARD => PATH_TO_STANDALONE . 'creditcard_payment_3DS.json',
-    PAYPAL => PATH_TO_STANDALONE . 'paypal_payment.json',
-    IDEAL => PATH_TO_STANDALONE . 'ideal_payment.json',
-    SEPA_DIRECTDEBIT => PATH_TO_STANDALONE . 'sepa_dd_payment.json',
-    SOFORT => PATH_TO_STANDALONE . 'sofortbanking_payment.json',
-    PAYSAFECARD => PATH_TO_STANDALONE . 'paysafecard_payment.json',
-    P24 => PATH_TO_STANDALONE . 'przelewy24_payment.json',
-    EPS => PATH_TO_STANDALONE . 'eps_payment.json',
-    ALIPAY_XBORDER => PATH_TO_STANDALONE . 'alipay_cross_border_payment.json'
-];
-
-const PATHS_EMBEDDED = [
-    CREDITCARD => PATH_TO_EMBEDDED . 'creditcard_payment_3DS.json',
-    PAYPAL => PATH_TO_EMBEDDED . 'paypal_payment.json',
-    IDEAL => PATH_TO_EMBEDDED . 'ideal_payment.json',
-    SEPA_DIRECTDEBIT => PATH_TO_EMBEDDED . 'sepa_dd_payment.json',
-    SOFORT => PATH_TO_EMBEDDED . 'sofortbanking_payment.json',
-    PAYSAFECARD => PATH_TO_EMBEDDED . 'paysafecard_payment.json',
-    P24 => PATH_TO_EMBEDDED . 'przelewy24_payment.json',
-    EPS => PATH_TO_EMBEDDED . 'eps_payment.json',
-    ALIPAY_XBORDER => PATH_TO_EMBEDDED . 'alipay_cross_border_payment.json'
+const PATHS_TO_SAMPLE_REQUESTS = [
+    CREDITCARD => '../../example-requests/creditcard_payment_3DS.json',
+    PAYPAL => '../../example-requests/paypal_payment.json',
+    IDEAL => '../../example-requests/ideal_payment.json',
+    SEPA_DIRECTDEBIT => '../../example-requests/sepa_dd_payment.json',
+    SOFORT => '../../example-requests/sofortbanking_payment.json',
+    PAYSAFECARD => '../../example-requests/paysafecard_payment.json',
+    P24 => '../../example-requests/przelewy24_payment.json',
+    EPS => '../../example-requests/eps_payment.json',
+    ALIPAY_XBORDER => '../../example-requests/alipay_cross_border_payment.json'
 ];

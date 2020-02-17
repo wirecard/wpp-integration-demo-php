@@ -75,7 +75,7 @@ Optionally you can provide the IBAN in the request body, so that the payment wil
  }
 ```
 
-#### Sofort 
+#### Sofort Banking
 ```
 Country: whatever you like  
 Bank Name: Demo Bank
@@ -214,6 +214,19 @@ e.g. the credit card data entry form is displayed to them immediately.
 ```
 
 This option is useful if you want to decide about the payment method on a per request basis. E.g. for purchases above EUR 100 you want to accept only credit card. For purchases from a specific country you want to allow only Paypal etc.
+
+Hint: Have a look at the example requests and compare them each other. You will see that the request for credit card has a additional field 'payment-methods'. You can change the JSON request whatever you like and see how this effects the result.
+
+For all other payment methods also a corresponding name exists. Here you see a list of names for the corresponding payment methods:
+
+* payment method name for SEPA Direct Debit is `sepadirectdebit`
+* payment method name for Alipay Cross-border is `alipay-xborder`
+* payment method name for EPS is `eps`
+* payment method name for iDEAL is `ideal`
+* payment method name for PayPal is `paypal`
+* payment method name for Przelewy24 is `p24`
+* payment method name for SOFORT Banking is `sofortbanking`
+* payment method name for paysafecard is `paysafecard`
 
 #### Request parameters which are specific for a type of integration
 For the standalone integration you are ready to go.  
@@ -378,7 +391,7 @@ The following payment methods are currently supported:
 * PayPal
 * SEPA Direct Debit
 * iDEAL
-* Sofort. (Klarna Group)
+* Sofort Banking (Klarna Group)
 * Paysafecard
 * Przelewy24
 * EPS
@@ -436,7 +449,7 @@ For the most common use cases we provide examples in this project. You can find 
 * cancelling a payment
 * credit: transfer funds to a PayPal account
 
-#### Sofort.
+#### Sofort Banking
 * credit: refund a payment via SEPA credit transfer
 
 #### iDEAL

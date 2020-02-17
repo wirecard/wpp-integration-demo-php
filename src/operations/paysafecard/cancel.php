@@ -33,6 +33,7 @@ try {
 if ($response instanceof SuccessResponse) {
     echo 'Reserve successfully cancelled.<br>';
     echo 'TransactionID: ' . $response->getTransactionId();
+    require '../goBack.php';
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

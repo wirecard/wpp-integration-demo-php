@@ -32,6 +32,7 @@ try {
 if ($response instanceof SuccessResponse) {
     echo 'Payment successfully canceled.<br>';
     echo 'TransactionID: ' . $response->getTransactionId();
+    require '../goBack.php';
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

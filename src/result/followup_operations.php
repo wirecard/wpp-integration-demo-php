@@ -1,5 +1,5 @@
 <?php
-if (getPaymentMethod() === 'creditcard') {
+if (getPaymentMethod() === CREDITCARD) {
     ?>
     <form action="../operations/creditcard/recurring_default.php" method="post">
         <input type="hidden" name="tokenId" value="<?= getTokenId() ?>"/>

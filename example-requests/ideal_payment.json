@@ -1,25 +1,23 @@
 {
   "payment": {
     "merchant-account-id": {
-      "value": "2a0e9351-24ed-4110-9a1b-fd0fee6bec26"
-    },
-    "request-id": "",
-    "requested-amount": {
-      "value": "1.01",
-      "currency": "EUR"
+      "value": "4aeccf39-0d47-47f6-a399-c05c1f2fc819"
     },
     "account-holder": {
       "first-name": "John",
       "last-name": "Dao"
     },
-    "transaction-type": "debit",
-    "payment-methods": {
-      "payment-method": [
-        {
-          "name": "paypal"
-        }
-      ]
+    "request-id": "",
+    "requested-amount": {
+      "value": "10.99",
+      "currency": "EUR"
     },
+    "order-number": "15684356856",
+    "descriptor": "SHOP ABC - Product A86500",
+    "bank-account": {
+      "bic": "INGBNL2A"
+    },
+    "transaction-type": "debit",
     "notifications": {
       "format": "application/xml",
       "notification": [
@@ -31,5 +29,8 @@
     "success-redirect-url": "wpp-integration-demo-php/src/result/success.php",
     "fail-redirect-url": "wpp-integration-demo-php/src/result/fail.php",
     "cancel-redirect-url": "wpp-integration-demo-php/src/result/cancel.php"
+  },
+  "options": {
+    "frame-ancestor": ""
   }
 }

@@ -41,7 +41,7 @@ try {
 if ($response instanceof SuccessResponse) {
     echo 'Successful reservation.<br>';
     echo 'TransactionID: ' . $response->getTransactionId();
-    require '../showButton.php';
+    require '../findPayments.php';
 } elseif ($response instanceof FailureResponse) {
     echoFailureResponse($response);
 }

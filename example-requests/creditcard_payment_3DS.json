@@ -13,13 +13,6 @@
       "currency": "EUR"
     },
     "transaction-type": "purchase",
-    "payment-methods": {
-      "payment-method": [
-        {
-          "name": "creditcard"
-        }
-      ]
-    },
     "three-d": {
       "attempt-three-d": "true"
     },
@@ -28,6 +21,13 @@
       "notification": [
         {
           "url": "wpp-integration-demo-php/src/result/notify.php"
+        }
+      ]
+    },
+    "payment-methods": {
+      "payment-method": [
+        {
+          "name": "creditcard"
         }
       ]
     },

@@ -1,13 +1,11 @@
 <?php
 require_once '../../vendor/autoload.php';
-
 require_once('base.php');
 
 
-$creditcard = CREDITCARD;
-$payload = createPayloadStandalone($creditcard);
+$payload = createPayload(CREDITCARD);
 $payload['options']['frame-ancestor'] = getBaseUrl();
 $payload['options']['mode'] = 'seamless';
-if (retrievePaymentRedirectUrl($payload, $creditcard)) {
+if (retrievePaymentRedirectUrl($payload, CREDITCARD)) {
     redirect('../payment/seamless.php');
 }

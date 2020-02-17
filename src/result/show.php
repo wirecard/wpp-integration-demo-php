@@ -16,12 +16,9 @@
 </head>
 <body>
 <div class="container" style="margin-top: 2%">
-    <a class="btn btn-primary center-block text-center" role="button"
-       style="text-align: right;float: right; margin: 30px 0 30px 0"
-       href="../../index.html">Back</a>
     <?php
     require '../../vendor/autoload.php';
-    
+
     session_start();
     ?>
 
@@ -55,6 +52,10 @@
         require 'followup_operations.php';
     }
     ?>
+
+    <a class="btn btn-primary center-block text-center" role="button"
+       style="text-align: right;float: right; margin: 30px 0 30px 0"
+       href="../../index.html">Back to main page</a>
 
 
 </div>
